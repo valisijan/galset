@@ -1,0 +1,29 @@
+# Zavisnosti (hvata i api i web node_modules)
+node_modules/
+.pnp
+.pnp.*
+.yarn/
+
+# Testovi i keš
+coverage/
+.next/
+out/
+build/
+.vercel/
+
+# Sistemski fajlovi
+.DS_Store
+*.pem
+*.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# Ključevi i šifre
+.env
+.env.local
+.env.production
+.env.development
+*/.env*
+
+# Prisma
+src/generated/prisma

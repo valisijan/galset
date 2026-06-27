@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "category": "krediti",
+    "name": "Minimalna uplata",
+    "price": 5,
+    "currency": "EUR",
+    "features": {
+      "credits": 500,
+      "minPrice": 5
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 2,
+    "category": "krediti",
+    "name": "Dopuna od 5€ do 9.99€",
+    "price": 5,
+    "currency": "EUR",
+    "features": {
+      "maxPrice": 9.99,
+      "minPrice": 5,
+      "bonusPercentage": 0
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 3,
+    "category": "krediti",
+    "name": "Dopuna od 10€ do 19.99€",
+    "price": 10,
+    "currency": "EUR",
+    "features": {
+      "maxPrice": 19.99,
+      "minPrice": 10,
+      "bonusPercentage": 5
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 4,
+    "category": "krediti",
+    "name": "Dopuna od 20€ do 49.99€",
+    "price": 20,
+    "currency": "EUR",
+    "features": {
+      "maxPrice": 49.99,
+      "minPrice": 20,
+      "bonusPercentage": 10
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 5,
+    "category": "krediti",
+    "name": "Dopuna od 50€ do 99.99€",
+    "price": 50,
+    "currency": "EUR",
+    "features": {
+      "maxPrice": 99.99,
+      "minPrice": 50,
+      "bonusPercentage": 20
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 6,
+    "category": "krediti",
+    "name": "Dopuna preko 100€",
+    "price": 100,
+    "currency": "EUR",
+    "features": {
+      "maxPrice": null,
+      "minPrice": 100,
+      "bonusPercentage": 25
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 7,
+    "category": "promocija",
+    "name": "Obnova oglasa",
+    "price": 10,
+    "currency": "KREDITI",
+    "features": {},
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 8,
+    "category": "promocija",
+    "name": "Dodatno postavljanje oglasa",
+    "price": 30,
+    "currency": "KREDITI",
+    "features": {},
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 9,
+    "category": "promocija",
+    "name": "Dodatno postavljanje slika",
+    "price": 5,
+    "currency": "KREDITI",
+    "features": {},
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 10,
+    "category": "promocija",
+    "name": "Objava oglasa (30 dana)",
+    "price": 0,
+    "currency": "KREDITI",
+    "features": {
+      "durationDays": 30
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 11,
+    "category": "promocija",
+    "name": "Objava oglasa (60 dana + 1 automatsko vraćanje na vrh liste)",
+    "price": 20,
+    "currency": "KREDITI",
+    "features": {
+      "durationDays": 60
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 12,
+    "category": "promocija",
+    "name": "Objava oglasa (100 dana + 3 automatsko vraćanje na vrh liste)",
+    "price": 40,
+    "currency": "KREDITI",
+    "features": {
+      "durationDays": 100
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 13,
+    "category": "promocija",
+    "name": "Istaknuti oglas (7 dana)",
+    "price": 20,
+    "currency": "KREDITI",
+    "features": {
+      "type": "FEATURED",
+      "durationDays": 7
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 14,
+    "category": "promocija",
+    "name": "Prioritetni oglas (7 dana)",
+    "price": 40,
+    "currency": "KREDITI",
+    "features": {
+      "type": "PRIORITY",
+      "durationDays": 7
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 15,
+    "category": "promocija",
+    "name": "Na vrhu (7 dana)",
+    "price": 100,
+    "currency": "KREDITI",
+    "features": {
+      "type": "TOP",
+      "durationDays": 7
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 16,
+    "category": "promocija",
+    "name": "Premium oglas (7 dana)",
+    "price": 200,
+    "currency": "KREDITI",
+    "features": {
+      "type": "COMBO",
+      "durationDays": 7
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 17,
+    "category": "promocija",
+    "name": "Istaknuti oglas (15 dana)",
+    "price": 40,
+    "currency": "KREDITI",
+    "features": {
+      "type": "FEATURED",
+      "durationDays": 15
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 18,
+    "category": "promocija",
+    "name": "Prioritetni oglas (15 dana)",
+    "price": 70,
+    "currency": "KREDITI",
+    "features": {
+      "type": "PRIORITY",
+      "durationDays": 15
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 19,
+    "category": "promocija",
+    "name": "Na vrhu (15 dana)",
+    "price": 180,
+    "currency": "KREDITI",
+    "features": {
+      "type": "TOP",
+      "durationDays": 15
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 20,
+    "category": "promocija",
+    "name": "Premium oglas (15 dana)",
+    "price": 300,
+    "currency": "KREDITI",
+    "features": {
+      "type": "COMBO",
+      "durationDays": 15
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 21,
+    "category": "promocija",
+    "name": "Istaknuti oglas (30 dana)",
+    "price": 60,
+    "currency": "KREDITI",
+    "features": {
+      "type": "FEATURED",
+      "durationDays": 30
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 22,
+    "category": "promocija",
+    "name": "Prioritetni oglas (30 dana)",
+    "price": 110,
+    "currency": "KREDITI",
+    "features": {
+      "type": "PRIORITY",
+      "durationDays": 30
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 23,
+    "category": "promocija",
+    "name": "Na vrhu (30 dana)",
+    "price": 300,
+    "currency": "KREDITI",
+    "features": {
+      "type": "TOP",
+      "durationDays": 30
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 24,
+    "category": "promocija",
+    "name": "Premium oglas (30 dana)",
+    "price": 500,
+    "currency": "KREDITI",
+    "features": {
+      "type": "COMBO",
+      "durationDays": 30
+    },
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  },
+  {
+    "id": 25,
+    "category": "promocija",
+    "name": "Hitno značka",
+    "price": 50,
+    "currency": "KREDITI",
+    "features": {},
+    "createdAt": "2026-05-31T07:38:57.944Z",
+    "updatedAt": "2026-05-31T07:38:57.944Z"
+  }
+]

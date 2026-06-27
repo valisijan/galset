@@ -1,0 +1,1 @@
+ALTER TYPE "public"."ReportTargetType" ADD VALUE 'REVIEW';

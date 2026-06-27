@@ -1,0 +1,1906 @@
+[
+  {
+    "id": 1,
+    "name": "Ada",
+    "slug": "ada",
+    "countryId": 1,
+    "lat": 45.9264,
+    "lng": 20.1258
+  },
+  {
+    "id": 2,
+    "name": "Aleksandrovac",
+    "slug": "aleksandrovac",
+    "countryId": 1,
+    "lat": 43.4567,
+    "lng": 21.045
+  },
+  {
+    "id": 3,
+    "name": "Aleksinac",
+    "slug": "aleksinac",
+    "countryId": 1,
+    "lat": 43.5414,
+    "lng": 21.7075
+  },
+  {
+    "id": 4,
+    "name": "Alibunar",
+    "slug": "alibunar",
+    "countryId": 1,
+    "lat": 45.0806,
+    "lng": 20.9639
+  },
+  {
+    "id": 5,
+    "name": "Apatin",
+    "slug": "apatin",
+    "countryId": 1,
+    "lat": 45.6714,
+    "lng": 18.985
+  },
+  {
+    "id": 6,
+    "name": "Aranđelovac",
+    "slug": "arandelovac",
+    "countryId": 1,
+    "lat": 44.3039,
+    "lng": 20.5558
+  },
+  {
+    "id": 7,
+    "name": "Arilje",
+    "slug": "arilje",
+    "countryId": 1,
+    "lat": 43.7533,
+    "lng": 20.095
+  },
+  {
+    "id": 8,
+    "name": "Azanja",
+    "slug": "azanja",
+    "countryId": 1,
+    "lat": 44.4339,
+    "lng": 20.8767
+  },
+  {
+    "id": 9,
+    "name": "Babušnica",
+    "slug": "babusnica",
+    "countryId": 1,
+    "lat": 43.0617,
+    "lng": 22.4117
+  },
+  {
+    "id": 10,
+    "name": "Bač",
+    "slug": "bac",
+    "countryId": 1,
+    "lat": 45.3908,
+    "lng": 19.2333
+  },
+  {
+    "id": 11,
+    "name": "Bačka Palanka",
+    "slug": "backa-palanka",
+    "countryId": 1,
+    "lat": 45.2489,
+    "lng": 19.3919
+  },
+  {
+    "id": 12,
+    "name": "Bačka Topola",
+    "slug": "backa-topola",
+    "countryId": 1,
+    "lat": 45.8153,
+    "lng": 19.6319
+  },
+  {
+    "id": 13,
+    "name": "Bački Petrovac",
+    "slug": "backi-petrovac",
+    "countryId": 1,
+    "lat": 45.3611,
+    "lng": 19.5917
+  },
+  {
+    "id": 14,
+    "name": "Bačko Gradište",
+    "slug": "backo-gradiste",
+    "countryId": 1,
+    "lat": 45.5306,
+    "lng": 20.0306
+  },
+  {
+    "id": 15,
+    "name": "Bačko Petrovo Selo",
+    "slug": "backo-petrovo-selo",
+    "countryId": 1,
+    "lat": 45.7033,
+    "lng": 20.0811
+  },
+  {
+    "id": 16,
+    "name": "Bajina Bašta",
+    "slug": "bajina-basta",
+    "countryId": 1,
+    "lat": 43.9583,
+    "lng": 19.5639
+  },
+  {
+    "id": 17,
+    "name": "Bajmok",
+    "slug": "bajmok",
+    "countryId": 1,
+    "lat": 45.9667,
+    "lng": 19.4217
+  },
+  {
+    "id": 18,
+    "name": "Banatski Brestovac",
+    "slug": "banatski-brestovac",
+    "countryId": 1,
+    "lat": 44.7264,
+    "lng": 20.8064
+  },
+  {
+    "id": 19,
+    "name": "Banatski Karlovac",
+    "slug": "banatski-karlovac",
+    "countryId": 1,
+    "lat": 45.0483,
+    "lng": 21.0189
+  },
+  {
+    "id": 20,
+    "name": "Banatsko Novo Selo",
+    "slug": "banatsko-novo-selo",
+    "countryId": 1,
+    "lat": 44.9886,
+    "lng": 20.7853
+  },
+  {
+    "id": 21,
+    "name": "Banja Koviljača",
+    "slug": "banja-koviljaca",
+    "countryId": 1,
+    "lat": 44.5117,
+    "lng": 19.1558
+  },
+  {
+    "id": 22,
+    "name": "Banja Rusanda",
+    "slug": "banja-rusanda",
+    "countryId": 1,
+    "lat": 45.5122,
+    "lng": 20.2975
+  },
+  {
+    "id": 23,
+    "name": "Banja Vrujci",
+    "slug": "banja-vrujci",
+    "countryId": 1,
+    "lat": 44.2214,
+    "lng": 20.2039
+  },
+  {
+    "id": 24,
+    "name": "Barajevo",
+    "slug": "barajevo",
+    "countryId": 1,
+    "lat": 44.5783,
+    "lng": 20.415
+  },
+  {
+    "id": 25,
+    "name": "Batočina",
+    "slug": "batocina",
+    "countryId": 1,
+    "lat": 44.1539,
+    "lng": 21.0825
+  },
+  {
+    "id": 26,
+    "name": "Bavanište",
+    "slug": "bavaniste",
+    "countryId": 1,
+    "lat": 44.8214,
+    "lng": 20.8778
+  },
+  {
+    "id": 27,
+    "name": "Bečej",
+    "slug": "becej",
+    "countryId": 1,
+    "lat": 45.615,
+    "lng": 20.0333
+  },
+  {
+    "id": 28,
+    "name": "Bela Crkva",
+    "slug": "bela-crkva",
+    "countryId": 1,
+    "lat": 44.8975,
+    "lng": 21.4178
+  },
+  {
+    "id": 29,
+    "name": "Bela Palanka",
+    "slug": "bela-palanka",
+    "countryId": 1,
+    "lat": 43.225,
+    "lng": 22.3117
+  },
+  {
+    "id": 30,
+    "name": "Beočin",
+    "slug": "beocin",
+    "countryId": 1,
+    "lat": 45.2047,
+    "lng": 19.7214
+  },
+  {
+    "id": 31,
+    "name": "Beograd",
+    "slug": "beograd",
+    "countryId": 1,
+    "lat": 44.8125,
+    "lng": 20.4612
+  },
+  {
+    "id": 32,
+    "name": "Beška",
+    "slug": "beska",
+    "countryId": 1,
+    "lat": 45.1311,
+    "lng": 20.0658
+  },
+  {
+    "id": 33,
+    "name": "Blace",
+    "slug": "blace",
+    "countryId": 1,
+    "lat": 43.2989,
+    "lng": 21.2889
+  },
+  {
+    "id": 34,
+    "name": "Bogatić",
+    "slug": "bogatic",
+    "countryId": 1,
+    "lat": 44.8361,
+    "lng": 19.4806
+  },
+  {
+    "id": 35,
+    "name": "Bojnik",
+    "slug": "bojnik",
+    "countryId": 1,
+    "lat": 43.015,
+    "lng": 21.725
+  },
+  {
+    "id": 36,
+    "name": "Boljevac",
+    "slug": "boljevac",
+    "countryId": 1,
+    "lat": 43.8344,
+    "lng": 21.9564
+  },
+  {
+    "id": 37,
+    "name": "Bor",
+    "slug": "bor",
+    "countryId": 1,
+    "lat": 44.075,
+    "lng": 22.0983
+  },
+  {
+    "id": 38,
+    "name": "Borča",
+    "slug": "borca",
+    "countryId": 1,
+    "lat": 44.8797,
+    "lng": 20.4608
+  },
+  {
+    "id": 39,
+    "name": "Bosilegrad",
+    "slug": "bosilegrad",
+    "countryId": 1,
+    "lat": 42.5019,
+    "lng": 22.4742
+  },
+  {
+    "id": 40,
+    "name": "Brus",
+    "slug": "brus",
+    "countryId": 1,
+    "lat": 43.4386,
+    "lng": 21.0336
+  },
+  {
+    "id": 41,
+    "name": "Bujanovac",
+    "slug": "bujanovac",
+    "countryId": 1,
+    "lat": 42.4636,
+    "lng": 21.7681
+  },
+  {
+    "id": 42,
+    "name": "Crepaja",
+    "slug": "crepaja",
+    "countryId": 1,
+    "lat": 45.0089,
+    "lng": 20.6381
+  },
+  {
+    "id": 43,
+    "name": "Crvenka",
+    "slug": "crvenka",
+    "countryId": 1,
+    "lat": 45.6583,
+    "lng": 19.4583
+  },
+  {
+    "id": 44,
+    "name": "Čačak",
+    "slug": "cacak",
+    "countryId": 1,
+    "lat": 43.8914,
+    "lng": 20.3497
+  },
+  {
+    "id": 45,
+    "name": "Čajetina",
+    "slug": "cajetina",
+    "countryId": 1,
+    "lat": 43.8011,
+    "lng": 19.7028
+  },
+  {
+    "id": 46,
+    "name": "Čelarevo",
+    "slug": "celarevo",
+    "countryId": 1,
+    "lat": 45.2714,
+    "lng": 19.5256
+  },
+  {
+    "id": 47,
+    "name": "Čoka",
+    "slug": "coka",
+    "countryId": 1,
+    "lat": 45.9419,
+    "lng": 20.1436
+  },
+  {
+    "id": 48,
+    "name": "Čurug",
+    "slug": "curug",
+    "countryId": 1,
+    "lat": 45.4744,
+    "lng": 20.065
+  },
+  {
+    "id": 49,
+    "name": "Ćićevac",
+    "slug": "cicevac",
+    "countryId": 1,
+    "lat": 43.7194,
+    "lng": 21.4428
+  },
+  {
+    "id": 50,
+    "name": "Ćuprija",
+    "slug": "cuprija",
+    "countryId": 1,
+    "lat": 43.9272,
+    "lng": 21.3703
+  },
+  {
+    "id": 51,
+    "name": "Debeljača",
+    "slug": "debeljaca",
+    "countryId": 1,
+    "lat": 45.0706,
+    "lng": 20.6178
+  },
+  {
+    "id": 52,
+    "name": "Despotovac",
+    "slug": "despotovac",
+    "countryId": 1,
+    "lat": 44.095,
+    "lng": 21.4386
+  },
+  {
+    "id": 53,
+    "name": "Dimitrovgrad",
+    "slug": "dimitrovgrad",
+    "countryId": 1,
+    "lat": 43.0142,
+    "lng": 22.7847
+  },
+  {
+    "id": 54,
+    "name": "Divčibare",
+    "slug": "divcibare",
+    "countryId": 1,
+    "lat": 44.1103,
+    "lng": 20.0125
+  },
+  {
+    "id": 55,
+    "name": "Dobanovci",
+    "slug": "dobanovci",
+    "countryId": 1,
+    "lat": 44.8253,
+    "lng": 20.2225
+  },
+  {
+    "id": 56,
+    "name": "Dolovo",
+    "slug": "dolovo",
+    "countryId": 1,
+    "lat": 44.9011,
+    "lng": 20.8808
+  },
+  {
+    "id": 57,
+    "name": "Doljevac",
+    "slug": "doljevac",
+    "countryId": 1,
+    "lat": 43.2106,
+    "lng": 21.8267
+  },
+  {
+    "id": 58,
+    "name": "Donji Milanovac",
+    "slug": "donji-milanovac",
+    "countryId": 1,
+    "lat": 44.4642,
+    "lng": 22.1264
+  },
+  {
+    "id": 59,
+    "name": "Đakovica",
+    "slug": "dakovica",
+    "countryId": 1,
+    "lat": 42.3803,
+    "lng": 20.4289
+  },
+  {
+    "id": 60,
+    "name": "Feketić",
+    "slug": "feketic",
+    "countryId": 1,
+    "lat": 45.6628,
+    "lng": 19.7125
+  },
+  {
+    "id": 61,
+    "name": "Futog",
+    "slug": "futog",
+    "countryId": 1,
+    "lat": 45.2392,
+    "lng": 19.7011
+  },
+  {
+    "id": 62,
+    "name": "Gadžin Han",
+    "slug": "gadzin-han",
+    "countryId": 1,
+    "lat": 43.1883,
+    "lng": 21.9881
+  },
+  {
+    "id": 63,
+    "name": "Gnjilane",
+    "slug": "gnjilane",
+    "countryId": 1,
+    "lat": 42.4636,
+    "lng": 21.4678
+  },
+  {
+    "id": 64,
+    "name": "Golubac",
+    "slug": "golubac",
+    "countryId": 1,
+    "lat": 44.6531,
+    "lng": 21.6289
+  },
+  {
+    "id": 65,
+    "name": "Golubinci",
+    "slug": "golubinci",
+    "countryId": 1,
+    "lat": 44.9856,
+    "lng": 20.0633
+  },
+  {
+    "id": 66,
+    "name": "Gornji Milanovac",
+    "slug": "gornji-milanovac",
+    "countryId": 1,
+    "lat": 44.0239,
+    "lng": 20.4575
+  },
+  {
+    "id": 67,
+    "name": "Grocka",
+    "slug": "grocka",
+    "countryId": 1,
+    "lat": 44.6731,
+    "lng": 20.7164
+  },
+  {
+    "id": 68,
+    "name": "Guča",
+    "slug": "guca",
+    "countryId": 1,
+    "lat": 43.7664,
+    "lng": 20.2319
+  },
+  {
+    "id": 69,
+    "name": "Horgoš",
+    "slug": "horgos",
+    "countryId": 1,
+    "lat": 46.1583,
+    "lng": 19.9725
+  },
+  {
+    "id": 70,
+    "name": "Inđija",
+    "slug": "indija",
+    "countryId": 1,
+    "lat": 45.0483,
+    "lng": 20.0817
+  },
+  {
+    "id": 71,
+    "name": "Irig",
+    "slug": "irig",
+    "countryId": 1,
+    "lat": 45.1017,
+    "lng": 19.8644
+  },
+  {
+    "id": 72,
+    "name": "Ivanjica",
+    "slug": "ivanjica",
+    "countryId": 1,
+    "lat": 43.5822,
+    "lng": 20.2289
+  },
+  {
+    "id": 73,
+    "name": "Jagodina",
+    "slug": "jagodina",
+    "countryId": 1,
+    "lat": 43.9771,
+    "lng": 21.2612
+  },
+  {
+    "id": 74,
+    "name": "Jakovo",
+    "slug": "jakovo",
+    "countryId": 1,
+    "lat": 44.7547,
+    "lng": 20.2586
+  },
+  {
+    "id": 75,
+    "name": "Jošanička Banja",
+    "slug": "josanicka-banja",
+    "countryId": 1,
+    "lat": 43.3917,
+    "lng": 20.75
+  },
+  {
+    "id": 76,
+    "name": "Kačarevo",
+    "slug": "kacarevo",
+    "countryId": 1,
+    "lat": 44.9658,
+    "lng": 20.6869
+  },
+  {
+    "id": 77,
+    "name": "Kać",
+    "slug": "kac",
+    "countryId": 1,
+    "lat": 45.2972,
+    "lng": 19.9408
+  },
+  {
+    "id": 78,
+    "name": "Kanjiža",
+    "slug": "kanjiza",
+    "countryId": 1,
+    "lat": 46.0622,
+    "lng": 20.0525
+  },
+  {
+    "id": 79,
+    "name": "Kikinda",
+    "slug": "kikinda",
+    "countryId": 1,
+    "lat": 45.8297,
+    "lng": 20.4653
+  },
+  {
+    "id": 80,
+    "name": "Kisač",
+    "slug": "kisac",
+    "countryId": 1,
+    "lat": 45.3564,
+    "lng": 19.7289
+  },
+  {
+    "id": 81,
+    "name": "Kladovo",
+    "slug": "kladovo",
+    "countryId": 1,
+    "lat": 44.6108,
+    "lng": 22.6083
+  },
+  {
+    "id": 82,
+    "name": "Knić",
+    "slug": "knic",
+    "countryId": 1,
+    "lat": 43.9214,
+    "lng": 20.7153
+  },
+  {
+    "id": 83,
+    "name": "Knjaževac",
+    "slug": "knjazevac",
+    "countryId": 1,
+    "lat": 43.5647,
+    "lng": 22.2567
+  },
+  {
+    "id": 84,
+    "name": "Koceljeva",
+    "slug": "koceljeva",
+    "countryId": 1,
+    "lat": 44.465,
+    "lng": 19.8183
+  },
+  {
+    "id": 85,
+    "name": "Kopaonik",
+    "slug": "kopaonik",
+    "countryId": 1,
+    "lat": 43.2858,
+    "lng": 20.8122
+  },
+  {
+    "id": 86,
+    "name": "Kosjerić",
+    "slug": "kosjeric",
+    "countryId": 1,
+    "lat": 43.995,
+    "lng": 19.9103
+  },
+  {
+    "id": 87,
+    "name": "Kosmaj",
+    "slug": "kosmaj",
+    "countryId": 1,
+    "lat": 44.4656,
+    "lng": 20.5739
+  },
+  {
+    "id": 88,
+    "name": "Kosovska Mitrovica",
+    "slug": "kosovska-mitrovica",
+    "countryId": 1,
+    "lat": 42.8914,
+    "lng": 20.8661
+  },
+  {
+    "id": 89,
+    "name": "Kostolac",
+    "slug": "kostolac",
+    "countryId": 1,
+    "lat": 44.7139,
+    "lng": 21.1683
+  },
+  {
+    "id": 90,
+    "name": "Kovačica",
+    "slug": "kovacica",
+    "countryId": 1,
+    "lat": 45.1114,
+    "lng": 20.6208
+  },
+  {
+    "id": 91,
+    "name": "Kovilj",
+    "slug": "kovilj",
+    "countryId": 1,
+    "lat": 45.2289,
+    "lng": 20.0211
+  },
+  {
+    "id": 92,
+    "name": "Kovin",
+    "slug": "kovin",
+    "countryId": 1,
+    "lat": 44.7417,
+    "lng": 20.9761
+  },
+  {
+    "id": 93,
+    "name": "Kragujevac",
+    "slug": "kragujevac",
+    "countryId": 1,
+    "lat": 44.0128,
+    "lng": 20.9114
+  },
+  {
+    "id": 94,
+    "name": "Kraljevo",
+    "slug": "kraljevo",
+    "countryId": 1,
+    "lat": 43.7258,
+    "lng": 20.6897
+  },
+  {
+    "id": 95,
+    "name": "Krupanj",
+    "slug": "krupanj",
+    "countryId": 1,
+    "lat": 44.3644,
+    "lng": 19.3622
+  },
+  {
+    "id": 96,
+    "name": "Kruševac",
+    "slug": "krusevac",
+    "countryId": 1,
+    "lat": 43.5833,
+    "lng": 21.3267
+  },
+  {
+    "id": 97,
+    "name": "Kučevo",
+    "slug": "kucevo",
+    "countryId": 1,
+    "lat": 44.4764,
+    "lng": 21.6569
+  },
+  {
+    "id": 98,
+    "name": "Kula",
+    "slug": "kula",
+    "countryId": 1,
+    "lat": 45.6111,
+    "lng": 19.5286
+  },
+  {
+    "id": 99,
+    "name": "Kuršumlija",
+    "slug": "kursumlija",
+    "countryId": 1,
+    "lat": 43.1378,
+    "lng": 21.2692
+  },
+  {
+    "id": 100,
+    "name": "Kusadak",
+    "slug": "kusadak",
+    "countryId": 1,
+    "lat": 44.4225,
+    "lng": 20.825
+  },
+  {
+    "id": 101,
+    "name": "Laćarak",
+    "slug": "lacarak",
+    "countryId": 1,
+    "lat": 44.9897,
+    "lng": 19.5606
+  },
+  {
+    "id": 102,
+    "name": "Lajkovac",
+    "slug": "lajkovac",
+    "countryId": 1,
+    "lat": 44.3683,
+    "lng": 20.1656
+  },
+  {
+    "id": 103,
+    "name": "Lapovo",
+    "slug": "lapovo",
+    "countryId": 1,
+    "lat": 44.1844,
+    "lng": 21.0972
+  },
+  {
+    "id": 104,
+    "name": "Lazarevac",
+    "slug": "lazarevac",
+    "countryId": 1,
+    "lat": 44.3853,
+    "lng": 20.2586
+  },
+  {
+    "id": 105,
+    "name": "Lebane",
+    "slug": "lebane",
+    "countryId": 1,
+    "lat": 42.9178,
+    "lng": 21.7414
+  },
+  {
+    "id": 106,
+    "name": "Leposavić",
+    "slug": "leposavic",
+    "countryId": 1,
+    "lat": 43.1039,
+    "lng": 20.8039
+  },
+  {
+    "id": 107,
+    "name": "Leskovac",
+    "slug": "leskovac",
+    "countryId": 1,
+    "lat": 42.9981,
+    "lng": 21.9465
+  },
+  {
+    "id": 108,
+    "name": "Loznica",
+    "slug": "loznica",
+    "countryId": 1,
+    "lat": 44.5317,
+    "lng": 19.2258
+  },
+  {
+    "id": 109,
+    "name": "Lozovik",
+    "slug": "lozovik",
+    "countryId": 1,
+    "lat": 44.4789,
+    "lng": 21.085
+  },
+  {
+    "id": 110,
+    "name": "Lučani",
+    "slug": "lucani",
+    "countryId": 1,
+    "lat": 43.8569,
+    "lng": 20.1333
+  },
+  {
+    "id": 111,
+    "name": "Lukovska Banja",
+    "slug": "lukovska-banja",
+    "countryId": 1,
+    "lat": 43.165,
+    "lng": 21.045
+  },
+  {
+    "id": 112,
+    "name": "Ljig",
+    "slug": "ljig",
+    "countryId": 1,
+    "lat": 44.2256,
+    "lng": 20.2386
+  },
+  {
+    "id": 113,
+    "name": "Ljubovija",
+    "slug": "ljubovija",
+    "countryId": 1,
+    "lat": 44.1889,
+    "lng": 19.3736
+  },
+  {
+    "id": 114,
+    "name": "Majdanpek",
+    "slug": "majdanpek",
+    "countryId": 1,
+    "lat": 44.4253,
+    "lng": 21.9467
+  },
+  {
+    "id": 115,
+    "name": "Majur",
+    "slug": "majur",
+    "countryId": 1,
+    "lat": 44.7781,
+    "lng": 19.6483
+  },
+  {
+    "id": 116,
+    "name": "Mali Iđoš",
+    "slug": "mali-idos",
+    "countryId": 1,
+    "lat": 45.7067,
+    "lng": 19.6644
+  },
+  {
+    "id": 117,
+    "name": "Mali Zvornik",
+    "slug": "mali-zvornik",
+    "countryId": 1,
+    "lat": 44.3833,
+    "lng": 19.1147
+  },
+  {
+    "id": 118,
+    "name": "Malo Crniće",
+    "slug": "malo-crnice",
+    "countryId": 1,
+    "lat": 44.5572,
+    "lng": 21.2858
+  },
+  {
+    "id": 119,
+    "name": "Mataruška Banja",
+    "slug": "mataruska-banja",
+    "countryId": 1,
+    "lat": 43.6853,
+    "lng": 20.6125
+  },
+  {
+    "id": 120,
+    "name": "Medveđa",
+    "slug": "medveda",
+    "countryId": 1,
+    "lat": 42.8286,
+    "lng": 21.5794
+  },
+  {
+    "id": 121,
+    "name": "Melenci",
+    "slug": "melenci",
+    "countryId": 1,
+    "lat": 45.5136,
+    "lng": 20.3161
+  },
+  {
+    "id": 122,
+    "name": "Merošina",
+    "slug": "merosina",
+    "countryId": 1,
+    "lat": 43.3058,
+    "lng": 21.7511
+  },
+  {
+    "id": 123,
+    "name": "Mionica",
+    "slug": "mionica",
+    "countryId": 1,
+    "lat": 44.2536,
+    "lng": 20.0839
+  },
+  {
+    "id": 124,
+    "name": "Mladenovac",
+    "slug": "mladenovac",
+    "countryId": 1,
+    "lat": 44.4447,
+    "lng": 20.6911
+  },
+  {
+    "id": 125,
+    "name": "Mol",
+    "slug": "mol",
+    "countryId": 1,
+    "lat": 45.7644,
+    "lng": 20.1319
+  },
+  {
+    "id": 126,
+    "name": "Negotin",
+    "slug": "negotin",
+    "countryId": 1,
+    "lat": 44.2264,
+    "lng": 22.5308
+  },
+  {
+    "id": 127,
+    "name": "Niš",
+    "slug": "nis",
+    "countryId": 1,
+    "lat": 43.3209,
+    "lng": 21.8958
+  },
+  {
+    "id": 128,
+    "name": "Niška Banja",
+    "slug": "niska-banja",
+    "countryId": 1,
+    "lat": 43.2942,
+    "lng": 22.0083
+  },
+  {
+    "id": 129,
+    "name": "Nova Crnja",
+    "slug": "nova-crnja",
+    "countryId": 1,
+    "lat": 45.6625,
+    "lng": 20.6033
+  },
+  {
+    "id": 130,
+    "name": "Nova Pazova",
+    "slug": "nova-pazova",
+    "countryId": 1,
+    "lat": 44.9453,
+    "lng": 20.2189
+  },
+  {
+    "id": 131,
+    "name": "Nova Varoš",
+    "slug": "nova-varos",
+    "countryId": 1,
+    "lat": 43.4608,
+    "lng": 19.8153
+  },
+  {
+    "id": 132,
+    "name": "Novi Banovci",
+    "slug": "novi-banovci",
+    "countryId": 1,
+    "lat": 44.9547,
+    "lng": 20.2856
+  },
+  {
+    "id": 133,
+    "name": "Novi Bečej",
+    "slug": "novi-becej",
+    "countryId": 1,
+    "lat": 45.5944,
+    "lng": 20.1306
+  },
+  {
+    "id": 134,
+    "name": "Novi Kneževac",
+    "slug": "novi-knezevac",
+    "countryId": 1,
+    "lat": 46.0461,
+    "lng": 20.0989
+  },
+  {
+    "id": 135,
+    "name": "Novi Pazar",
+    "slug": "novi-pazar",
+    "countryId": 1,
+    "lat": 43.1367,
+    "lng": 20.5122
+  },
+  {
+    "id": 136,
+    "name": "Novi Sad",
+    "slug": "novi-sad",
+    "countryId": 1,
+    "lat": 45.2671,
+    "lng": 19.8335
+  },
+  {
+    "id": 137,
+    "name": "Novo Miloševo",
+    "slug": "novo-milosevo",
+    "countryId": 1,
+    "lat": 45.7189,
+    "lng": 20.3017
+  },
+  {
+    "id": 138,
+    "name": "Obrenovac",
+    "slug": "obrenovac",
+    "countryId": 1,
+    "lat": 44.6553,
+    "lng": 20.2003
+  },
+  {
+    "id": 139,
+    "name": "Odžaci",
+    "slug": "odzaci",
+    "countryId": 1,
+    "lat": 45.5031,
+    "lng": 19.2611
+  },
+  {
+    "id": 140,
+    "name": "Omoljica",
+    "slug": "omoljica",
+    "countryId": 1,
+    "lat": 44.7611,
+    "lng": 20.7381
+  },
+  {
+    "id": 141,
+    "name": "Opovo",
+    "slug": "opovo",
+    "countryId": 1,
+    "lat": 45.0519,
+    "lng": 20.4286
+  },
+  {
+    "id": 142,
+    "name": "Osečina",
+    "slug": "osecina",
+    "countryId": 1,
+    "lat": 44.3725,
+    "lng": 19.6019
+  },
+  {
+    "id": 143,
+    "name": "Padina",
+    "slug": "padina",
+    "countryId": 1,
+    "lat": 45.1186,
+    "lng": 20.7289
+  },
+  {
+    "id": 144,
+    "name": "Palić",
+    "slug": "palic",
+    "countryId": 1,
+    "lat": 46.1039,
+    "lng": 19.7569
+  },
+  {
+    "id": 145,
+    "name": "Pančevo",
+    "slug": "pancevo",
+    "countryId": 1,
+    "lat": 44.8739,
+    "lng": 20.6516
+  },
+  {
+    "id": 146,
+    "name": "Paraćin",
+    "slug": "paracin",
+    "countryId": 1,
+    "lat": 43.8614,
+    "lng": 21.4111
+  },
+  {
+    "id": 147,
+    "name": "Peć",
+    "slug": "pec",
+    "countryId": 1,
+    "lat": 42.6591,
+    "lng": 20.2883
+  },
+  {
+    "id": 148,
+    "name": "Pećinci",
+    "slug": "pecinci",
+    "countryId": 1,
+    "lat": 44.9086,
+    "lng": 19.9658
+  },
+  {
+    "id": 149,
+    "name": "Petrovac na Mlavi",
+    "slug": "petrovac-na-mlavi",
+    "countryId": 1,
+    "lat": 44.3775,
+    "lng": 21.4189
+  },
+  {
+    "id": 150,
+    "name": "Petrovaradin",
+    "slug": "petrovaradin",
+    "countryId": 1,
+    "lat": 45.2475,
+    "lng": 19.8797
+  },
+  {
+    "id": 151,
+    "name": "Pirot",
+    "slug": "pirot",
+    "countryId": 1,
+    "lat": 43.1531,
+    "lng": 22.586
+  },
+  {
+    "id": 152,
+    "name": "Plandište",
+    "slug": "plandiste",
+    "countryId": 1,
+    "lat": 45.2269,
+    "lng": 21.1214
+  },
+  {
+    "id": 153,
+    "name": "Podujevo",
+    "slug": "podujevo",
+    "countryId": 1,
+    "lat": 42.9114,
+    "lng": 21.1903
+  },
+  {
+    "id": 154,
+    "name": "Pojate",
+    "slug": "pojate",
+    "countryId": 1,
+    "lat": 43.7461,
+    "lng": 21.4158
+  },
+  {
+    "id": 155,
+    "name": "Požarevac",
+    "slug": "pozarevac",
+    "countryId": 1,
+    "lat": 44.6213,
+    "lng": 21.1878
+  },
+  {
+    "id": 156,
+    "name": "Požega",
+    "slug": "pozega",
+    "countryId": 1,
+    "lat": 43.8467,
+    "lng": 20.0353
+  },
+  {
+    "id": 157,
+    "name": "Preševo",
+    "slug": "presevo",
+    "countryId": 1,
+    "lat": 42.3067,
+    "lng": 21.65
+  },
+  {
+    "id": 158,
+    "name": "Priboj",
+    "slug": "priboj",
+    "countryId": 1,
+    "lat": 43.5858,
+    "lng": 19.5297
+  },
+  {
+    "id": 159,
+    "name": "Prijepolje",
+    "slug": "prijepolje",
+    "countryId": 1,
+    "lat": 43.3881,
+    "lng": 19.645
+  },
+  {
+    "id": 160,
+    "name": "Priština",
+    "slug": "pristina",
+    "countryId": 1,
+    "lat": 42.6629,
+    "lng": 21.1655
+  },
+  {
+    "id": 161,
+    "name": "Prizren",
+    "slug": "prizren",
+    "countryId": 1,
+    "lat": 42.2139,
+    "lng": 20.7417
+  },
+  {
+    "id": 162,
+    "name": "Prokuplje",
+    "slug": "prokuplje",
+    "countryId": 1,
+    "lat": 43.2342,
+    "lng": 21.5894
+  },
+  {
+    "id": 163,
+    "name": "Prolom Banja",
+    "slug": "prolom-banja",
+    "countryId": 1,
+    "lat": 43.0417,
+    "lng": 21.4017
+  },
+  {
+    "id": 164,
+    "name": "Pukovac",
+    "slug": "pukovac",
+    "countryId": 1,
+    "lat": 43.1611,
+    "lng": 21.8481
+  },
+  {
+    "id": 165,
+    "name": "Rača Kragujevačka",
+    "slug": "raca-kragujevacka",
+    "countryId": 1,
+    "lat": 44.2264,
+    "lng": 20.9789
+  },
+  {
+    "id": 166,
+    "name": "Raška",
+    "slug": "raska",
+    "countryId": 1,
+    "lat": 43.2869,
+    "lng": 20.6156
+  },
+  {
+    "id": 167,
+    "name": "Ražanj",
+    "slug": "razanj",
+    "countryId": 1,
+    "lat": 43.6742,
+    "lng": 21.5492
+  },
+  {
+    "id": 168,
+    "name": "Rekovac",
+    "slug": "rekovac",
+    "countryId": 1,
+    "lat": 43.8628,
+    "lng": 21.0872
+  },
+  {
+    "id": 169,
+    "name": "Ruma",
+    "slug": "ruma",
+    "countryId": 1,
+    "lat": 45.0081,
+    "lng": 19.8222
+  },
+  {
+    "id": 170,
+    "name": "Rumenka",
+    "slug": "rumenka",
+    "countryId": 1,
+    "lat": 45.2917,
+    "lng": 19.7425
+  },
+  {
+    "id": 171,
+    "name": "Ruski Krstur",
+    "slug": "ruski-krstur",
+    "countryId": 1,
+    "lat": 45.5628,
+    "lng": 19.4181
+  },
+  {
+    "id": 172,
+    "name": "Sečanj",
+    "slug": "secanj",
+    "countryId": 1,
+    "lat": 45.3667,
+    "lng": 20.85
+  },
+  {
+    "id": 173,
+    "name": "Senta",
+    "slug": "senta",
+    "countryId": 1,
+    "lat": 45.9275,
+    "lng": 20.0894
+  },
+  {
+    "id": 174,
+    "name": "Sevojno",
+    "slug": "sevojno",
+    "countryId": 1,
+    "lat": 43.8544,
+    "lng": 19.8975
+  },
+  {
+    "id": 175,
+    "name": "Sirig",
+    "slug": "sirig",
+    "countryId": 1,
+    "lat": 45.4169,
+    "lng": 19.8389
+  },
+  {
+    "id": 176,
+    "name": "Sivac",
+    "slug": "sivac",
+    "countryId": 1,
+    "lat": 45.6264,
+    "lng": 19.3789
+  },
+  {
+    "id": 177,
+    "name": "Sjenica",
+    "slug": "sjenica",
+    "countryId": 1,
+    "lat": 43.2725,
+    "lng": 19.9986
+  },
+  {
+    "id": 178,
+    "name": "Smederevo",
+    "slug": "smederevo",
+    "countryId": 1,
+    "lat": 44.6644,
+    "lng": 20.9276
+  },
+  {
+    "id": 179,
+    "name": "Smederevska Palanka",
+    "slug": "smederevska-palanka",
+    "countryId": 1,
+    "lat": 44.3656,
+    "lng": 20.9575
+  },
+  {
+    "id": 180,
+    "name": "Sokobanja",
+    "slug": "sokobanja",
+    "countryId": 1,
+    "lat": 43.6444,
+    "lng": 21.8761
+  },
+  {
+    "id": 181,
+    "name": "Sombor",
+    "slug": "sombor",
+    "countryId": 1,
+    "lat": 45.7742,
+    "lng": 19.1122
+  },
+  {
+    "id": 182,
+    "name": "Sopot",
+    "slug": "sopot",
+    "countryId": 1,
+    "lat": 44.5217,
+    "lng": 20.5739
+  },
+  {
+    "id": 183,
+    "name": "Srbobran",
+    "slug": "srbobran",
+    "countryId": 1,
+    "lat": 45.5442,
+    "lng": 19.7917
+  },
+  {
+    "id": 184,
+    "name": "Sremska Kamenica",
+    "slug": "sremska-kamenica",
+    "countryId": 1,
+    "lat": 45.2217,
+    "lng": 19.8406
+  },
+  {
+    "id": 185,
+    "name": "Sremska Mitrovica",
+    "slug": "sremska-mitrovica",
+    "countryId": 1,
+    "lat": 44.9764,
+    "lng": 19.6122
+  },
+  {
+    "id": 186,
+    "name": "Sremski Karlovci",
+    "slug": "sremski-karlovci",
+    "countryId": 1,
+    "lat": 45.2025,
+    "lng": 19.9333
+  },
+  {
+    "id": 187,
+    "name": "Srpska Crnja",
+    "slug": "srpska-crnja",
+    "countryId": 1,
+    "lat": 45.6922,
+    "lng": 20.6869
+  },
+  {
+    "id": 188,
+    "name": "Stara Pazova",
+    "slug": "stara-pazova",
+    "countryId": 1,
+    "lat": 44.985,
+    "lng": 20.1603
+  },
+  {
+    "id": 189,
+    "name": "Starčevo",
+    "slug": "starcevo",
+    "countryId": 1,
+    "lat": 44.8089,
+    "lng": 20.7011
+  },
+  {
+    "id": 190,
+    "name": "Stari Banovci",
+    "slug": "stari-banovci",
+    "countryId": 1,
+    "lat": 44.9867,
+    "lng": 20.2861
+  },
+  {
+    "id": 191,
+    "name": "Subotica",
+    "slug": "subotica",
+    "countryId": 1,
+    "lat": 46.1005,
+    "lng": 19.6656
+  },
+  {
+    "id": 192,
+    "name": "Surčin",
+    "slug": "surcin",
+    "countryId": 1,
+    "lat": 44.7925,
+    "lng": 20.2789
+  },
+  {
+    "id": 193,
+    "name": "Surdulica",
+    "slug": "surdulica",
+    "countryId": 1,
+    "lat": 42.6914,
+    "lng": 22.1706
+  },
+  {
+    "id": 194,
+    "name": "Svilajnac",
+    "slug": "svilajnac",
+    "countryId": 1,
+    "lat": 44.2258,
+    "lng": 21.2103
+  },
+  {
+    "id": 195,
+    "name": "Svrljig",
+    "slug": "svrljig",
+    "countryId": 1,
+    "lat": 43.4131,
+    "lng": 22.1269
+  },
+  {
+    "id": 196,
+    "name": "Šabac",
+    "slug": "sabac",
+    "countryId": 1,
+    "lat": 44.7556,
+    "lng": 19.6919
+  },
+  {
+    "id": 197,
+    "name": "Šajkaš",
+    "slug": "sajkas",
+    "countryId": 1,
+    "lat": 45.2672,
+    "lng": 20.0906
+  },
+  {
+    "id": 198,
+    "name": "Šid",
+    "slug": "sid",
+    "countryId": 1,
+    "lat": 45.1264,
+    "lng": 19.2272
+  },
+  {
+    "id": 199,
+    "name": "Šimanovci",
+    "slug": "simanovci",
+    "countryId": 1,
+    "lat": 44.8711,
+    "lng": 20.0911
+  },
+  {
+    "id": 200,
+    "name": "Štrpce",
+    "slug": "strpce",
+    "countryId": 1,
+    "lat": 42.2394,
+    "lng": 21.0264
+  },
+  {
+    "id": 201,
+    "name": "Temerin",
+    "slug": "temerin",
+    "countryId": 1,
+    "lat": 45.4106,
+    "lng": 19.8914
+  },
+  {
+    "id": 202,
+    "name": "Titel",
+    "slug": "titel",
+    "countryId": 1,
+    "lat": 45.2056,
+    "lng": 20.2944
+  },
+  {
+    "id": 203,
+    "name": "Topola",
+    "slug": "topola",
+    "countryId": 1,
+    "lat": 44.2536,
+    "lng": 20.6828
+  },
+  {
+    "id": 204,
+    "name": "Trgovište",
+    "slug": "trgoviste",
+    "countryId": 1,
+    "lat": 42.3614,
+    "lng": 22.085
+  },
+  {
+    "id": 205,
+    "name": "Trstenik",
+    "slug": "trstenik",
+    "countryId": 1,
+    "lat": 43.6167,
+    "lng": 21
+  },
+  {
+    "id": 206,
+    "name": "Tutin",
+    "slug": "tutin",
+    "countryId": 1,
+    "lat": 42.9911,
+    "lng": 20.3314
+  },
+  {
+    "id": 207,
+    "name": "Ub",
+    "slug": "ub",
+    "countryId": 1,
+    "lat": 44.4533,
+    "lng": 20.0758
+  },
+  {
+    "id": 208,
+    "name": "Uroševac",
+    "slug": "urosevac",
+    "countryId": 1,
+    "lat": 42.3703,
+    "lng": 21.155
+  },
+  {
+    "id": 209,
+    "name": "Užice",
+    "slug": "uzice",
+    "countryId": 1,
+    "lat": 43.8563,
+    "lng": 19.8425
+  },
+  {
+    "id": 210,
+    "name": "Valjevo",
+    "slug": "valjevo",
+    "countryId": 1,
+    "lat": 44.2714,
+    "lng": 19.8856
+  },
+  {
+    "id": 211,
+    "name": "Varvarin",
+    "slug": "varvarin",
+    "countryId": 1,
+    "lat": 43.7225,
+    "lng": 21.3692
+  },
+  {
+    "id": 212,
+    "name": "Velika Plana",
+    "slug": "velika-plana",
+    "countryId": 1,
+    "lat": 44.3356,
+    "lng": 21.0772
+  },
+  {
+    "id": 213,
+    "name": "Veliko Gradište",
+    "slug": "veliko-gradiste",
+    "countryId": 1,
+    "lat": 44.7661,
+    "lng": 21.5061
+  },
+  {
+    "id": 214,
+    "name": "Veternik",
+    "slug": "veternik",
+    "countryId": 1,
+    "lat": 45.2536,
+    "lng": 19.7567
+  },
+  {
+    "id": 215,
+    "name": "Vinča",
+    "slug": "vinca",
+    "countryId": 1,
+    "lat": 44.7622,
+    "lng": 20.6139
+  },
+  {
+    "id": 216,
+    "name": "Vladičin Han",
+    "slug": "vladicin-han",
+    "countryId": 1,
+    "lat": 42.7083,
+    "lng": 22.0594
+  },
+  {
+    "id": 217,
+    "name": "Vladimirci",
+    "slug": "vladimirci",
+    "countryId": 1,
+    "lat": 44.615,
+    "lng": 19.7858
+  },
+  {
+    "id": 218,
+    "name": "Vladimirovac",
+    "slug": "vladimirovac",
+    "countryId": 1,
+    "lat": 45.0319,
+    "lng": 20.8717
+  },
+  {
+    "id": 219,
+    "name": "Vlasotince",
+    "slug": "vlasotince",
+    "countryId": 1,
+    "lat": 42.9619,
+    "lng": 22.1281
+  },
+  {
+    "id": 220,
+    "name": "Vojka",
+    "slug": "vojka",
+    "countryId": 1,
+    "lat": 44.9403,
+    "lng": 20.1517
+  },
+  {
+    "id": 221,
+    "name": "Vranje",
+    "slug": "vranje",
+    "countryId": 1,
+    "lat": 42.5514,
+    "lng": 21.9003
+  },
+  {
+    "id": 222,
+    "name": "Vranjska Banja",
+    "slug": "vranjska-banja",
+    "countryId": 1,
+    "lat": 42.5542,
+    "lng": 21.9889
+  },
+  {
+    "id": 223,
+    "name": "Vrbas",
+    "slug": "vrbas",
+    "countryId": 1,
+    "lat": 45.5714,
+    "lng": 19.6406
+  },
+  {
+    "id": 224,
+    "name": "Vrčin",
+    "slug": "vrcin",
+    "countryId": 1,
+    "lat": 44.6739,
+    "lng": 20.6061
+  },
+  {
+    "id": 225,
+    "name": "Vrdnik",
+    "slug": "vrdnik",
+    "countryId": 1,
+    "lat": 45.1225,
+    "lng": 19.7917
+  },
+  {
+    "id": 226,
+    "name": "Vrnjačka Banja",
+    "slug": "vrnjacka-banja",
+    "countryId": 1,
+    "lat": 43.6264,
+    "lng": 20.8967
+  },
+  {
+    "id": 227,
+    "name": "Vršac",
+    "slug": "vrsac",
+    "countryId": 1,
+    "lat": 45.1167,
+    "lng": 21.3036
+  },
+  {
+    "id": 228,
+    "name": "Vučitrn",
+    "slug": "vucitrn",
+    "countryId": 1,
+    "lat": 42.8231,
+    "lng": 20.9667
+  },
+  {
+    "id": 229,
+    "name": "Zaječar",
+    "slug": "zajecar",
+    "countryId": 1,
+    "lat": 43.9033,
+    "lng": 22.2731
+  },
+  {
+    "id": 230,
+    "name": "Zlatibor",
+    "slug": "zlatibor",
+    "countryId": 1,
+    "lat": 43.7275,
+    "lng": 19.6994
+  },
+  {
+    "id": 231,
+    "name": "Zrenjanin",
+    "slug": "zrenjanin",
+    "countryId": 1,
+    "lat": 45.3814,
+    "lng": 20.3861
+  },
+  {
+    "id": 232,
+    "name": "Zubin Potok",
+    "slug": "zubin-potok",
+    "countryId": 1,
+    "lat": 42.9142,
+    "lng": 20.6908
+  },
+  {
+    "id": 233,
+    "name": "Zvečan",
+    "slug": "zvecan",
+    "countryId": 1,
+    "lat": 42.9069,
+    "lng": 20.8406
+  },
+  {
+    "id": 234,
+    "name": "Žabalj",
+    "slug": "zabalj",
+    "countryId": 1,
+    "lat": 45.3725,
+    "lng": 20.0633
+  },
+  {
+    "id": 235,
+    "name": "Žabari",
+    "slug": "zabari",
+    "countryId": 1,
+    "lat": 44.3547,
+    "lng": 21.2144
+  },
+  {
+    "id": 236,
+    "name": "Žagubica",
+    "slug": "zagubica",
+    "countryId": 1,
+    "lat": 44.1911,
+    "lng": 21.7869
+  },
+  {
+    "id": 237,
+    "name": "Žitište",
+    "slug": "zitiste",
+    "countryId": 1,
+    "lat": 45.4839,
+    "lng": 20.4497
+  },
+  {
+    "id": 238,
+    "name": "Žitorađa",
+    "slug": "zitorada",
+    "countryId": 1,
+    "lat": 43.1906,
+    "lng": 21.7136
+  }
+]
