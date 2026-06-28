@@ -79,8 +79,8 @@ export default function DeleteDraftModal({ isOpen, onClose, onConfirm, adTitle }
                         {/* Content */}
                         <div className="flex flex-col items-center mt-2">
                             <div className="mb-6 px-6 w-full text-center">
-                                <p className="text-gray-300 text-[15px] leading-relaxed">
-                                    Radna verzija <span className="font-semibold text-gray-200">{adTitle || "(Bez naslova)"}</span> će biti trajno obrisana.
+                                <p className="text-text-main opacity-70 text-[15px] leading-relaxed">
+                                    Radna verzija <span className="font-semibold text-text-main">{adTitle || "(Bez naslova)"}</span> će biti trajno obrisana.
                                 </p>
                             </div>
 
@@ -94,7 +94,7 @@ export default function DeleteDraftModal({ isOpen, onClose, onConfirm, adTitle }
                                 </button>
                                 <button
                                     onClick={onClose}
-                                    className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-white font-medium transition-all duration-200 cursor-pointer text-base"
+                                    className="w-full py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
                                 >
                                     Otkaži
                                 </button>

@@ -725,13 +725,13 @@ export default function ImageModal({ isOpen, onClose }: ImageModalProps) {
                                 <div className="flex gap-3">
                                     <button
                                         onClick={handleRemoveImage}
-                                        className="flex-1 py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-text-main font-bold transition-all duration-200 cursor-pointer text-base text-center"
+                                        className="flex-1 py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-bold transition-all duration-200 cursor-pointer text-base text-center"
                                     >
                                         Ukloni
                                     </button>
                                     <button
                                         onClick={handleClick}
-                                        className="flex-1 py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-text-main font-bold transition-all duration-200 cursor-pointer text-base text-center"
+                                        className="flex-1 py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-bold transition-all duration-200 cursor-pointer text-base text-center"
                                     >
                                         Izaberi
                                     </button>
@@ -740,7 +740,7 @@ export default function ImageModal({ isOpen, onClose }: ImageModalProps) {
 
                             <button
                                 onClick={onClose}
-                                className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
+                                className="w-full py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
                             >
                                 Otkaži
                             </button>

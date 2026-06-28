@@ -364,11 +364,11 @@ export default function AddListing() {
                                   <button
                                     onClick={goBack}
                                     type="button"
-                                    className="flex items-center justify-center w-10 h-10 rounded-full bg-[#3a3a3c] hover:bg-[#48484a] text-white transition-colors cursor-pointer border border-transparent"
+                                    className="flex items-center justify-center w-10 h-10 rounded-full bg-bg-3 hover:bg-bg-4 text-text-main transition-colors cursor-pointer border border-transparent"
                                   >
                                     <ChevronLeft className="w-5 h-5" />
                                   </button>
-                                  <span className="text-white font-medium text-lg">
+                                  <span className="text-text-main font-medium text-lg">
                                     {categoryPath[categoryPath.length - 1]?.name || selectedSubCat}
                                   </span>
                                 </div>
@@ -383,7 +383,7 @@ export default function AddListing() {
                                       onClick={() => handleSubCategoryClick(subCat)}
                                       className={`flex items-center justify-between px-6 py-3.5 rounded-full transition text-left cursor-pointer ${isSelected
                                         ? "bg-[#5b42f3] border-[#5b42f3] text-white"
-                                        : "bg-[#3a3a3c] hover:bg-[#48484a] border-transparent"
+                                        : "bg-bg-3 hover:bg-bg-4 border-transparent"
                                         } border`}
                                     >
                                       <span className="text-text-main text-sm md:text-base font-medium">{subCat.name}</span>

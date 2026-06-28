@@ -210,7 +210,7 @@ export default function ChatHistoryModal({
                         <div className="w-full px-6 pb-6 pt-2 flex flex-col gap-3 flex-shrink-0">
                             <button
                                 onClick={onClose}
-                                className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-white font-medium transition-all duration-200 cursor-pointer text-base"
+                                className="w-full py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
                             >
                                 Otkaži
                             </button>

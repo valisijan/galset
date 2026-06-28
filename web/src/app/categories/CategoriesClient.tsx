@@ -56,7 +56,7 @@ export default function MarketplaceClient({ initialCategories }: MarketplaceClie
 
                 {/* CONTENT AREA */}
                 <div className="md:px-4">
-                    <h2 className="text-white text-2xl font-bold mb-5 md:mb-8">Sve kategorije</h2>
+                    <h2 className="text-text-main text-2xl font-bold mb-5 md:mb-8">Sve kategorije</h2>
 
                     {/* KATEGORIJE GRID */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">

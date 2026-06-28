@@ -30,8 +30,25 @@ export default function MobileFilters({
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const isOpen = searchParams?.get("filter_modal") === "true";
+    const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+
+    // Sync with URL search params on mount or when they change (e.g. after category navigation)
+    useEffect(() => {
+        const hasFilterModal = searchParams?.get("filter_modal") === "true";
+        setIsOpen(hasFilterModal);
+    }, [searchParams]);
+
+    // Handle back button and popstate natively to avoid Next.js routing delay
+    useEffect(() => {
+        const handlePopState = () => {
+            const hasFilterModal = new URLSearchParams(window.location.search).get("filter_modal") === "true";
+            setIsOpen(hasFilterModal);
+        };
+
+        window.addEventListener("popstate", handlePopState);
+        return () => window.removeEventListener("popstate", handlePopState);
+    }, []);
 
     // Keep track of the URL when the modal was opened to discard changes on cancel
     const initialUrlRef = useRef<{ pathname: string; search: string } | null>(null);
@@ -93,20 +110,21 @@ export default function MobileFilters({
     const handleOpen = useCallback(() => {
         const currentParams = new URLSearchParams(window.location.search);
         currentParams.set("filter_modal", "true");
-        router.push(`${pathname}?${currentParams.toString()}`, { scroll: false });
-    }, [pathname, router]);
+        const newUrl = `${window.location.pathname}?${currentParams.toString()}`;
+        window.history.pushState({ modal: "filters" }, "", newUrl);
+        setIsOpen(true);
+    }, []);
 
     const handleClose = useCallback(() => {
-        if (initialUrlRef.current) {
-            const { pathname: initPath, search: initSearch } = initialUrlRef.current;
-            router.replace(`${initPath}${initSearch ? `?${initSearch}` : ""}`, { scroll: false });
-        } else {
+        setIsOpen(false);
+        if (new URLSearchParams(window.location.search).get("filter_modal") === "true") {
             const currentParams = new URLSearchParams(window.location.search);
             currentParams.delete("filter_modal");
             const qs = currentParams.toString();
-            router.replace(`${pathname}${qs ? `?${qs}` : ""}`, { scroll: false });
+            const newUrl = `${window.location.pathname}${qs ? `?${qs}` : ""}`;
+            window.history.replaceState(null, "", newUrl);
         }
-    }, [pathname, router]);
+    }, []);
 
     useEffect(() => {
         if (isOpen) {

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import AdStepProgress from "../AdStepProgress";
-import { ChevronRight, X, Bold, Italic, Underline, List, ListOrdered, Undo2, Redo2, ChevronDown, ImagePlus } from "lucide-react";
+import { ChevronRight, X, Bold, Italic, Underline, List, ListOrdered, Undo2, Redo2, ChevronDown, ImagePlus, RotateCw } from "lucide-react";
 import FilterOptionsModal from "../FilterOptionsModal";
 import { useAuth } from "@/context/AuthContext";
 import { toast } from "sonner";
@@ -870,19 +870,77 @@ export default function MarketplaceForm() {
     });
   };
 
-  const rotateImage = (i: number) => {
+  const rotateImage = async (i: number) => {
+    let itemToRotate: any = null;
+    
     setImages((s) => {
-      const newImages = s.map((it, idx) =>
-        idx === i
-          ? { ...it, rotation: (it.rotation + 90) % 360, uploading: !!it.file, uploadedUrl: it.file ? null : it.uploadedUrl }
-          : it
-      );
-      const item = newImages[i];
-      if (item.file) {
-        uploadSingleImage(item.id, item.file, item.rotation);
-      }
+      const newImages = s.map((it, idx) => {
+        if (idx === i) {
+          itemToRotate = it;
+          return { 
+            ...it, 
+            uploading: true
+          };
+        }
+        return it;
+      });
       return newImages;
     });
+
+    if (!itemToRotate) return;
+
+    const nextRotation = (itemToRotate.rotation + 90) % 360;
+
+    if (itemToRotate.file) {
+      setImages(prev => prev.map(img =>
+        img.id === itemToRotate.id
+          ? { ...img, rotation: nextRotation }
+          : img
+      ));
+      await uploadSingleImage(itemToRotate.id, itemToRotate.file, nextRotation);
+    } else if (itemToRotate.fileId) {
+      try {
+        const headers: Record<string, string> = {
+          "Content-Type": "application/json"
+        };
+        if (sessionToken) {
+          headers["Authorization"] = `Bearer ${sessionToken}`;
+        }
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rotate-image`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ fileId: itemToRotate.fileId })
+        });
+
+        if (!res.ok) throw new Error("Rotation failed");
+        const data = await res.json();
+
+        const cacheBusterUrl = data.url.split('?')[0] + "?t=" + Date.now();
+
+        setImages(prev => prev.map(img =>
+          img.id === itemToRotate.id
+            ? {
+              ...img,
+              uploading: false,
+              url: cacheBusterUrl,
+              uploadedUrl: cacheBusterUrl,
+              rotation: 0
+            }
+            : img
+        ));
+      } catch (e) {
+        console.error("Failed to rotate image on server", e);
+        setImages(prev => prev.map(img =>
+          img.id === itemToRotate.id ? { ...img, uploading: false } : img
+        ));
+        toast.error("Greška pri rotiranju slike.");
+      }
+    } else {
+      setImages(prev => prev.map(img =>
+        img.id === itemToRotate.id ? { ...img, uploading: false } : img
+      ));
+    }
   };
 
   const handleToggle = (t: "cena-na-upit" | "poklanjam") => {
@@ -1392,7 +1450,7 @@ export default function MarketplaceForm() {
                               onChange={() => handleToggle("poklanjam")}
                             />
                             <div className="w-11 h-6 border border-bg-4 peer-checked:bg-[#5b42f3] rounded-full peer transition" />
-                            <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
+                            <div className="absolute left-1 top-1 bg-bg-4 dark:bg-white peer-checked:bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
                           </label>
                           <span className="text-text-main text-sm">Poklanjam</span>
                         </div>
@@ -1407,7 +1465,7 @@ export default function MarketplaceForm() {
                             onChange={() => handleToggle("cena-na-upit")}
                           />
                           <div className="w-11 h-6 border border-bg-4 peer-checked:bg-[#5b42f3] rounded-full peer transition" />
-                          <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
+                          <div className="absolute left-1 top-1 bg-bg-4 dark:bg-white peer-checked:bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
                         </label>
                         <span className="text-text-main text-sm">
                           {isCategoryDescendantOf(["jobs"]) ? "Plata na upit" : "Cena na upit"}
@@ -1995,7 +2053,7 @@ export default function MarketplaceForm() {
                         onChange={(e) => setShowStreet(e.target.checked)}
                       />
                       <div className="w-11 h-6 border border-bg-4 peer-checked:bg-[#5b42f3] hover:bg-[#4b35d6] rounded-full peer transition" />
-                      <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
+                      <div className="absolute left-1 top-1 bg-bg-4 dark:bg-white peer-checked:bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
                     </label>
                     <span className="text-text-main text-sm whitespace-nowrap">Prikaži adresu</span>
                   </div>
@@ -2032,7 +2090,7 @@ export default function MarketplaceForm() {
                         onChange={(e) => setShowPhone(e.target.checked)}
                       />
                       <div className="w-11 h-6 border border-bg-4 peer-checked:bg-[#5b42f3] hover:bg-[#4b35d6] rounded-full peer transition" />
-                      <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
+                      <div className="absolute left-1 top-1 bg-bg-4 dark:bg-white peer-checked:bg-white w-4 h-4 rounded-full peer-checked:translate-x-5 transition" />
                     </label>
                     <span className="text-text-main text-sm whitespace-nowrap">Prikaži broj telefona</span>
                   </div>
@@ -2352,8 +2410,17 @@ function DraggableImage({ img, idx, count, rotateImage, removeImage, onReorder }
 
       <button
         type="button"
+        onClick={(e) => { e.stopPropagation(); rotateImage(idx); }}
+        className="absolute top-1.5 left-1.5 bg-black/50 text-white w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/70 transition cursor-pointer z-10"
+        title="Rotiraj sliku"
+      >
+        <RotateCw size={10} />
+      </button>
+
+      <button
+        type="button"
         onClick={(e) => { e.stopPropagation(); removeImage(idx); }}
-        className="absolute top-1 right-1 bg-black/50 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full hover:bg-bg-3 transition cursor-pointer z-10"
+        className="absolute top-1.5 right-1.5 bg-black/50 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full hover:bg-black/70 transition cursor-pointer z-10"
       >
         ✕
       </button>

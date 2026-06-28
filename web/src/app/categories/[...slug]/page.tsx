@@ -154,7 +154,7 @@ export default function CategoryDrilldownPage() {
                                     >
                                         <span className="text-gray-500 text-sm">›</span>
                                         {idx === breadcrumb.length - 1 ? (
-                                            <span className="text-white font-medium text-sm">{crumb.name}</span>
+                                            <span className="text-text-main font-medium text-sm">{crumb.name}</span>
                                         ) : (
                                             <Link
                                                 href={crumb.href}
@@ -169,7 +169,7 @@ export default function CategoryDrilldownPage() {
                         </div>
                     </div>
 
-                    <h1 className="text-white text-2xl font-bold mb-5 md:mb-8">{currentCategory.name}</h1>
+                    <h1 className="text-text-main text-2xl font-bold mb-5 md:mb-8">{currentCategory.name}</h1>
 
                     {/* SUBCATEGORIES GRID */}
                     {subcategories.length > 0 ? (

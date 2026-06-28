@@ -29,6 +29,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "resend": "^4.0.0",
+    "sharp": "^0.35.2",
     "tsc-alias": "^1.8.17",
     "typescript": "^6.0.3"
   },

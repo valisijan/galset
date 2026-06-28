@@ -109,6 +109,23 @@ export default function LayoutWrapper({
   const pathname = usePathname() as string;
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(initialSidebarOpen);
+  const [showInAppBrowserWarning, setShowInAppBrowserWarning] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof navigator !== "undefined") {
+      const ua = navigator.userAgent || "";
+      const isInstagramOrFb = ua.includes("Instagram") || ua.includes("FBAN") || ua.includes("FBAV");
+      const dismissed = sessionStorage.getItem("dismissed_inapp_warning") === "true";
+      if (isInstagramOrFb && !dismissed) {
+        setShowInAppBrowserWarning(true);
+      }
+    }
+  }, []);
+
+  const dismissWarning = () => {
+    sessionStorage.setItem("dismissed_inapp_warning", "true");
+    setShowInAppBrowserWarning(false);
+  };
 
   const isLoggedIn = !!user;
 
@@ -198,6 +215,20 @@ export default function LayoutWrapper({
       className={`flex flex-col min-h-[100dvh] bg-bg-1 ${disableGlobalScroll ? "lock-scroll" : ""
         }`}
     >
+      {showInAppBrowserWarning && (
+        <div className="fixed top-0 left-0 right-0 w-full bg-gradient-to-r from-[#f09433] via-[#e6683c] to-[#bc1888] text-white px-4 py-2.5 text-xs sm:text-sm font-medium flex items-center justify-between z-[100000] shadow-md">
+          <div className="flex-1 text-center pr-4">
+            Pokrenuli ste sajt unutar Instagrama. Za stabilniji rad i prijavu, dodirnite tri tačkice u desnom uglu i izaberite <strong>"Otvori u pretraživaču"</strong>.
+          </div>
+          <button
+            onClick={dismissWarning}
+            type="button"
+            className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors cursor-pointer text-lg font-bold"
+          >
+            &times;
+          </button>
+        </div>
+      )}
       {showHeader && (
         <div className={isChatOpen && isMobile ? "touch-none" : ""}>
           <Header

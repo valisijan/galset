@@ -30,6 +30,7 @@ import categoriesRouter from './routes/categories';
 import pricingRouter from './routes/pricing';
 import recommendationsRouter from './routes/recommendations';
 import uploadTempImageRouter from './routes/upload-temp-image';
+import rotateImageRouter from './routes/rotate-image';
 
 const app = express();
 
@@ -107,6 +108,7 @@ app.use('/categories', categoriesRouter);
 app.use('/pricing', pricingRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/upload-temp-image', uploadTempImageRouter);
+app.use('/rotate-image', rotateImageRouter);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('[ERROR]', err.message);

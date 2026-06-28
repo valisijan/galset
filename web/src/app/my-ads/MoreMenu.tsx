@@ -55,7 +55,7 @@ export default function MoreMenu({ ad, onDelete, onDeactivate, onActivate, onRen
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute right-0 mt-2 w-48 bg-bg-2 border border-bg-3 rounded-3xl shadow-2xl py-1.5 z-[150] overflow-hidden"
+                            className="absolute right-0 mt-2 w-48 bg-bg-2 border border-bg-3 rounded-3xl shadow-lg py-1.5 z-[150] overflow-hidden"
                         >
                             <div className="px-1.5 flex flex-col gap-0.5">
                                 {ad.status === "DRAFT" ? (
