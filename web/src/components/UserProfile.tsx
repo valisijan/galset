@@ -38,12 +38,12 @@ interface UserPageClientProps {
     initialTotal?: number;
 }
 
-export default function UserPageClient({ 
-    user, 
-    isFollowingInitial = false, 
-    isOwnProfile = false, 
-    reviewsStats, 
-    initialFollowersCount, 
+export default function UserPageClient({
+    user,
+    isFollowingInitial = false,
+    isOwnProfile = false,
+    reviewsStats,
+    initialFollowersCount,
     initialAdsCount,
     initialAds = [],
     initialWishlistIds = [],
@@ -241,7 +241,7 @@ export default function UserPageClient({
                     {/* Left: Profile Info */}
                     <div className="flex flex-col items-start gap-4 md:gap-6 w-full md:w-auto text-left">
                         <div className="flex flex-row items-center gap-4 md:gap-6">
-                            <div 
+                            <div
                                 className="w-20 h-20 md:w-28 md:h-28 bg-gray-700 rounded-full overflow-hidden relative shrink-0 cursor-pointer"
                                 onClick={() => setShowImageModal(true)}
                             >

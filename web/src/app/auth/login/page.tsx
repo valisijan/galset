@@ -116,21 +116,20 @@ export default function LoginPage() {
 
             <label
               className="
-                absolute left-4 text-gray-300 pointer-events-none
+                absolute left-4 text-gray-500 dark:text-gray-400 pointer-events-none
                 transform -translate-y-2 text-sm bg-bg-1 px-1
                 peer-focus:text-[#6366f1]
               "
             >
               Email adresa
             </label>
-
             <button
               type="button"
               onClick={() => {
                 localStorage.setItem("authEmailEdit", "true");
                 router.push("/auth");
               }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-bg-2 text-white hover:bg-bg-3 rounded-full px-3.5 py-1.5 text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-bg-2 text-text-main hover:bg-bg-3 rounded-full px-3.5 py-1.5 text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer"
             >
               Izmeni
             </button>
@@ -159,11 +158,11 @@ export default function LoginPage() {
                 peer-focus:-translate-y-2 peer-focus:text-sm
                 ${(password.length > 0 || error)
                   ? "-translate-y-2 text-sm"
-                  : "translate-y-4 text-gray-300"}
+                  : "translate-y-4 text-gray-500 dark:text-gray-400"}
                 
                 ${error
                   ? "text-red-500 peer-focus:text-red-500"
-                  : "peer-focus:text-[#6366f1] text-gray-300"}
+                  : "peer-focus:text-[#6366f1] text-gray-500 dark:text-gray-400"}
               `}
             >
               Lozinka
@@ -207,7 +206,7 @@ export default function LoginPage() {
           <div className="mt-6 flex justify-center">
             <Link
               href="/auth/forgot-password"
-              className="text-sm text-white bg-bg-2 hover:bg-bg-3 hover:no-underline px-4 py-2 rounded-full transition-all duration-300 font-semibold"
+              className="text-sm text-text-main bg-bg-2 hover:bg-bg-3 hover:no-underline px-4 py-2 rounded-full transition-all duration-300 font-semibold"
             >
               Zaboravljena lozinka?
             </Link>

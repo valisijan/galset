@@ -187,7 +187,7 @@ function SearchUsersContent() {
                                 <div
                                     key={u.id}
                                     onClick={() => router.push(`/${u.username || u.id}`)}
-                                    className="bg-bg-2 p-4 rounded-3xl border border-bg-3 hover:border-[#555] hover:brightness-110 transition-all flex items-center justify-between gap-4 relative overflow-hidden group/card cursor-pointer"
+                                    className="bg-bg-2 p-4 rounded-3xl border border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all flex items-center justify-between gap-4 relative overflow-hidden group/card cursor-pointer"
                                 >
                                     <div className="flex items-center gap-4 min-w-0 flex-1">
                                         <div className="relative z-10">
@@ -209,7 +209,7 @@ function SearchUsersContent() {
                                         <div className="relative z-10 shrink-0">
                                             <button
                                                 onClick={(e) => handleToggleFollow(e, u)}
-                                                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all cursor-pointer border-none ${u.isFollowing
+                                                className={`px-4 py-2 rounded-full text-xs md:text-sm font-bold transition-all cursor-pointer border-none ${u.isFollowing
                                                     ? "bg-bg-3 text-text-main hover:bg-bg-4"
                                                     : "bg-[#5b42f3] text-white hover:bg-[#4b35d6]"
                                                     }`}

@@ -64,7 +64,7 @@ function CountrySelect({
         className={`absolute left-4 pointer-events-none bg-bg-1 px-1 transition-all duration-200 ${value || open
           ? "top-0 -translate-y-2 text-sm"
           : "top-1/2 -translate-y-1/2 text-sm"
-          } ${error ? "text-red-500" : open ? "text-[#6366f1]" : "text-gray-300"
+          } ${error ? "text-red-500" : open ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400"
           }`}
       >
         Država
@@ -291,6 +291,8 @@ export default function RegisterPage() {
     }
   };
 
+  const isUsernameShort = form.username.length > 0 && form.username.length < 3;
+
   return (
     <main className="min-h-screen bg-bg-1 flex items-center justify-center">
       <form
@@ -314,7 +316,7 @@ export default function RegisterPage() {
           />
 
           <label
-            className="absolute left-4 text-gray-300 pointer-events-none
+            className="absolute left-4 text-gray-500 dark:text-gray-400 pointer-events-none
               transform -translate-y-2 text-sm bg-bg-1 px-1"
           >
             Email adresa
@@ -326,7 +328,7 @@ export default function RegisterPage() {
               localStorage.setItem("authEmailEdit", "true");
               router.push("/auth");
             }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-bg-2 text-white hover:bg-bg-3 rounded-full px-3.5 py-1.5 text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-bg-2 text-text-main hover:bg-bg-3 rounded-full px-3.5 py-1.5 text-xs md:text-sm font-semibold transition-all duration-300 cursor-pointer"
           >
             Izmeni
           </button>
@@ -360,11 +362,11 @@ export default function RegisterPage() {
               peer-focus:-translate-y-2 peer-focus:text-sm
               ${form.password.length > 0 || errors.password || showPasswordError
                 ? "-translate-y-2 text-sm"
-                : "translate-y-4 text-gray-300"
+                : "translate-y-4 text-gray-500 dark:text-gray-400"
               }
               ${showPasswordError
                 ? "text-red-500 peer-focus:text-red-500"
-                : "peer-focus:text-[#6366f1] text-gray-300"}`}
+                : "peer-focus:text-[#6366f1] text-gray-500 dark:text-gray-400"}`}
           >
             Lozinka
           </label>
@@ -418,7 +420,7 @@ export default function RegisterPage() {
               value={form.username}
               onChange={handleChange}
               className={`w-full border rounded-full bg-transparent px-4 py-4 text-text-main focus:outline-none peer
-                ${errors.username
+                ${errors.username || isUsernameShort || usernameStatus === "taken"
                   ? "border-red-500 focus:border-red-500"
                   : "border-bg-4 focus:border-[#6366f1]"
                 }`}
@@ -427,13 +429,13 @@ export default function RegisterPage() {
             <label
               className={`absolute left-4 pointer-events-none bg-bg-1 px-1 transition-all
                 peer-focus:-translate-y-2 peer-focus:text-sm
-                ${form.username.length > 0 || errors.username
+                ${form.username.length > 0 || errors.username || isUsernameShort || usernameStatus === "taken"
                   ? "-translate-y-2 text-sm"
-                  : "translate-y-4 text-gray-300"
+                  : "translate-y-4 text-gray-500 dark:text-gray-400"
                 }
-                ${errors.username
+                ${errors.username || isUsernameShort || usernameStatus === "taken"
                   ? "text-red-500 peer-focus:text-red-500"
-                  : "peer-focus:text-[#6366f1] text-gray-300"}`}
+                  : "peer-focus:text-[#6366f1] text-gray-500 dark:text-gray-400"}`}
             >
               Korisničko ime
             </label>
@@ -454,12 +456,14 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {errors.username && (
+        {(errors.username || isUsernameShort || usernameStatus === "taken") && (
           <div className="flex items-center gap-2 mb-4">
             <div className="w-5 h-5 rounded-full bg-red-600 flex items-center justify-center text-text-main text-xs font-bold">
               !
             </div>
-            <span className="text-sm text-red-400">{errors.username}</span>
+            <span className="text-sm text-red-400">
+              {errors.username || (isUsernameShort ? "Korisničko ime mora da sadrži najmanje 3 karaktera" : "Korisničko ime je zauzeto")}
+            </span>
           </div>
         )}
 
@@ -482,11 +486,11 @@ export default function RegisterPage() {
               peer-focus:-translate-y-2 peer-focus:text-sm
               ${form.fullName.length > 0 || errors.fullName
                 ? "-translate-y-2 text-sm"
-                : "translate-y-4 text-gray-300"
+                : "translate-y-4 text-gray-500 dark:text-gray-400"
               }
               ${errors.fullName
                 ? "text-red-500 peer-focus:text-red-500"
-                : "peer-focus:text-[#6366f1] text-gray-300"}`}
+                : "peer-focus:text-[#6366f1] text-gray-500 dark:text-gray-400"}`}
           >
             Puno ime
           </label>

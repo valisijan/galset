@@ -79,9 +79,9 @@ export default function HomeClient({
   }, [user, sessionToken]);
 
   const categories = [
-    { name: "Vozila", href: "/search/vehicles?sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/car.svg" },
-    { name: "Oprema / Delovi", href: "/search/automotive?sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/wheel.svg" },
     { name: "Oglasi u blizini", href: "/search?sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/location.svg" },
+    { name: "Vozila", href: "/search/vehicles?sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/car.svg" },
+    { name: "Nekretnine", href: "/categories/real-estate", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/house.svg" },
     { name: "Poklanjam", href: "/search?price_min=0&price_max=0&sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/gift.svg" },
     { name: "Sve kategorije", href: "/categories", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/categories.svg" },
     { name: "Svi oglasi", href: "/search?sort=new&page=1", icon: "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/icons/all-ads.svg" },
@@ -151,7 +151,7 @@ export default function HomeClient({
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="flex items-center bg-bg-2 gap-3 sm:gap-4 p-3 md:p-4 border border-bg-3 rounded-3xl active:scale-95 transition-all group"
+                className="flex items-center bg-bg-2 gap-3 sm:gap-4 p-3 md:p-4 border border-bg-3 rounded-3xl active:scale-95 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all group"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-colors">
                   <Image 

@@ -215,7 +215,7 @@ export default function AIChatContainer({ initialChatId }: AIChatContainerProps)
                     {/* Novo button */}
                     <button
                         onClick={handleNewChat}
-                        className="flex items-center gap-2 px-4 py-2 bg-bg-2 border border-bg-3 rounded-full text-text-main text-sm font-semibold shadow-md hover:bg-bg-3 transition-all cursor-pointer select-none"
+                        className="flex items-center gap-2 px-4 py-2 bg-bg-2 border border-bg-3 rounded-full text-text-main text-sm font-semibold hover:bg-bg-3 transition-all cursor-pointer select-none"
                         title="Novi razgovor"
                     >
                         <SquarePen className="w-4 h-4 text-text-main" />
@@ -225,7 +225,7 @@ export default function AIChatContainer({ initialChatId }: AIChatContainerProps)
                     {/* Istorija button */}
                     <button
                         onClick={() => setIsHistoryOpen(true)}
-                        className="flex items-center gap-2 px-4 py-2 bg-bg-2 border border-bg-3 rounded-full text-text-main text-sm font-semibold shadow-md hover:bg-bg-3 transition-all cursor-pointer select-none"
+                        className="flex items-center gap-2 px-4 py-2 bg-bg-2 border border-bg-3 rounded-full text-text-main text-sm font-semibold hover:bg-bg-3 transition-all cursor-pointer select-none"
                         title="Istorija razgovora"
                     >
                         <History className="w-4 h-4 text-text-main" />
@@ -235,7 +235,7 @@ export default function AIChatContainer({ initialChatId }: AIChatContainerProps)
                     {/* Privatno button */}
                     <button
                         onClick={() => setIsPrivate(prev => !prev)}
-                        className={`flex items-center gap-2 px-4 py-2 border rounded-full text-sm font-semibold shadow-md transition-all cursor-pointer select-none ${isPrivate
+                        className={`flex items-center gap-2 px-4 py-2 border rounded-full text-sm font-semibold transition-all cursor-pointer select-none ${isPrivate
                             ? 'bg-[#5b42f3] border-[#5b42f3] hover:bg-[#4b35d6] text-white'
                             : 'bg-bg-2 border-bg-3 hover:bg-bg-3 text-text-main'
                             }`}

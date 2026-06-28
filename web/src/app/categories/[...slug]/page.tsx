@@ -199,11 +199,10 @@ export default function CategoryDrilldownPage() {
                                 })}
                             </div>
 
-                            {/* SHOW ALL ADS IN THIS CATEGORY */}
                             <div className="sticky bottom-[85px] md:bottom-10 z-[90] flex justify-center mt-10 mb-6 w-full pointer-events-none">
                                 <Link
                                     href={searchPath}
-                                    className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 border border-white/10 pointer-events-auto"
+                                    className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 pointer-events-auto"
                                 >
                                     Prikaži sve oglase
                                 </Link>

@@ -112,7 +112,7 @@ export default function PrivacySettingsPage() {
 
     return (
         <div className="flex flex-col gap-8 pb-20">
-            <h1 className="text-2xl font-bold text-text-main">Privatnost</h1>
+            <h1 className="text-2xl font-bold text-text-main text-center">Privatnost</h1>
 
             <div className="flex flex-col gap-3">
                 <h2 className="text-text-main font-bold text-base mb-1 mt-2">Podešavanja kolačića</h2>

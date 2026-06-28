@@ -178,9 +178,9 @@ export default function DeleteAccountModal({
                                 key={reason}
                                 type="button"
                                 onClick={() => setSelectedReason(reason)}
-                                className={`flex items-center justify-between gap-3 px-5 py-2.5 rounded-full border text-left transition-all duration-200 cursor-pointer ${isSelected
-                                  ? "border-[#5b42f3] bg-[#5b42f3]/5 text-text-main font-semibold"
-                                  : "border-bg-3 bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-gray-300"
+                                className={`flex items-center justify-between gap-3 px-5 py-3.5 rounded-full border text-left transition-all duration-200 cursor-pointer ${isSelected
+                                  ? "border-[#5b42f3] bg-[#5b42f3]/10 text-[#5b42f3] font-semibold"
+                                  : "border-gray-300 dark:border-bg-3 bg-bg-2 hover:border-gray-400 dark:hover:border-gray-500 text-text-main"
                                   }`}
                               >
                                 <span className="text-[13px] select-none">{reason}</span>

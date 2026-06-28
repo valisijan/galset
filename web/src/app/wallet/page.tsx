@@ -69,28 +69,29 @@ export default async function WalletPage() {
     <div className="min-h-screen bg-bg-1 text-text-main p-4 md:px-8 pt-2 pb-6">
       <div className="max-w-4xl mx-auto space-y-8">
 
-        {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-center justify-center gap-4">
-          <div className="space-y-1 w-full text-center">
-            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-2 text-center">Moj Novčanik</h1>
+        {/* TOP SECTION (Header + Balance) */}
+        <div className="space-y-2">
+          {/* HEADER */}
+          <div className="flex flex-col md:flex-row md:items-center justify-center">
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 text-center">Moj Novčanik</h1>
           </div>
-        </div>
 
-        {/* MAIN BALANCE INFO */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 py-4">
-          <div className="space-y-3">
-            <div>
-              <span className="text-sm font-medium tracking-wider text-white">Stanje kredita</span>
-            </div>
-            <div className="space-y-1">
-              <div className="text-5xl font-black flex items-baseline gap-2">
-                {balance.toLocaleString("sr-RS")} <span className="text-2xl font-bold opacity-80">kredita</span>
+          {/* MAIN BALANCE INFO */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pt-2 pb-4">
+            <div className="space-y-2">
+              <div>
+                <span className="text-sm font-medium tracking-wider text-white">Stanje kredita</span>
+              </div>
+              <div className="space-y-1">
+                <div className="text-5xl font-black flex items-baseline gap-2">
+                  {balance.toLocaleString("sr-RS")} <span className="text-2xl font-bold opacity-80">kredita</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex gap-3 w-full md:w-auto">
-            <DepositModal />
+            <div className="flex gap-3 w-full md:w-auto">
+              <DepositModal />
+            </div>
           </div>
         </div>
 

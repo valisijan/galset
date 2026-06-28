@@ -114,7 +114,7 @@ export default function AdCardGrid({
         ? 'bg-[#ffd700]/10 border-[#ffd700] hover:bg-[#ffd700]/18'
         : isFeatured
           ? 'bg-[#6366f1]/10 border-[#6366f1]/40 shadow-[0_0_20px_rgba(99, 102, 241,0.15)] hover:bg-[#6366f1]/18'
-          : 'bg-bg-2 border-bg-3 hover:border-[#555] hover:bg-bg-3'}
+          : 'bg-bg-2 border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3'}
     `}>
       <Link href={adDetailHref} className="flex flex-col h-full">
         <div className="aspect-[4/3] relative overflow-hidden bg-bg-1">

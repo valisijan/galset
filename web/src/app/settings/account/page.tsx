@@ -113,7 +113,7 @@ export default function AccountSettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8">Lični podaci</h1>
+            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Lični podaci</h1>
 
             <Section>
                 {/* Birthday Card */}

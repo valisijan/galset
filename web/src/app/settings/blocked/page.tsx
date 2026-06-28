@@ -70,7 +70,7 @@ export default function BlockedUsersSettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8">Blokirani korisnici</h1>
+            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Blokirani korisnici</h1>
 
             {loading ? (
                 <div className="flex flex-col gap-3">

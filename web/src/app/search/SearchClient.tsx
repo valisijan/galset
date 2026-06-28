@@ -231,7 +231,7 @@ export default function SearchClient({
 
                         {/* POPULAR SEARCHES */}
                         <div className="mb-12 text-left">
-                            <h2 className="text-white text-xl sm:text-2xl font-bold mb-6">
+                            <h2 className="text-text-main text-xl sm:text-2xl font-bold mb-6">
                                 Popularne pretrage
                             </h2>
                             <div className="flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-x-visible no-scrollbar justify-start gap-2 w-auto md:w-full pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
@@ -249,14 +249,14 @@ export default function SearchClient({
 
                         {/* CATEGORIES GRID */}
                         <div className="mb-0">
-                            <h2 className="text-white text-xl sm:text-2xl font-bold mb-6">
+                            <h2 className="text-text-main text-xl sm:text-2xl font-bold mb-6">
                                 Sve kategorije
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                                 {/* Oglasi u blizini */}
                                 <Link
                                     href="/search?sort=new&page=1"
-                                    className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
+                                    className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                                 >
                                     <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <Image
@@ -284,7 +284,7 @@ export default function SearchClient({
                                                         ? `/categories/${cat.slug}`
                                                         : `/search/${cat.slug}?sort=new&page=1`
                                             }
-                                            className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
+                                            className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                                         >
                                             <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                                 <CategoryIcon icon={cat.icon} name={cat.name} />
@@ -299,7 +299,7 @@ export default function SearchClient({
                                 {/* Poklanjam */}
                                 <Link
                                     href="/search?price_min=0&price_max=0&sort=new&page=1"
-                                    className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
+                                    className="group flex items-center gap-4 p-4 rounded-3xl bg-bg-2 border border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                                 >
                                     <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <Image
@@ -317,11 +317,10 @@ export default function SearchClient({
                             </div>
                         </div>
 
-                        {/* ALL ADS BUTTON */}
                         <div className="sticky bottom-[85px] md:bottom-10 z-[90] flex justify-center mt-10 mb-6 w-full pointer-events-none">
                             <Link
                                 href="/search?sort=new&page=1"
-                                className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 border border-white/10 pointer-events-auto"
+                                className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 pointer-events-auto"
                             >
                                 Prikaži sve oglase
                             </Link>

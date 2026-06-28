@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import ThemeModal from "./ThemeModal"
 
 export default function Footer() {
@@ -12,19 +11,6 @@ export default function Footer() {
         <footer className="bg-bg-1 w-full transition-colors duration-300">
             <div className="max-w-[1920px] mx-auto px-4 py-10 md:py-16">
                 <div className="flex flex-col items-center gap-8">
-                    {/* Logo Section */}
-                    <Link href="https://galset.com" className="hover:opacity-85 transition-opacity inline-block">
-                        <div className="relative w-[140px] h-[44px]">
-                            <Image
-                                src="https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/logo/galset-logo-full.svg"
-                                alt="Galset Logo"
-                                fill
-                                className="object-contain"
-                                priority
-                            />
-                        </div>
-                    </Link>
-
                     {/* Horizontal Links */}
                     <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-gray-500 dark:text-gray-400">
                         <Link href="https://galset.com/about" className="hover:text-text-main dark:hover:text-white transition-colors duration-200">O nama</Link>

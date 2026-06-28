@@ -85,8 +85,8 @@ export default function DeleteAdModal({ isOpen, onClose, onConfirm, adTitle }: M
                         {/* Content */}
                         <div className="flex flex-col items-center mt-2">
                             <div className="mb-6 px-6 w-full text-center">
-                                <p className="text-gray-300 text-[15px] leading-relaxed">
-                                    Izaberite razlog brisanja oglasa. Nakon toga oglas <span className="font-semibold text-gray-200">{adTitle}</span> će biti trajno obrisan.
+                                <p className="text-gray-500 dark:text-gray-400 text-[15px] leading-relaxed">
+                                    Izaberite razlog brisanja oglasa. Nakon toga oglas <span className="font-semibold text-text-main">{adTitle}</span> će biti trajno obrisan.
                                 </p>
                             </div>
 
@@ -102,7 +102,7 @@ export default function DeleteAdModal({ isOpen, onClose, onConfirm, adTitle }: M
                                             className={`flex items-center justify-between px-6 py-3.5 rounded-full border text-left transition-all duration-200 cursor-pointer ${
                                                 isSelected
                                                     ? "border-[#5b42f3] bg-[#5b42f3]/10 text-[#5b42f3] font-semibold"
-                                                    : "border-bg-3 bg-bg-2 hover:border-gray-500 text-gray-300"
+                                                    : "border-gray-300 dark:border-bg-3 bg-bg-2 hover:border-gray-400 dark:hover:border-gray-500 text-text-main"
                                             }`}
                                         >
                                             <span className="text-base select-none">{reason}</span>

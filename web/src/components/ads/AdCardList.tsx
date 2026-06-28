@@ -129,7 +129,7 @@ export default function AdCardList({
         ? `bg-bg-1 ${noBorder ? '' : 'border border-[#ffd700]'}`
         : isFeatured
           ? `bg-bg-1 ${noBorder ? '' : 'border border-[#6366f1]/40 shadow-[0_0_20px_rgba(99, 102, 241,0.15)]'}`
-          : `bg-bg-2 ${noBorder ? '' : `border border-bg-3 ${noHover ? '' : 'hover:border-[#555] hover:bg-bg-3'}`}`}
+          : `bg-bg-2 ${noBorder ? '' : `border border-bg-3 ${noHover ? '' : 'hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3'}`}`}
     `}>
       {(isPremium || isFeatured) && (
         <div className={`absolute inset-0 rounded-3xl pointer-events-none z-0 transition-colors

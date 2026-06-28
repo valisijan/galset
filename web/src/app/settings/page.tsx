@@ -8,12 +8,6 @@ import { useRouter } from "next/navigation";
 export default function SettingsPage() {
     const router = useRouter();
 
-    useEffect(() => {
-        if (window.innerWidth >= 768) {
-            router.push('/settings/profile');
-        }
-    }, [router]);
-
     const links = [
         { name: "Uredi profil", href: "/settings/profile", icon: UserPen },
         { name: "Lični podaci", href: "/settings/account", icon: User },
@@ -28,7 +22,7 @@ export default function SettingsPage() {
 
     return (
         <div className="md:hidden flex flex-col">
-            <h1 className="text-2xl font-bold mb-6 text-text-main">Podešavanja</h1>
+            <h1 className="text-2xl font-bold mb-6 text-text-main text-center">Podešavanja</h1>
             <div className="flex flex-col gap-1">
                 {links.map((link) => {
                     const Icon = link.icon;

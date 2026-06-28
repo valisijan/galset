@@ -195,7 +195,7 @@ export default function SecuritySettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8">Bezbednost</h1>
+            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Bezbednost</h1>
 
             {/* ── Password ── */}
             <section className="space-y-6 mb-10">

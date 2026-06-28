@@ -79,7 +79,7 @@ export default function UserMenuModal({ isOpen, onClose, onLogout }: UserMenuMod
                                     <div className="h-px bg-bg-3 my-0.5 mx-2" />
 
                                     <Link
-                                        href="/settings/profile"
+                                        href="/settings"
                                         onClick={handleClose}
                                         className="flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-bg-3 transition-colors text-text-main text-sm group"
                                     >

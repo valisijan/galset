@@ -64,7 +64,7 @@ export default function MarketplaceClient({ initialCategories }: MarketplaceClie
                         <Link
                             href="/search?sort=new&page=1"
                             className="group flex items-center gap-4 p-2 md:p-4 rounded-3xl bg-bg-2 border border-bg-3 
-                       hover:bg-bg-2 hover:border-bg-3 transition-all cursor-pointer"
+                       hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                         >
                             <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <Image
@@ -94,7 +94,7 @@ export default function MarketplaceClient({ initialCategories }: MarketplaceClie
                                                 : `/search/${cat.slug}?sort=new&page=1`
                                     }
                                     className="group flex items-center gap-4 p-2 md:p-4 rounded-3xl bg-bg-2 border border-bg-3 
-                             hover:bg-bg-2 hover:border-bg-3 transition-all cursor-pointer"
+                             hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                                 >
                                     <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <CategoryIcon icon={cat.icon} name={cat.name} />
@@ -110,7 +110,7 @@ export default function MarketplaceClient({ initialCategories }: MarketplaceClie
                         <Link
                             href="/search?price_min=0&price_max=0&sort=new&page=1"
                             className="group flex items-center gap-4 p-2 md:p-4 rounded-3xl bg-bg-2 border border-bg-3 
-                       hover:bg-bg-2 hover:border-bg-3 transition-all cursor-pointer"
+                       hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                         >
                             <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <Image
@@ -127,11 +127,10 @@ export default function MarketplaceClient({ initialCategories }: MarketplaceClie
                         </Link>
                     </div>
 
-                    {/* ALL ADS BUTTON */}
                     <div className="sticky bottom-[85px] md:bottom-10 z-[90] flex justify-center mt-10 mb-6 w-full pointer-events-none">
                         <Link
                             href="/search?sort=new&page=1"
-                            className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 border border-white/10 pointer-events-auto"
+                            className="bg-[#5b42f3] text-white font-bold px-10 py-3.5 rounded-full hover:bg-[#4b35d6] transition-all active:scale-95 pointer-events-auto"
                         >
                             Prikaži sve oglase
                         </Link>

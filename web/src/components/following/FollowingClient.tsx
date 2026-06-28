@@ -105,7 +105,7 @@ export default function FollowingClient({ initialUsers }: { initialUsers: User[]
                         placeholder="Pretraži korisnike"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full bg-bg-2 border border-bg-3 rounded-full py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-[#6366f1] transition-colors shadow-sm"
+                        className="w-full bg-bg-2 border border-bg-3 rounded-full py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-[#6366f1] transition-colors"
                     />
                     <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
@@ -115,7 +115,7 @@ export default function FollowingClient({ initialUsers }: { initialUsers: User[]
                 {users.map((user) => (
                     <div
                         key={user.username}
-                        className="flex items-center justify-between p-4 bg-bg-2 border border-bg-3 rounded-3xl transition-all group hover:border-[#555] hover:brightness-110 cursor-pointer"
+                        className="flex items-center justify-between p-4 bg-bg-2 border border-bg-3 rounded-3xl transition-all group hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 cursor-pointer"
                         onClick={() => router.push(`/${user.username}`)}
                     >
                         <div className="flex items-center gap-4 min-w-0">
@@ -128,7 +128,7 @@ export default function FollowingClient({ initialUsers }: { initialUsers: User[]
                                 />
                             </div>
                             <div className="flex flex-col min-w-0">
-                                <h3 className="text-white font-bold text-base md:text-lg truncate transition-colors">{user.fullName}</h3>
+                                <h3 className="text-text-main font-bold text-base md:text-lg truncate transition-colors">{user.fullName}</h3>
                                 <p className="text-gray-400 text-xs md:text-sm">@{user.username}</p>
                             </div>
                         </div>
@@ -138,7 +138,7 @@ export default function FollowingClient({ initialUsers }: { initialUsers: User[]
                                 e.stopPropagation();
                                 setUserToUnfollow(user);
                             }}
-                            className="shrink-0 px-4 py-2 bg-bg-3 text-text-main hover:bg-bg-4 rounded-xl text-text-main font-bold text-xs md:text-sm transition-all cursor-pointer"
+                            className="shrink-0 px-4 py-2 bg-bg-3 text-text-main hover:bg-bg-4 rounded-full text-text-main font-bold text-xs md:text-sm transition-all cursor-pointer"
                         >
                             Pratite
                         </button>

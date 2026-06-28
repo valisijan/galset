@@ -157,12 +157,17 @@ export default function ProfileSettingsPage() {
         }
     };
 
+    const isUsernameShort = form.username.length > 0 && form.username.length < 3;
+    const usernameError = errors.username || 
+        (isUsernameShort ? "Korisničko ime mora da sadrži najmanje 3 karaktera" : 
+         usernameStatus === "taken" ? "Korisničko ime je zauzeto" : undefined);
+
     const hasChanges = JSON.stringify(form) !== JSON.stringify(initialForm);
     const gradientBtn = "transition-all duration-[350ms] linear bg-[#5b42f3] hover:bg-[#4b35d6]";
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8">Uredi profil</h1>
+            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Uredi profil</h1>
 
             {/* AVATAR BOX */}
             <div className="bg-bg-2 border border-bg-3 rounded-3xl p-4 mb-8 flex items-center justify-between gap-4 transition-colors">
@@ -196,7 +201,7 @@ export default function ProfileSettingsPage() {
                     label="Korisničko ime"
                     name="username"
                     value={form.username}
-                    error={errors.username}
+                    error={usernameError}
                     rightElement={
                         <div className="flex items-center">
                             {usernameStatus === "loading" && (
@@ -372,7 +377,7 @@ function FloatingInput({
                     <label
                         className={`absolute left-4 transition-all pointer-events-none bg-bg-1 px-1
                             ${active
-                                ? `-top-2 text-sm ${error ? "text-red-500" : isFocused ? "text-[#6366f1]" : "text-gray-300"}`
+                                ? `-top-2 text-sm ${error ? "text-red-500" : isFocused ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400"}`
                                 : `${multiline ? "top-4" : "top-1/2 -translate-y-1/2"} text-gray-400`
                             }`}
                     >
@@ -468,7 +473,7 @@ function CountrySelect({
 
             <label
                 className={`absolute left-4 pointer-events-none bg-bg-1 px-1 transition-all ${value || open
-                    ? `-top-2 text-sm ${open ? "text-[#6366f1]" : "text-gray-300"}`
+                    ? `-top-2 text-sm ${open ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400"}`
                     : "top-1/2 -translate-y-1/2 text-gray-400"
                     }`}
             >
@@ -573,7 +578,7 @@ function CityAutocomplete({
 
             <label
                 className={`absolute left-4 pointer-events-none bg-bg-1 px-1 transition-all ${active
-                    ? `-top-2 text-sm ${isFocused ? "text-[#6366f1]" : "text-gray-300"}`
+                    ? `-top-2 text-sm ${isFocused ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400"}`
                     : "top-1/2 -translate-y-1/2 text-gray-400"
                     }`}
             >

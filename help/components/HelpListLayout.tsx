@@ -41,7 +41,7 @@ export default function HelpListLayout({ pageTitle, sections }: HelpListLayoutPr
               <Link
                 key={index}
                 href={item.href}
-                className="group flex items-center justify-between px-6 py-4 bg-bg-2 border border-[#3a3a3c] rounded-full transition-colors duration-200 hover:border-[#6366f1]/50"
+                className="group flex items-center justify-between px-6 py-4 bg-bg-2 border border-bg-3 rounded-full transition-colors duration-200 hover:border-[#6366f1]/50"
               >
                 <span className="font-semibold text-text-main group-hover:text-[#6366f1] transition-colors">
                   {item.title}
@@ -56,7 +56,7 @@ export default function HelpListLayout({ pageTitle, sections }: HelpListLayoutPr
         </div>
       ))}
 
-      <div className="mt-12 p-8 text-center bg-bg-2 rounded-3xl border border-[#3a3a3c]">
+      <div className="mt-12 p-8 text-center bg-bg-2 rounded-3xl border border-bg-3">
         <h3 className="text-xl font-bold text-text-main mb-2">
           I dalje vam je potrebna pomoć?
         </h3>

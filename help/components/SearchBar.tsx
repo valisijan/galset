@@ -41,7 +41,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="mb-8 relative shadow-sm rounded-full" ref={searchRef}>
+    <div className="mb-8 relative rounded-full" ref={searchRef}>
       <div className="relative group">
         <input
           type="text"
@@ -49,25 +49,25 @@ export default function SearchBar() {
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           placeholder="Pretražite članke pomoći..."
-          className="w-full px-6 py-4 pl-14 rounded-full border border-[#3a3a3c] bg-[#2c2c2e] text-gray-100 placeholder-gray-400 outline-none focus:ring-0 focus:border-[#6366f1] transition-colors"
+          className="w-full px-6 py-4 pl-14 rounded-full border border-bg-3 bg-bg-2 text-text-main placeholder-gray-400 outline-none focus:ring-0 focus:border-[#6366f1] transition-colors"
         />
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400" size={22} />
       </div>
 
       {/* Search Results Dropdown */}
       {isFocused && searchQuery.trim().length > 1 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-[#2c2c2e] rounded-3xl shadow-2xl border border-[#3a3a3c] overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-bg-2 rounded-3xl border border-bg-3 p-2 flex flex-col gap-1 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
           {results.length > 0 ? (
-            <div className="py-2">
+            <div className="flex flex-col gap-1">
               {results.map((result, index) => (
                 <Link
                   key={index}
                   href={result.href}
                   onClick={() => setIsFocused(false)}
-                  className="flex items-center justify-between px-4 py-3 hover:bg-[#3a3a3c] transition-colors group"
+                  className="flex items-center justify-between px-4 py-3 hover:bg-bg-3 rounded-3xl transition-all group"
                 >
                   <div>
-                    <div className="text-sm font-medium text-gray-100 group-hover:text-[#5b42f3] transition-colors">
+                    <div className="text-sm font-medium text-text-main group-hover:text-[#5b42f3] transition-colors">
                       {result.label}
                     </div>
                     <div className="text-xs text-gray-400">
@@ -80,7 +80,7 @@ export default function SearchBar() {
             </div>
           ) : (
             <div className="p-8 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#3a3a3c] mb-3">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-bg-3 mb-3">
                 <Search size={20} className="text-gray-400" />
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-sm">

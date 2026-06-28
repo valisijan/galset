@@ -64,7 +64,7 @@ export default function StatusPage() {
 
     return (
         <div className="flex flex-col gap-6 pb-20">
-            <h1 className="text-2xl font-bold text-text-main">Status naloga</h1>
+            <h1 className="text-2xl font-bold text-text-main text-center">Status naloga</h1>
 
             {loading ? (
                 <div className="flex justify-center py-10">

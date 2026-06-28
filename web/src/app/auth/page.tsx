@@ -140,11 +140,11 @@ export default function LoginRegisterPage() {
               peer-focus:-translate-y-2 peer-focus:text-sm
               ${(email.length > 0 || error)
                 ? "-translate-y-2 text-sm"
-                : "translate-y-4 text-gray-300"}
+                : "translate-y-4 text-gray-500 dark:text-gray-400"}
               
               ${error
                 ? "text-red-500 peer-focus:text-red-500"
-                : "peer-focus:text-[#6366f1] text-gray-300"}
+                : "peer-focus:text-[#6366f1] text-gray-500 dark:text-gray-400"}
             `}
           >
             Email adresa
