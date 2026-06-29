@@ -5,8 +5,8 @@ const NoImage = "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/publ
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { Search, MoreVertical, Edit, Trash2, Power, Share2, RefreshCw, Tag, Heart, Check } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Search } from "lucide-react";
+import { motion } from "framer-motion";
 import PaginationControls from "@/components/PaginationControls";
 
 const TABS = [
@@ -23,7 +23,6 @@ import SetReservedModal from "./SetReservedModal";
 import SetAvailableModal from "./SetAvailableModal";
 import DeactivateAdModal from "./DeactivateAdModal";
 import ActivateAdModal from "./ActivateAdModal";
-import Loader from "@/components/Loader";
 import AdCardList from "@/components/ads/AdCardList";
 
 import MoreMenu from "./MoreMenu";
@@ -381,10 +380,10 @@ export default function MyAdsClient({ initialAds, initialTotal, action }: MyAdsC
 
     return (
         <div className="min-h-screen bg-bg-1 text-text-main">
-            <div className="max-w-[800px] mx-auto px-4 py-8">
-                <h1 className="text-2xl font-bold mb-8 text-center">Moji oglasi</h1>
+            <div className="max-w-[800px] mx-auto px-4 pt-2 pb-8">
+                <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-2 text-center">Moji oglasi</h1>
 
-                <div className="mb-8">
+                <div className="pt-4 md:pt-6 mb-8">
                     <div
                         ref={tabScrollRef}
                         className="bg-bg-2 p-1 rounded-full border border-bg-3 relative overflow-x-auto no-scrollbar w-fit max-w-full mx-auto md:overflow-visible"

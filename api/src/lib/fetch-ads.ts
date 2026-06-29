@@ -148,7 +148,7 @@ export async function fetchAdsServer(searchParams: any) {
     });
   }
 
-  const handledParams = ['category', 'search', 'q', 'userId', 'status', 'page', 'limit', 'sort', 'price_min', 'price_max', 'stanje', 'condition', 'location', 'isContact', 'isFree', 'currentUserId', 'other'];
+  const handledParams = ['category', 'search', 'q', 'userId', 'status', 'page', 'limit', 'sort', 'price_min', 'price_max', 'stanje', 'condition', 'location', 'isContact', 'isFree', 'currentUserId', 'other', 'filter_modal'];
   Object.keys(searchParams).forEach((key) => {
     const value = searchParams[key];
     if (!handledParams.includes(key) && value) {

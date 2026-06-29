@@ -22,15 +22,15 @@ export default function SettingsPage() {
 
     return (
         <div className="md:hidden flex flex-col">
-            <h1 className="text-2xl font-bold mb-6 text-text-main text-center">Podešavanja</h1>
-            <div className="flex flex-col gap-1">
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-2 text-center">Podešavanja</h1>
+            <div className="flex flex-col gap-1 pt-4">
                 {links.map((link) => {
                     const Icon = link.icon;
                     return (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="flex items-center justify-between py-4 px-6 rounded-full transition-colors hover:bg-bg-2 group text-text-main"
+                            className="flex items-center justify-between p-4 rounded-full transition-colors hover:bg-bg-2 group text-text-main"
                         >
                             <div className="flex items-center gap-4">
                                 <Icon size={22} className="text-gray-400 group-hover:text-text-main transition-colors" />

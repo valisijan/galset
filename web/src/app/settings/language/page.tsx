@@ -7,7 +7,7 @@ export default function LanguageSettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Jezik</h1>
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-8 text-center">Jezik</h1>
 
             <section className="space-y-6">
                 <div

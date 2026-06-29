@@ -592,6 +592,7 @@ export async function updateAd(req: Request, res: Response) {
       adAttributes.condition = condition || null;
     }
     updateData.attributes = adAttributes;
+    updateData.updatedAt = new Date();
 
     let lat, lng;
     const geoAddress = finalAddress || currentAd.address;

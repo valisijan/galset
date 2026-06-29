@@ -77,6 +77,7 @@ export default function PromotionsPage() {
 
   const [initialActivePromos, setInitialActivePromos] = useState<Partial<Record<PromotionType, 7 | 15 | 30>>>({});
   const [initialVisibilityDuration, setInitialVisibilityDuration] = useState<30 | 60 | 100 | null>(null);
+  const [originalAd, setOriginalAd] = useState<any>(null);
 
   const [imageCount, setImageCount] = useState(0);
   const [initialImageCount, setInitialImageCount] = useState(0);
@@ -146,6 +147,7 @@ export default function PromotionsPage() {
         .then((data) => {
           if (data.success && data.ad) {
             const ad = data.ad;
+            setOriginalAd(ad);
 
             setAdOwnerId(String(ad.userId));
 
@@ -239,6 +241,71 @@ export default function PromotionsPage() {
   const getHitnoPrice = () => {
     const item = pricingData.find(p => p.category === 'promocija' && p.name.includes("Hitno"));
     return item ? item.price : 200;
+  };
+
+  const hasChanges = () => {
+    if (action !== "edit") return true;
+    if (!originalAd) return false;
+
+    // 1. Check promotions / visibility
+    if (visibilityDuration !== initialVisibilityDuration) return true;
+    if (hitnoSelected !== initialHitnoActive) return true;
+
+    const promoTypes: PromotionType[] = ["FEATURED", "PRIORITY", "TOP", "COMBO"];
+    for (const type of promoTypes) {
+      const wasActive = type in initialActivePromos;
+      const isActive = promoSelected[type];
+      if (wasActive !== isActive) return true;
+      if (isActive && promoDurations[type] !== initialActivePromos[type]) return true;
+    }
+
+    // 2. Check form details
+    const detailsStr = typeof window !== "undefined" ? localStorage.getItem("adFlow_details") : null;
+    if (detailsStr) {
+      try {
+        const details = JSON.parse(detailsStr);
+        if (details.title !== originalAd.title) return true;
+        if ((details.description || "") !== (originalAd.description || "")) return true;
+
+        const detPrice = details.price === "" ? null : details.price;
+        const origPrice = originalAd.price;
+        if (Number(detPrice) !== Number(origPrice)) return true;
+
+        if (details.currency !== originalAd.currency) return true;
+
+        const detCondition = details.state || null;
+        const origCondition = originalAd.attributes?.condition || null;
+        if (detCondition !== origCondition) return true;
+
+        const detCategory = localStorage.getItem("adFlow_selectedSlug") || details.category || originalAd.category;
+        if (detCategory !== originalAd.category) return true;
+
+        if ((details.country || "Srbija") !== (originalAd.country || "Srbija")) return true;
+        if ((details.city || "") !== (originalAd.city || "")) return true;
+        if ((details.address || "") !== (originalAd.address || "")) return true;
+        if ((details.phone || "") !== (originalAd.phone || "")) return true;
+
+        const detShowPhone = details.showPhone !== undefined ? !!details.showPhone : true;
+        const origShowPhone = originalAd.showPhone !== undefined ? !!originalAd.showPhone : true;
+        if (detShowPhone !== origShowPhone) return true;
+
+        const detShowAddress = details.showAddress !== undefined ? !!details.showAddress : true;
+        const origShowAddress = originalAd.showAddress !== undefined ? !!originalAd.showAddress : true;
+        if (detShowAddress !== origShowAddress) return true;
+
+        const detImages = details.images || [];
+        const origImages = originalAd.images || [];
+        if (detImages.length !== origImages.length) return true;
+        for (let i = 0; i < detImages.length; i++) {
+          if (detImages[i] !== origImages[i]) return true;
+        }
+      } catch (e) {
+        console.error("Error parsing adFlow_details for change detection:", e);
+        return true;
+      }
+    }
+
+    return false;
   };
 
   const getSummaryItems = () => {
@@ -592,7 +659,7 @@ export default function PromotionsPage() {
                     <button
                       key={d}
                       onClick={() => setVisibilityDuration(d as any)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition ${visibilityDuration === d ? "bg-[#5b42f3] text-white hover:bg-[#4b35d6]" : "bg-bg-4 text-gray-300 hover:bg-[#5a5a5c]"}`}
+                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition ${visibilityDuration === d ? "bg-[#5b42f3] text-white hover:bg-[#4b35d6]" : "bg-bg-4 text-black dark:text-gray-300 hover:bg-bg-3 dark:hover:bg-[#5a5a5c]"}`}
                     >
                       {d} dana
                     </button>
@@ -635,7 +702,7 @@ export default function PromotionsPage() {
                   >
                     <div className="space-y-4 w-full md:w-auto">
                       <div className="flex items-center gap-3">
-                        <div className={`w-5 h-5 border-2 rounded flex items-center justify-center transition ${isSelected ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1]" : "border-bg-4"}`}>
+                        <div className={`w-5 h-5 border-2 rounded flex items-center justify-center transition shrink-0 ${isSelected ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1]" : "border-bg-4"}`}>
                           {isSelected && <span className="text-white text-xs">✓</span>}
                         </div>
                         <div>
@@ -656,7 +723,7 @@ export default function PromotionsPage() {
                               }
                               setPromoDurations(prev => ({ ...prev, [promo.type]: d }));
                             }}
-                            className={`px-4 py-1.5 rounded-full text-xs font-medium transition ${isSelected && duration === d ? "bg-[#5b42f3] text-white hover:bg-[#4b35d6]" : "bg-bg-4 text-gray-300 hover:bg-[#5a5a5c]"}`}
+                            className={`px-4 py-1.5 rounded-full text-xs font-medium transition ${isSelected && duration === d ? "bg-[#5b42f3] text-white hover:bg-[#4b35d6]" : "bg-bg-4 text-black dark:text-gray-300 hover:bg-bg-3 dark:hover:bg-[#5a5a5c]"}`}
                           >
                             {d} dana
                           </button>
@@ -684,7 +751,7 @@ export default function PromotionsPage() {
             >
               <div className="space-y-4 w-full md:w-auto">
                 <div className="flex items-center gap-3">
-                  <div className={`w-5 h-5 border-2 rounded flex items-center justify-center transition ${hitnoSelected ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1]" : "border-bg-4"}`}>
+                  <div className={`w-5 h-5 border-2 rounded flex items-center justify-center transition shrink-0 ${hitnoSelected ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1]" : "border-bg-4"}`}>
                     {hitnoSelected && <span className="text-white text-xs">✓</span>}
                   </div>
                   <div>
@@ -742,8 +809,8 @@ export default function PromotionsPage() {
             </button>
             <button
               onClick={handlePublish}
-              disabled={submitting}
-              className="w-full md:w-auto px-14 md:px-20 py-4 rounded-full bg-[#5b42f3] text-white font-semibold transition-all duration-300 hover:bg-[#4b35d6] cursor-pointer disabled:opacity-80 flex items-center justify-center min-w-[200px]"
+              disabled={submitting || !hasChanges()}
+              className="w-full md:w-auto px-14 md:px-20 py-4 rounded-full bg-[#5b42f3] text-white font-semibold transition-all duration-300 hover:bg-[#4b35d6] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[200px]"
             >
               {submitting ? <Loader /> : (action === "edit" ? "Sačuvaj" : "Objavi")}
             </button>

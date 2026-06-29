@@ -167,7 +167,7 @@ export default function ProfileSettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Uredi profil</h1>
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-8 text-center">Uredi profil</h1>
 
             {/* AVATAR BOX */}
             <div className="bg-bg-2 border border-bg-3 rounded-3xl p-4 mb-8 flex items-center justify-between gap-4 transition-colors">

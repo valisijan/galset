@@ -29,6 +29,23 @@ const AdMap = dynamic(() => import("@/components/map/AdMap"), {
     ssr: false,
 });
 
+const slideVariants = {
+    enter: (direction: number) => ({
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0
+    }),
+    center: {
+        zIndex: 1,
+        x: 0,
+        opacity: 1
+    },
+    exit: (direction: number) => ({
+        zIndex: 0,
+        x: direction < 0 ? 1000 : -1000,
+        opacity: 0
+    })
+};
+
 const formatRelativeTime = (dateString: string) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -231,6 +248,10 @@ const isJobsCategory = (categorySlug: string, categories: any[]): boolean => {
 
 export default function AdsLayout({ ad, adSlug, loading = false, filters = [], categories = [] }: AdsLayoutProps) {
     const router = useRouter()
+
+    const isEquipment = (key: string) => key === "equipment" || key === "oprema" || key.endsWith("-equipment") || key.endsWith("-oprema") || key.endsWith("_equipment") || key.endsWith("_oprema");
+    const isSafety = (key: string) => key === "safety" || key === "sigurnost" || key.endsWith("-safety") || key.endsWith("-sigurnost") || key.endsWith("_safety") || key.endsWith("_sigurnost");
+    const isExtraInfo = (key: string) => key === "extra-info" || key === "extra_info" || key === "dodatne-informacije" || key === "dodatne_informacije" || key === "dodatne-info" || key === "dodatne_info" || key.endsWith("-extra-info") || key.endsWith("-extra_info") || key.endsWith("-dodatne-informacije") || key.endsWith("-dodatne_informacije") || key.endsWith("-dodatne-info") || key.endsWith("-dodatne-info") || key.endsWith("_extra-info") || key.endsWith("_extra_info") || key.endsWith("_dodatne-informacije") || key.endsWith("_dodatne_informacije") || key.endsWith("_dodatne-info") || key.endsWith("_dodatne_info");
     const { user, sessionToken } = useAuth()
     const [categoryName, setCategoryName] = useState<string>("");
     const [categoryPath, setCategoryPath] = useState<{ name: string; slug: string }[]>([]);
@@ -810,8 +831,8 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                     <div className="w-full h-full bg-bg-3/20 animate-pulse" />
                                 ) : hasImages ? (
                                     <>
-                                        {/* Main Gallery Area */}
-                                        <div className="absolute inset-0">
+                                        {/* Main Gallery Area - Mobile */}
+                                        <div className="absolute inset-0 md:hidden">
                                             <SwipeableGallery
                                                 images={images}
                                                 currentIndex={imageIndex}
@@ -820,6 +841,32 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                                 onClick={() => openGallery(imageIndex)}
                                                 isModal={false}
                                             />
+                                        </div>
+
+                                        {/* Main Gallery Area - Desktop (Slide Animation) */}
+                                        <div className="absolute inset-0 hidden md:block cursor-pointer" onClick={() => openGallery(imageIndex)}>
+                                            <AnimatePresence initial={false} custom={direction}>
+                                                <motion.div
+                                                    key={page}
+                                                    custom={direction}
+                                                    variants={slideVariants}
+                                                    initial="enter"
+                                                    animate="center"
+                                                    exit="exit"
+                                                    transition={{
+                                                        x: { type: "spring", stiffness: 300, damping: 30 },
+                                                        opacity: { duration: 0.2 }
+                                                    }}
+                                                    className="absolute inset-0 w-full h-full flex items-center justify-center"
+                                                >
+                                                    <img
+                                                        src={images[imageIndex]}
+                                                        alt={`Ad image ${imageIndex + 1}`}
+                                                        className="max-w-full max-h-full object-contain"
+                                                        draggable={false}
+                                                    />
+                                                </motion.div>
+                                            </AnimatePresence>
                                         </div>
 
                                         {/* Counter Pill */}
@@ -896,9 +943,7 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                         <h2 className="text-xl font-bold mb-6">Detalji oglasa</h2>
                                         {(() => {
                                             const detailsItems: React.ReactNode[] = [];
-                                            // Kategorija je prikazana u breadcrumbu iznad galerije
-
-                                            Object.entries(ad?.attributes || {}).filter(([key]) => !["safety", "equipment", "extra-info", "salary", "salary-type", "isContact", "isPriceOnRequest", "condition"].includes(key)).forEach(([key, val]: [string, any]) => {
+                                            Object.entries(ad?.attributes || {}).filter(([key]) => !isEquipment(key) && !isSafety(key) && !isExtraInfo(key) && !["salary", "salary-type", "isContact", "isPriceOnRequest", "condition"].includes(key)).forEach(([key, val]: [string, any]) => {
                                                 if (val === null || val === undefined) return;
                                                 const filterDef = filters.find((f: any) => f.slug === key);
                                                 const label = filterDef ? (filterDef.name || filterDef.label) : key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
@@ -1003,12 +1048,28 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
 
                                     {/* Merged Special Groups Box */}
                                     {(() => {
-                                        const groups = ["extra-info", "equipment", "safety"].map(key => {
-                                            const val = ad?.attributes?.[key];
-                                            if (!val) return null;
+                                        const groupSpecs = [
+                                            {
+                                                check: isExtraInfo,
+                                                defaultLabel: "Dodatne informacije"
+                                            },
+                                            {
+                                                check: isEquipment,
+                                                defaultLabel: "Oprema"
+                                            },
+                                            {
+                                                check: isSafety,
+                                                defaultLabel: "Sigurnost"
+                                            }
+                                        ];
 
-                                            const filterDef = filters.find((f: any) => f.slug === key);
-                                            const label = filterDef ? (filterDef.name || filterDef.label) : (key === "safety" ? "Sigurnost" : key === "equipment" ? "Oprema" : "Dodatne informacije");
+                                        const groups = groupSpecs.map(spec => {
+                                            const matchingKey = Object.keys(ad?.attributes || {}).find(k => spec.check(k) && ad?.attributes?.[k] !== undefined && ad?.attributes?.[k] !== null);
+                                            if (!matchingKey) return null;
+
+                                            const val = ad.attributes[matchingKey];
+                                            const filterDef = filters.find((f: any) => f.slug === matchingKey);
+                                            const label = filterDef ? (filterDef.name || filterDef.label) : spec.defaultLabel;
 
                                             let items: string[] = [];
                                             if (Array.isArray(val)) {
@@ -1029,7 +1090,7 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                             items = items.filter(Boolean);
                                             if (items.length === 0) return null;
 
-                                            return { key, label, items };
+                                            return { key: matchingKey, label, items };
                                         }).filter(Boolean) as { key: string, label: string, items: string[] }[];
 
                                         if (groups.length === 0) return null;

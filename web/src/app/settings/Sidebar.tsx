@@ -23,10 +23,10 @@ export default function DesktopSidebar() {
 
     return (
         <aside className="flex flex-col w-full h-fit">
-            <h1 className="text-2xl font-bold mb-8 px-3 text-text-main text-center">
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-2 text-center">
                 Podešavanja
             </h1>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 pt-4 md:pt-6">
                 {links.map((link) => {
                     const isActive = pathname?.startsWith(link.href);
                     const Icon = link.icon;
@@ -34,7 +34,7 @@ export default function DesktopSidebar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className={`flex items-center justify-between py-4 px-6 rounded-full transition-colors group text-text-main ${isActive
+                            className={`flex items-center justify-between p-4 rounded-full transition-colors group text-text-main ${isActive
                                 ? "bg-bg-3"
                                 : "hover:bg-bg-2"
                                 }`}

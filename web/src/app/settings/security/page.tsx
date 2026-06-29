@@ -195,7 +195,7 @@ export default function SecuritySettingsPage() {
 
     return (
         <div className="w-full relative pb-20">
-            <h1 className="text-2xl font-bold text-text-main mb-8 text-center">Bezbednost</h1>
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 mb-8 text-center">Bezbednost</h1>
 
             {/* ── Password ── */}
             <section className="space-y-6 mb-10">
@@ -244,13 +244,15 @@ export default function SecuritySettingsPage() {
 
                 {/* Logout all button */}
                 {!sessionsLoading && activeSessions.length > 0 && (
-                    <button
-                        onClick={handleLogoutAllClick}
-                        className="mt-6 flex items-center gap-2 px-6 py-3.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-sm font-bold transition-all duration-200 cursor-pointer border-none"
-                    >
-                        <LogOut size={15} />
-                        Odjavi se sa svih uređaja
-                    </button>
+                    <div className="flex justify-center w-full">
+                        <button
+                            onClick={handleLogoutAllClick}
+                            className="mt-6 flex items-center gap-2 px-6 py-3.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-sm font-bold transition-all duration-200 cursor-pointer border-none"
+                        >
+                            <LogOut size={15} />
+                            Odjavi se sa svih uređaja
+                        </button>
+                    </div>
                 )}
             </section>
 

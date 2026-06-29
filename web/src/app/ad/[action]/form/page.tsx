@@ -745,7 +745,6 @@ export default function MarketplaceForm() {
       reader.readAsDataURL(file);
       reader.onload = (e) => {
         const img = new (window as any).Image();
-        img.src = e.target?.result as string;
         img.onload = () => {
           let origW = img.width;
           let origH = img.height;
@@ -782,6 +781,7 @@ export default function MarketplaceForm() {
           }, "image/jpeg", 0.7);
         };
         img.onerror = reject;
+        img.src = e.target?.result as string;
       };
       reader.onerror = reject;
     });
@@ -870,76 +870,87 @@ export default function MarketplaceForm() {
     });
   };
 
-  const rotateImage = async (i: number) => {
-    let itemToRotate: any = null;
-    
-    setImages((s) => {
-      const newImages = s.map((it, idx) => {
-        if (idx === i) {
-          itemToRotate = it;
-          return { 
-            ...it, 
-            uploading: true
-          };
+  const rotateImageOnCanvas = (url: string): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const img = new (window as any).Image();
+      img.onload = () => {
+        let origW = img.width;
+        let origH = img.height;
+
+        const MAX_SIZE = 1600;
+        if (origW > MAX_SIZE || origH > MAX_SIZE) {
+          if (origW > origH) {
+            origH = Math.round((origH * MAX_SIZE) / origW);
+            origW = MAX_SIZE;
+          } else {
+            origW = Math.round((origW * MAX_SIZE) / origH);
+            origH = MAX_SIZE;
+          }
         }
-        return it;
-      });
-      return newImages;
+
+        const w = origH;
+        const h = origW;
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return reject("No canvas context");
+        ctx.save();
+        ctx.translate(w / 2, h / 2);
+        ctx.rotate((90 * Math.PI) / 180);
+        ctx.drawImage(img, -h / 2, -w / 2, h, w);
+        ctx.restore();
+        canvas.toBlob((blob) => {
+          if (blob) resolve(blob);
+          else reject("Failed to create blob");
+        }, "image/jpeg", 0.85);
+      };
+      img.onerror = reject;
+
+      if (!url.startsWith("blob:")) {
+        img.crossOrigin = "anonymous";
+        const buster = `r=${Math.random().toString(36).substring(2, 7)}`;
+        img.src = url.includes("?") ? `${url}&${buster}` : `${url}?${buster}`;
+      } else {
+        img.src = url;
+      }
     });
+  };
 
+  const rotateImage = async (i: number) => {
+    const itemToRotate = images[i];
     if (!itemToRotate) return;
+    
+    setImages((s) => s.map((it, idx) => idx === i ? { ...it, uploading: true } : it));
 
-    const nextRotation = (itemToRotate.rotation + 90) % 360;
-
-    if (itemToRotate.file) {
+    try {
+      const imageUrl = itemToRotate.url || itemToRotate.uploadedUrl;
+      if (!imageUrl) {
+        throw new Error("No image URL found");
+      }
+      const blob = await rotateImageOnCanvas(imageUrl);
+      
+      const rotatedFile = new File([blob], `image-${itemToRotate.id}.jpg`, { type: "image/jpeg" });
+      const localUrl = URL.createObjectURL(rotatedFile);
+      
       setImages(prev => prev.map(img =>
         img.id === itemToRotate.id
-          ? { ...img, rotation: nextRotation }
+          ? { 
+              ...img, 
+              file: rotatedFile, 
+              url: localUrl, 
+              rotation: 0 
+            }
           : img
       ));
-      await uploadSingleImage(itemToRotate.id, itemToRotate.file, nextRotation);
-    } else if (itemToRotate.fileId) {
-      try {
-        const headers: Record<string, string> = {
-          "Content-Type": "application/json"
-        };
-        if (sessionToken) {
-          headers["Authorization"] = `Bearer ${sessionToken}`;
-        }
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rotate-image`, {
-          method: "POST",
-          headers,
-          body: JSON.stringify({ fileId: itemToRotate.fileId })
-        });
-
-        if (!res.ok) throw new Error("Rotation failed");
-        const data = await res.json();
-
-        const cacheBusterUrl = data.url.split('?')[0] + "?t=" + Date.now();
-
-        setImages(prev => prev.map(img =>
-          img.id === itemToRotate.id
-            ? {
-              ...img,
-              uploading: false,
-              url: cacheBusterUrl,
-              uploadedUrl: cacheBusterUrl,
-              rotation: 0
-            }
-            : img
-        ));
-      } catch (e) {
-        console.error("Failed to rotate image on server", e);
-        setImages(prev => prev.map(img =>
-          img.id === itemToRotate.id ? { ...img, uploading: false } : img
-        ));
-        toast.error("Greška pri rotiranju slike.");
-      }
-    } else {
+      await uploadSingleImage(itemToRotate.id, rotatedFile, 0);
+    } catch (e) {
+      console.error("Failed to rotate image", e);
       setImages(prev => prev.map(img =>
         img.id === itemToRotate.id ? { ...img, uploading: false } : img
       ));
+      toast.error("Greška pri rotiranju slike.");
     }
   };
 

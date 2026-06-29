@@ -2,7 +2,7 @@
 
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence, useMotionValue, useAnimation, PanInfo, animate } from "framer-motion"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useLayoutEffect } from "react"
 import { createPortal } from "react-dom"
 
 interface ZoomableImageProps {
@@ -330,7 +330,10 @@ export const SwipeableGallery = ({
     const [isZoomed, setIsZoomed] = useState(false)
     const hasPinched = useRef(false)
 
-    useEffect(() => {
+    const useSafeLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+    useSafeLayoutEffect(() => {
+        x.set(0)
         controls.set({ x: 0 })
     }, [currentIndex, controls])
 
@@ -353,9 +356,13 @@ export const SwipeableGallery = ({
 
         if (swipe < -swipeConfidenceThreshold || offset.x < -width / 3) {
             await controls.start({ x: "-100%", transition: { duration: 0.2 } })
+            x.set(0)
+            controls.set({ x: 0 })
             onNext()
         } else if (swipe > swipeConfidenceThreshold || offset.x > width / 3) {
             await controls.start({ x: "100%", transition: { duration: 0.2 } })
+            x.set(0)
+            controls.set({ x: 0 })
             onPrev()
         } else {
             controls.start({ x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } })

@@ -13,14 +13,14 @@ export const metadata: Metadata = {
 
 function MyAdsSkeleton() {
     return (
-        <div className="max-w-[800px] mx-auto px-4 py-8 animate-pulse">
+        <div className="max-w-[800px] mx-auto px-4 pt-2 pb-8 animate-pulse">
             {/* Title Skeleton */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mt-4 mb-2">
                 <div className="h-8 bg-bg-3 rounded-full w-48" />
             </div>
 
             {/* Status Tabs Skeleton */}
-            <div className="mb-8 flex justify-center">
+            <div className="pt-4 md:pt-6 mb-8 flex justify-center">
                 <div className="bg-bg-2 p-1 rounded-full border border-bg-3 relative overflow-x-auto no-scrollbar w-fit max-w-full mx-auto md:overflow-visible">
                     <div className="flex w-fit mx-auto gap-1">
                         {Array.from({ length: 4 }).map((_, i) => (

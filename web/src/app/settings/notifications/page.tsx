@@ -95,7 +95,7 @@ export default function NotificationsPage() {
 
     return (
         <div className="flex flex-col gap-10 pb-20">
-            <h1 className="text-2xl font-bold text-text-main text-center">Obaveštenja</h1>
+            <h1 className="text-text-main text-xl sm:text-2xl font-bold mt-4 text-center">Obaveštenja</h1>
 
             {/* Push Notifications Section */}
             <div className="flex flex-col gap-3">

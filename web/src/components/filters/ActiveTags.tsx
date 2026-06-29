@@ -116,12 +116,12 @@ export default function ActiveTags() {
                             removeTag(tag.key, tag.value);
                         }
                     }}
-                    className="flex items-center h-8 px-3 bg-bg-2 border border-bg-3 rounded-full text-sm hover:border-[#6366f1] transition-colors group shrink-0 cursor-pointer"
+                    className="flex items-center h-8 px-3 bg-bg-2 border border-bg-3 rounded-full text-sm hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all group shrink-0 cursor-pointer"
                 >
                     <span className="text-text-main mr-2 whitespace-nowrap capitalize">{tag.label}</span>
-                    <div className="w-4 h-4 rounded-full bg-bg-2 flex items-center justify-center group-hover:bg-[#5b42f3]">
+                    <div className="w-4 h-4 rounded-full bg-bg-3 flex items-center justify-center group-hover:bg-bg-4 transition-colors">
                         <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                            <path d="M9 1L1 9M1 1L9 9" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                            <path d="M9 1L1 9M1 1L9 9" stroke="currentColor" className="text-gray-500 dark:text-gray-400 group-hover:text-text-main transition-colors" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
                     </div>
                 </button>

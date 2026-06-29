@@ -86,7 +86,7 @@ export default function AccountPage() {
                             </div>
                             <div className="flex items-center gap-3">
                                 {count !== null && count > 0 && (
-                                    <div className="min-w-[24px] h-[24px] px-1.5 rounded-full flex items-center justify-center text-[11px] font-bold text-text-main shadow-sm bg-bg-4 border border-bg-4">
+                                    <div className="min-w-[24px] h-[24px] px-1.5 rounded-full flex items-center justify-center text-[11px] font-bold text-text-main bg-bg-4 border border-bg-4">
                                         {count}
                                     </div>
                                 )}

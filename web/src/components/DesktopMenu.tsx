@@ -159,7 +159,7 @@ export default function DesktopMenu({ isOpen, toggleSidebar }: DesktopMenuProps)
                             </div>
 
                             {isOpen && count !== null && count > 0 && (
-                                <div className={`min-w-[24px] h-[24px] px-1.5 rounded-full flex items-center justify-center text-[11px] font-bold shadow-sm ${
+                                <div className={`min-w-[24px] h-[24px] px-1.5 rounded-full flex items-center justify-center text-[11px] font-bold ${
                                     name === "Poruke" || name === "Obaveštenja"
                                         ? "bg-red-500 border border-red-500 text-white"
                                         : "bg-bg-4 border border-bg-4 text-text-main"
