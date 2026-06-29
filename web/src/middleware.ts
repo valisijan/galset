@@ -13,26 +13,33 @@ export async function middleware(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll()
+        cookies: {
+          getAll() {
+            return request.cookies.getAll()
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+            
+            // Reconstruct the Cookie header to ensure Server Components receive the refreshed cookies
+            const cookieString = request.cookies.getAll().map(c => `${c.name}=${c.value}`).join('; ')
+            request.headers.set('Cookie', cookieString)
+
+            response = NextResponse.next({
+              request: {
+                headers: request.headers,
+              },
+            })
+            cookiesToSet.forEach(({ name, value, options }) =>
+              response.cookies.set(name, value, options)
+            )
+          },
         },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-          response = NextResponse.next({
-            request,
-          })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options)
-          )
-        },
-      },
-      cookieOptions: {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
-        path: '/',
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
-      }
+        cookieOptions: {
+          maxAge: 60 * 60 * 24 * 70, // 70 days
+          path: '/',
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production',
+        }
     }
   )
 

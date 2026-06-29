@@ -77,7 +77,7 @@ function CountrySelect({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-50 mt-2 w-full bg-bg-2 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl
+            className="absolute z-50 mt-2 w-full bg-bg-2 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl p-2
               [&::-webkit-scrollbar]:w-1.5
               [&::-webkit-scrollbar-track]:bg-transparent
               [&::-webkit-scrollbar-thumb]:bg-bg-4
@@ -92,7 +92,7 @@ function CountrySelect({
                   onChange(country);
                   setOpen(false);
                 }}
-                className={`px-6 py-3 cursor-pointer text-sm transition-colors ${
+                className={`px-6 py-2.5 rounded-2xl cursor-pointer text-sm transition-colors ${
                   value === country
                     ? "text-[#6366f1] font-semibold bg-[#6366f1]/10"
                     : "text-text-main hover:bg-bg-3"

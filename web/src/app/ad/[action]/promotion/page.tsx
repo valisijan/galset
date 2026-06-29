@@ -442,7 +442,7 @@ export default function PromotionsPage() {
 
         if (details) {
           payload.title = details.title;
-          payload.description = details.description || "";
+          payload.description = details.description || null;
           payload.price = details.toggle === "poklanjam" ? 0 : details.toggle === "kontakt" ? null : details.price ? parseFloat(details.price) : null;
           payload.currency = (details.toggle === "poklanjam" || details.toggle === "kontakt") ? null : details.currency;
           payload.condition = details.state;
@@ -517,7 +517,7 @@ export default function PromotionsPage() {
       const payload: any = {
         draftId: draft.id,
         title: draft.title,
-        description: draft.description || "",
+        description: draft.description || null,
         price: (draft.isPriceOnRequest ?? draft.isContact) ? null : (draft.price !== null && draft.price !== undefined ? parseFloat(draft.price.toString()) : null),
         currency: (draft.isPriceOnRequest ?? draft.isContact) ? null : draft.currency,
         condition: draft.attributes?.condition || draft.condition,

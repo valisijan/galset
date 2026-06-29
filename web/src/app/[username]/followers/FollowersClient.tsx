@@ -138,7 +138,7 @@ export default function FollowersClient({ followers, currentUserFollowingIds, pr
                         />
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-white font-bold text-lg">{profileUser.fullName || profileUser.username}</span>
+                        <span className="text-text-main font-bold text-lg">{profileUser.fullName || profileUser.username}</span>
                         <span className="text-gray-400 text-base">@{profileUser.username}</span>
                     </div>
                 </Link>
@@ -155,7 +155,7 @@ export default function FollowersClient({ followers, currentUserFollowingIds, pr
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 onClick={() => router.push(`/${follower.username}`)}
-                                className="flex items-center justify-between p-4 bg-bg-2 border border-bg-3 rounded-3xl transition-all group hover:border-[#555] hover:brightness-110 cursor-pointer"
+                                className="flex items-center justify-between p-4 bg-bg-2 border border-bg-3 rounded-3xl transition-all group hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 cursor-pointer"
                             >
                                 <div className="flex items-center gap-4 min-w-0">
                                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-700 overflow-hidden relative shrink-0 border border-bg-3">
@@ -167,7 +167,7 @@ export default function FollowersClient({ followers, currentUserFollowingIds, pr
                                         />
                                     </div>
                                     <div className="flex flex-col min-w-0">
-                                        <span className="text-white font-bold text-base md:text-lg truncate">{follower.fullName || follower.username}</span>
+                                        <span className="text-text-main font-bold text-base md:text-lg truncate">{follower.fullName || follower.username}</span>
                                         <span className="text-gray-400 text-xs md:text-sm">@{follower.username}</span>
                                     </div>
                                 </div>

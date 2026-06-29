@@ -50,7 +50,7 @@ export const users = pgTable("User", {
 export const ads = pgTable("Ad", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
-  description: text("description").notNull(),
+  description: text("description"),
   price: doublePrecision("price"),
   currency: text("currency"),
   isPriceOnRequest: boolean("isPriceOnRequest").notNull().default(false),

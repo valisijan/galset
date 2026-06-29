@@ -534,9 +534,11 @@ export default function MarketplaceForm() {
     const validImages = images.filter(img => img.uploadedUrl || img.url?.startsWith("http"));
     const imageUrls = validImages.map(img => img.uploadedUrl || img.url);
 
+    const cleanDescription = (description && description.trim() && description !== "<br>" && description !== "<p><br></p>") ? description : null;
+
     const details = {
       title: title || "",
-      description: description || "",
+      description: cleanDescription,
       price: getRawPriceForDB(price) || "",
       currency,
       state,
@@ -569,7 +571,7 @@ export default function MarketplaceForm() {
           body: JSON.stringify({
             id: draftId,
             title: title || null,
-            description: description || null,
+            description: cleanDescription,
             price: getRawPriceForDB(price) || null,
             currency,
             condition: state,
@@ -1031,7 +1033,6 @@ export default function MarketplaceForm() {
     if (!isServicesForm && !toggle && !price.trim()) {
       newErrors.price = isJobsForm ? "Molimo unesite platu" : "Molimo unesite cenu";
     }
-    if (!description.trim() || description === "<br>") newErrors.description = "Molimo unesite opis";
 
     if (!isJobsForm && !isServicesForm && !isTicketsForm && !state) newErrors.state = "Molimo unesite stanje";
 
@@ -1084,12 +1085,13 @@ export default function MarketplaceForm() {
     }
 
     const latestDescription = editorRef.current ? editorRef.current.innerHTML : description;
+    const cleanDescription = (latestDescription && latestDescription.trim() && latestDescription !== "<br>" && latestDescription !== "<p><br></p>") ? latestDescription : null;
     const validImagesForSave = images.filter(img => img.uploadedUrl || img.url?.startsWith("http"));
     const imageUrlsForSave = validImagesForSave.map(img => img.uploadedUrl || img.url);
     const rawPrice = getRawPriceForDB(price);
     const detailsToSave = {
       title: title || "",
-      description: latestDescription || "",
+      description: cleanDescription,
       price: rawPrice || "",
       currency,
       state,
@@ -1121,7 +1123,7 @@ export default function MarketplaceForm() {
           body: JSON.stringify({
             id: draftId,
             title: title || null,
-            description: latestDescription || null,
+            description: cleanDescription,
             price: rawPrice || null,
             currency,
             condition: state,

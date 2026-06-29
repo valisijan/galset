@@ -138,7 +138,7 @@
       }
     ],
     "source": null,
-    "isFormRadio": true
+    "isFormRadio": false
   },
   {
     "id": 9,
@@ -9722,60 +9722,6 @@
       {
         "name": "Unisex",
         "slug": "unisex"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
-    "id": 197,
-    "name": "Materijal",
-    "slug": "fashion-material",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "Pamuk",
-        "slug": "cotton"
-      },
-      {
-        "name": "Prirodna koža",
-        "slug": "natural-leather"
-      },
-      {
-        "name": "Eko koža",
-        "slug": "eco-leather"
-      },
-      {
-        "name": "Teksas",
-        "slug": "denim"
-      },
-      {
-        "name": "Vuna",
-        "slug": "wool"
-      },
-      {
-        "name": "Svila",
-        "slug": "silk"
-      },
-      {
-        "name": "Lan",
-        "slug": "linen"
-      },
-      {
-        "name": "Saten",
-        "slug": "satin"
-      },
-      {
-        "name": "Poliester / Sintetika",
-        "slug": "polyester"
-      },
-      {
-        "name": "Guma",
-        "slug": "rubber"
-      },
-      {
-        "name": "Krzno",
-        "slug": "fur"
       }
     ],
     "source": null,

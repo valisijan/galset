@@ -487,7 +487,7 @@ function CountrySelect({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute z-50 mt-2 w-full bg-bg-1 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl
+                        className="absolute z-50 mt-2 w-full bg-bg-1 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl p-2
                             custom-modal-scrollbar"
                     >
                         {countries.map((country) => (
@@ -497,7 +497,7 @@ function CountrySelect({
                                     onChange(country);
                                     setOpen(false);
                                 }}
-                                className={`px-4 py-3 cursor-pointer text-sm transition-colors ${value === country
+                                className={`px-4 py-2.5 rounded-2xl cursor-pointer text-sm transition-colors ${value === country
                                     ? "text-[#6366f1] font-semibold bg-[#6366f1]/10"
                                     : "text-text-main hover:bg-bg-4"
                                     }`}
@@ -592,7 +592,7 @@ function CityAutocomplete({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute z-50 mt-2 w-full bg-bg-1 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl
+                        className="absolute z-50 mt-2 w-full bg-bg-1 border border-bg-3 rounded-3xl overflow-y-auto max-h-56 shadow-xl p-2
                             custom-modal-scrollbar"
                     >
                         {filtered.map((city) => (
@@ -603,7 +603,7 @@ function CityAutocomplete({
                                     setQuery(city);
                                     setOpen(false);
                                 }}
-                                className={`px-4 py-3 cursor-pointer text-sm transition-colors ${value === city
+                                className={`px-4 py-2.5 rounded-2xl cursor-pointer text-sm transition-colors ${value === city
                                     ? "text-[#6366f1] font-semibold bg-[#6366f1]/10"
                                     : "text-text-main hover:bg-bg-4"
                                     }`}

@@ -29,7 +29,7 @@ export async function auth() {
           },
         },
         cookieOptions: {
-          maxAge: 60 * 60 * 24 * 30, // 30 days
+          maxAge: 60 * 60 * 24 * 70, // 70 days
           path: '/',
           sameSite: 'lax',
           secure: process.env.NODE_ENV === 'production',

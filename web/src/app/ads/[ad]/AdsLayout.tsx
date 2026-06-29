@@ -943,7 +943,7 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                         <h2 className="text-xl font-bold mb-6">Detalji oglasa</h2>
                                         {(() => {
                                             const detailsItems: React.ReactNode[] = [];
-                                            Object.entries(ad?.attributes || {}).filter(([key]) => !isEquipment(key) && !isSafety(key) && !isExtraInfo(key) && !["salary", "salary-type", "isContact", "isPriceOnRequest", "condition"].includes(key)).forEach(([key, val]: [string, any]) => {
+                                            Object.entries(ad?.attributes || {}).filter(([key]) => !isEquipment(key) && !isSafety(key) && !isExtraInfo(key) && !["salary", "salary-type", "isContact", "isPriceOnRequest", "condition", "isUrgent"].includes(key)).forEach(([key, val]: [string, any]) => {
                                                 if (val === null || val === undefined) return;
                                                 const filterDef = filters.find((f: any) => f.slug === key);
                                                 const label = filterDef ? (filterDef.name || filterDef.label) : key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
@@ -1121,43 +1121,45 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                                     })()}
 
                                     {/* Description Box */}
-                                    <div className="bg-bg-2 rounded-3xl border border-bg-3 p-6 md:p-8">
-                                        <h3 className="text-xl font-bold mb-6">Opis</h3>
-                                        <div
-                                            className="relative transition-all duration-500 ease-in-out overflow-hidden"
-                                            style={isDescLong ? { maxHeight: showFullDesc ? `${descHeight + 20}px` : '300px' } : undefined}
-                                        >
+                                    {ad?.description && ad.description.trim() && ad.description !== "<br>" && ad.description !== "<p><br></p>" && (
+                                        <div className="bg-bg-2 rounded-3xl border border-bg-3 p-6 md:p-8">
+                                            <h3 className="text-xl font-bold mb-6">Opis</h3>
                                             <div
-                                                ref={descRef}
-                                                className="text-text-main opacity-80 leading-relaxed editor-content-view"
-                                                dangerouslySetInnerHTML={{ __html: linkifyUrls(ad?.description || "") }}
-                                            />
-                                            {/* Gradient shadow fade — semi-transparent like /ai input area */}
-                                            <div className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-2 via-bg-2/80 to-transparent pointer-events-none transition-opacity duration-500 ${!showFullDesc && isDescLong ? 'opacity-100' : 'opacity-0'}`} />
-                                            {/* Floating button inside the fade */}
-                                            {isDescLong && (
-                                                <div className={`absolute bottom-0 left-0 right-0 flex justify-center pb-0.5 transition-opacity duration-500 ${showFullDesc ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                                                className="relative transition-all duration-500 ease-in-out overflow-hidden"
+                                                style={isDescLong ? { maxHeight: showFullDesc ? `${descHeight + 20}px` : '300px' } : undefined}
+                                            >
+                                                <div
+                                                    ref={descRef}
+                                                    className="text-text-main opacity-80 leading-relaxed editor-content-view"
+                                                    dangerouslySetInnerHTML={{ __html: linkifyUrls(ad?.description || "") }}
+                                                />
+                                                {/* Gradient shadow fade — semi-transparent like /ai input area */}
+                                                <div className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-2 via-bg-2/80 to-transparent pointer-events-none transition-opacity duration-500 ${!showFullDesc && isDescLong ? 'opacity-100' : 'opacity-0'}`} />
+                                                {/* Floating button inside the fade */}
+                                                {isDescLong && (
+                                                    <div className={`absolute bottom-0 left-0 right-0 flex justify-center pb-0.5 transition-opacity duration-500 ${showFullDesc ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                                                        <button
+                                                            onClick={() => setShowFullDesc(true)}
+                                                            className="flex items-center justify-center gap-2 px-6 text-white font-bold py-2.5 rounded-full bg-bg-3/70 backdrop-blur-sm border border-white/10 hover:bg-bg-3 transition-all shadow-lg cursor-pointer"
+                                                        >
+                                                            <Plus size={16} /> Prikaži više
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            {/* Show less button — appears below content when expanded */}
+                                            {isDescLong && showFullDesc && (
+                                                <div className="mt-4 flex justify-center">
                                                     <button
-                                                        onClick={() => setShowFullDesc(true)}
+                                                        onClick={() => setShowFullDesc(false)}
                                                         className="flex items-center justify-center gap-2 px-6 text-white font-bold py-2.5 rounded-full bg-bg-3/70 backdrop-blur-sm border border-white/10 hover:bg-bg-3 transition-all shadow-lg cursor-pointer"
                                                     >
-                                                        <Plus size={16} /> Prikaži više
+                                                        <Minus size={16} /> Prikaži manje
                                                     </button>
                                                 </div>
                                             )}
                                         </div>
-                                        {/* Show less button — appears below content when expanded */}
-                                        {isDescLong && showFullDesc && (
-                                            <div className="mt-4 flex justify-center">
-                                                <button
-                                                    onClick={() => setShowFullDesc(false)}
-                                                    className="flex items-center justify-center gap-2 px-6 text-white font-bold py-2.5 rounded-full bg-bg-3/70 backdrop-blur-sm border border-white/10 hover:bg-bg-3 transition-all shadow-lg cursor-pointer"
-                                                >
-                                                    <Minus size={16} /> Prikaži manje
-                                                </button>
-                                            </div>
-                                        )}
-                                    </div>
+                                    )}
                                 </>
                             )}
                         </div>

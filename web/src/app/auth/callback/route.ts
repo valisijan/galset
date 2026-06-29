@@ -28,6 +28,12 @@ export async function GET(request: Request) {
             } catch { }
           },
         },
+        cookieOptions: {
+          maxAge: 60 * 60 * 24 * 70, // 70 days
+          path: '/',
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production',
+        }
       }
     )
 
