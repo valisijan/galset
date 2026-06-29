@@ -66,7 +66,9 @@ export const AuthProvider = ({ children, initialUser, initialSessionToken }: { c
       } else if (res.ok) {
         const data = await res.json()
         setUser(data.user)
-        setSessionToken(token)
+        // Set the token from the latest session, in case it was refreshed during the fetch
+        const { data: { session: currentSession } } = await supabase.auth.getSession()
+        setSessionToken(currentSession?.access_token || token)
       }
       // For other errors (500, network, etc.) — keep existing user state
     } catch {

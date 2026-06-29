@@ -107,8 +107,8 @@
         "slug": "individual"
       },
       {
-        "name": "Diler",
-        "slug": "dealer"
+        "name": "Trgovac",
+        "slug": "merchant"
       },
       {
         "name": "Firma",
@@ -120,12 +120,12 @@
   },
   {
     "id": 8,
-    "name": "Nacin isporuke",
+    "name": "Način isporuke",
     "slug": "delivery",
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Licno preuzimanje",
+        "name": "Lično preuzimanje",
         "slug": "pickup"
       },
       {
@@ -142,7 +142,7 @@
   },
   {
     "id": 9,
-    "name": "Drzava",
+    "name": "Država",
     "slug": "country",
     "type": "checkbox-multi",
     "options": [],
@@ -606,6 +606,10 @@
       {
         "name": "Retro",
         "slug": "retro"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -618,7 +622,7 @@
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Apple (iPhone)",
+        "name": "Apple",
         "slug": "apple"
       },
       {
@@ -814,6 +818,10 @@
       {
         "name": "Timberland",
         "slug": "timberland"
+      },
+      {
+        "name": "Tulipano",
+        "slug": "tulipano"
       },
       {
         "name": "LC Waikiki",
@@ -1196,20 +1204,56 @@
         "slug": "not"
       },
       {
-        "name": "Do 1 mesec",
-        "slug": "up-to-1-month"
-      },
-      {
-        "name": "Do 6 meseci",
-        "slug": "up-to-6-months"
-      },
-      {
-        "name": "Preko 6 meseci",
-        "slug": "over-6-months"
-      },
-      {
         "name": "Trajno registrovan",
         "slug": "permanent"
+      },
+      {
+        "name": "Do januara",
+        "slug": "january"
+      },
+      {
+        "name": "Do februara",
+        "slug": "february"
+      },
+      {
+        "name": "Do marta",
+        "slug": "march"
+      },
+      {
+        "name": "Do aprila",
+        "slug": "april"
+      },
+      {
+        "name": "Do maja",
+        "slug": "may"
+      },
+      {
+        "name": "Do juna",
+        "slug": "june"
+      },
+      {
+        "name": "Do jula",
+        "slug": "july"
+      },
+      {
+        "name": "Do avgusta",
+        "slug": "august"
+      },
+      {
+        "name": "Do septembra",
+        "slug": "september"
+      },
+      {
+        "name": "Do oktobra",
+        "slug": "october"
+      },
+      {
+        "name": "Do novembra",
+        "slug": "november"
+      },
+      {
+        "name": "Do decembra",
+        "slug": "december"
       }
     ],
     "source": null,
@@ -1368,40 +1412,6 @@
     "isFormRadio": true
   },
   {
-    "id": 48,
-    "name": "Materijal enterijera",
-    "slug": "interior-material",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "Prirodna koža",
-        "slug": "leather"
-      },
-      {
-        "name": "Eko koža",
-        "slug": "eco-leather"
-      },
-      {
-        "name": "Štof",
-        "slug": "fabric"
-      },
-      {
-        "name": "Alcantara",
-        "slug": "alcantara"
-      },
-      {
-        "name": "Kombinovano",
-        "slug": "combined"
-      },
-      {
-        "name": "Velur",
-        "slug": "velour"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
     "id": 49,
     "name": "Emisiona klasa",
     "slug": "emission",
@@ -1463,6 +1473,10 @@
         "slug": "abs"
       },
       {
+        "name": "Airbag",
+        "slug": "airbags"
+      },
+      {
         "name": "ESP",
         "slug": "esp"
       },
@@ -1501,10 +1515,6 @@
       {
         "name": "Senzor pritiska u gumama",
         "slug": "tire-pressure-monitor"
-      },
-      {
-        "name": "Vazdušni jastuci (Airbag)",
-        "slug": "airbags"
       },
       {
         "name": "Senzor za umor vozača",
@@ -1761,6 +1771,10 @@
       {
         "name": "Servisna knjižica",
         "slug": "service-history"
+      },
+      {
+        "name": "Kupljen nov u zemlji",
+        "slug": "bought-new-locally"
       },
       {
         "name": "Garažiran",
@@ -2081,7 +2095,7 @@
         "slug": "moto-navigation"
       },
       {
-        "name": "LED farovi i migavci",
+        "name": "LED farovi",
         "slug": "moto-led-lights"
       },
       {
@@ -2109,7 +2123,7 @@
         "slug": "center-stand"
       },
       {
-        "name": "Akrapovič / Sportski auspuh",
+        "name": "Sportski auspuh",
         "slug": "aftermarket-exhaust"
       },
       {
@@ -2127,48 +2141,6 @@
     ],
     "source": null,
     "isFormRadio": false
-  },
-  {
-    "id": 61,
-    "name": "Tip",
-    "slug": "mtb-type",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "All Mountain",
-        "slug": "all-mountain"
-      },
-      {
-        "name": "Cross-Country",
-        "slug": "cross-country"
-      },
-      {
-        "name": "Trail",
-        "slug": "trail"
-      },
-      {
-        "name": "Enduro",
-        "slug": "enduro"
-      },
-      {
-        "name": "Downhill",
-        "slug": "downhill"
-      },
-      {
-        "name": "Dirt Jump",
-        "slug": "dirt-jump"
-      },
-      {
-        "name": "Fat Bike",
-        "slug": "fat-bike"
-      },
-      {
-        "name": "Hardtail",
-        "slug": "hardtail"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
   },
   {
     "id": 62,
@@ -2195,14 +2167,10 @@
       {
         "name": "Hrom-molibden",
         "slug": "chromo"
-      },
-      {
-        "name": "Kombinovano",
-        "slug": "combined"
       }
     ],
     "source": null,
-    "isFormRadio": true
+    "isFormRadio": false
   },
   {
     "id": 63,
@@ -2433,128 +2401,6 @@
     "isFormRadio": true
   },
   {
-    "id": 67,
-    "name": "Marka delova / opreme",
-    "slug": "component-brand",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "Campagnolo",
-        "slug": "campagnolo"
-      },
-      {
-        "name": "Continental",
-        "slug": "continental"
-      },
-      {
-        "name": "DT Swiss",
-        "slug": "dt-swiss"
-      },
-      {
-        "name": "Enve",
-        "slug": "enve"
-      },
-      {
-        "name": "Fizik",
-        "slug": "fizik"
-      },
-      {
-        "name": "Fox",
-        "slug": "fox"
-      },
-      {
-        "name": "Magura",
-        "slug": "magura"
-      },
-      {
-        "name": "Mavic",
-        "slug": "mavic"
-      },
-      {
-        "name": "Maxxis",
-        "slug": "maxxis"
-      },
-      {
-        "name": "Race Face",
-        "slug": "race-face"
-      },
-      {
-        "name": "Ritchey",
-        "slug": "ritchey"
-      },
-      {
-        "name": "RockShox",
-        "slug": "rockshox"
-      },
-      {
-        "name": "Schwalbe",
-        "slug": "schwalbe"
-      },
-      {
-        "name": "Shimano",
-        "slug": "shimano"
-      },
-      {
-        "name": "ShineSoon",
-        "slug": "shine-soon"
-      },
-      {
-        "name": "Sram",
-        "slug": "sram"
-      },
-      {
-        "name": "SunRace",
-        "slug": "sunrace"
-      },
-      {
-        "name": "Tektro",
-        "slug": "tektro"
-      },
-      {
-        "name": "TRP",
-        "slug": "trp"
-      },
-      {
-        "name": "Zipp",
-        "slug": "zipp"
-      },
-      {
-        "name": "SR Suntour",
-        "slug": "sr-suntour"
-      },
-      {
-        "name": "KMC",
-        "slug": "kmc"
-      },
-      {
-        "name": "Michelin",
-        "slug": "michelin"
-      },
-      {
-        "name": "Vittoria",
-        "slug": "vittoria"
-      },
-      {
-        "name": "Fulcrum",
-        "slug": "fulcrum"
-      },
-      {
-        "name": "Manitou",
-        "slug": "manitou"
-      },
-      {
-        "name": "Microshift",
-        "slug": "microshift"
-      },
-      {
-        "name": "Prologo",
-        "slug": "prologo"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
     "id": 68,
     "name": "Oprema",
     "slug": "bicycle-equipment",
@@ -2756,7 +2602,7 @@
   {
     "id": 72,
     "name": "Sigurnost",
-    "slug": "van0safety",
+    "slug": "van-safety",
     "type": "checkbox-multi",
     "options": [
       {
@@ -3787,8 +3633,12 @@
         "slug": "ferrocement"
       },
       {
-        "name": "Guma (PVC / Hipalon)",
-        "slug": "rubber"
+        "name": "Guma",
+        "slug": "inflatable"
+      },
+      {
+        "name": "RIB",
+        "slug": "rib"
       },
       {
         "name": "Karbon",
@@ -3799,16 +3649,12 @@
         "slug": "kevlar"
       },
       {
-        "name": "Kombinovano",
-        "slug": "rib-composite"
-      },
-      {
-        "name": "Plastika (Stakloplastika / Poliester)",
+        "name": "Plastika",
         "slug": "fiberglass"
       }
     ],
     "source": null,
-    "isFormRadio": true
+    "isFormRadio": false
   },
   {
     "id": 95,
@@ -4191,7 +4037,7 @@
         "slug": "anti-lag"
       },
       {
-        "name": "Coilovers)",
+        "name": "Coilovers",
         "slug": "coilovers"
       },
       {
@@ -5294,7 +5140,7 @@
       }
     ],
     "source": null,
-    "isFormRadio": true
+    "isFormRadio": false
   },
   {
     "id": 125,
@@ -5312,15 +5158,15 @@
       },
       {
         "name": "Daljinsko otvaranje kapije/garaže",
-        "slug": "remote-control"
-      },
-      {
-        "name": "Dvorište",
-        "slug": "yard"
+        "slug": "remote-gate"
       },
       {
         "name": "Dozvoljeni ljubimci",
         "slug": "pet-friendly"
+      },
+      {
+        "name": "Dvorište",
+        "slug": "yard"
       },
       {
         "name": "Francuski balkon",
@@ -5329,10 +5175,6 @@
       {
         "name": "Garaža",
         "slug": "garage"
-      },
-      {
-        "name": "Gradska kanalizacija",
-        "slug": "sewage"
       },
       {
         "name": "Interfon",
@@ -5360,7 +5202,7 @@
       },
       {
         "name": "Ograđen plac",
-        "slug": "fenced"
+        "slug": "fenced-yard"
       },
       {
         "name": "Optički internet",
@@ -5410,15 +5252,15 @@
     "options": [
       {
         "name": "Asfaltiran put",
-        "slug": "asphalt"
+        "slug": "asphalt-road"
       },
       {
         "name": "Bunar / Hidrofor",
         "slug": "water-well"
       },
       {
-        "name": "Gas",
-        "slug": "gas"
+        "name": "Gas / Priključak za gas",
+        "slug": "gas-connection"
       },
       {
         "name": "Gradska kanalizacija",
@@ -5437,10 +5279,6 @@
         "slug": "electricity"
       },
       {
-        "name": "Telefon / Internet",
-        "slug": "telecom"
-      },
-      {
         "name": "Ulična rasveta",
         "slug": "street-lighting"
       }
@@ -5455,10 +5293,6 @@
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Dozvoljena gradnja",
-        "slug": "permits"
-      },
-      {
         "name": "Predato na uknjižbu",
         "slug": "pending-registration"
       },
@@ -5467,8 +5301,8 @@
         "slug": "registered"
       },
       {
-        "name": "U procesu ozakonjenja",
-        "slug": "in-process-of-legalization"
+        "name": "U procesu legalizacije",
+        "slug": "legalization-in-progress"
       },
       {
         "name": "Vlasnik 1/1",
@@ -5922,128 +5756,6 @@
     "isFormRadio": true
   },
   {
-    "id": 140,
-    "name": "Socket",
-    "slug": "cpu-socket",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "AM5",
-        "slug": "am5"
-      },
-      {
-        "name": "AM4",
-        "slug": "am4"
-      },
-      {
-        "name": "LGA 1851",
-        "slug": "lga-1851"
-      },
-      {
-        "name": "LGA 1700",
-        "slug": "lga-1700"
-      },
-      {
-        "name": "LGA 1200",
-        "slug": "lga-1200"
-      },
-      {
-        "name": "AM3+",
-        "slug": "am3-plus"
-      },
-      {
-        "name": "AM3",
-        "slug": "am3"
-      },
-      {
-        "name": "FM2+",
-        "slug": "fm2-plus"
-      },
-      {
-        "name": "FM2",
-        "slug": "fm2"
-      },
-      {
-        "name": "AM2+",
-        "slug": "am2-plus"
-      },
-      {
-        "name": "AM2",
-        "slug": "am2"
-      },
-      {
-        "name": "sTR5",
-        "slug": "str5"
-      },
-      {
-        "name": "sTRX4",
-        "slug": "strx4"
-      },
-      {
-        "name": "TR4",
-        "slug": "tr4"
-      },
-      {
-        "name": "LGA 1151",
-        "slug": "lga-1151-v2"
-      },
-      {
-        "name": "LGA 1150",
-        "slug": "lga-1150"
-      },
-      {
-        "name": "LGA 1155",
-        "slug": "lga-1155"
-      },
-      {
-        "name": "LGA 1156",
-        "slug": "lga-1156"
-      },
-      {
-        "name": "LGA 2066",
-        "slug": "lga-2066"
-      },
-      {
-        "name": "LGA 2011-3",
-        "slug": "lga-2011-3"
-      },
-      {
-        "name": "LGA 2011",
-        "slug": "lga-2011"
-      },
-      {
-        "name": "LGA 1366",
-        "slug": "lga-1366"
-      },
-      {
-        "name": "LGA 775",
-        "slug": "lga-775"
-      },
-      {
-        "name": "LGA 4677",
-        "slug": "lga-4677"
-      },
-      {
-        "name": "LGA 3647",
-        "slug": "lga-3647"
-      },
-      {
-        "name": "SP5",
-        "slug": "sp5"
-      },
-      {
-        "name": "SP3",
-        "slug": "sp3"
-      },
-      {
-        "name": "Ostalo",
-        "slug": "other"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
     "id": 141,
     "name": "Integrisana grafika",
     "slug": "integrated-graphics",
@@ -6400,6 +6112,10 @@
       {
         "name": "HBM / HBM2 / HBM3",
         "slug": "hbm-series"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -6528,6 +6244,10 @@
       {
         "name": "SDRAM",
         "slug": "sdram"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -6802,8 +6522,8 @@
         "slug": "20tb"
       },
       {
-        "name": "22 TB+",
-        "slug": "22tb-plus"
+        "name": "22+ TB",
+        "slug": "22-plus-tb"
       }
     ],
     "source": null,
@@ -6962,6 +6682,10 @@
       {
         "name": "SSI CEB",
         "slug": "ssi-ceb"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -7132,8 +6856,8 @@
         "slug": "1300w"
       },
       {
-        "name": "1500 W+",
-        "slug": "1500w-plus"
+        "name": "1500+ W",
+        "slug": "1500-plus-w"
       }
     ],
     "source": null,
@@ -7324,6 +7048,10 @@
       {
         "name": "LC-Power",
         "slug": "lc-power"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -7335,6 +7063,10 @@
     "slug": "hid-brand",
     "type": "checkbox-multi",
     "options": [
+      {
+        "name": "A4Tech",
+        "slug": "a4tech"
+      },
       {
         "name": "Logitech",
         "slug": "logitech"
@@ -7370,10 +7102,6 @@
       {
         "name": "Genius",
         "slug": "genius"
-      },
-      {
-        "name": "Bloody (A4Tech)",
-        "slug": "bloody"
       },
       {
         "name": "Fantech",
@@ -7496,7 +7224,7 @@
         "slug": "jetion"
       },
       {
-        "name": "Ostale marke",
+        "name": "Ostalo",
         "slug": "other"
       }
     ],
@@ -7578,7 +7306,7 @@
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Žično (USB)",
+        "name": "Žičano",
         "slug": "wired"
       },
       {
@@ -7610,40 +7338,6 @@
       {
         "name": "Compact (60% / 65%)",
         "slug": "compact"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
-    "id": 167,
-    "name": "Veličina",
-    "slug": "mp-size",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "S",
-        "slug": "s"
-      },
-      {
-        "name": "M",
-        "slug": "m"
-      },
-      {
-        "name": "L",
-        "slug": "l"
-      },
-      {
-        "name": "XL",
-        "slug": "xl"
-      },
-      {
-        "name": "XXL",
-        "slug": "xxl"
-      },
-      {
-        "name": "3XL",
-        "slug": "3xl"
       }
     ],
     "source": null,
@@ -7768,6 +7462,10 @@
       {
         "name": "Android / iOS",
         "slug": "mobile"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -8190,6 +7888,10 @@
       {
         "name": "Stardew Valley",
         "slug": "stardew-valley"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -8274,7 +7976,7 @@
         "slug": "overwatch-2"
       },
       {
-        "name": "Ostale igre",
+        "name": "Ostalo",
         "slug": "other"
       }
     ],
@@ -8477,17 +8179,17 @@
   },
   {
     "id": 175,
-    "name": "Tip isporuke",
-    "slug": "delivery-type",
+    "name": "Format",
+    "slug": "copy-format",
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Digitalna isporuka",
-        "slug": "digital-delivery"
+        "name": "Digitalna kopija",
+        "slug": "digital-copy"
       },
       {
-        "name": "Fizička isporuka",
-        "slug": "physical-disc"
+        "name": "Fizička kopija",
+        "slug": "physical-copy"
       }
     ],
     "source": null,
@@ -9098,6 +8800,10 @@
       {
         "name": ".fun",
         "slug": "fun"
+      },
+      {
+        "name": "Ostalo",
+        "slug": "other"
       }
     ],
     "source": null,
@@ -9206,16 +8912,8 @@
         "slug": "sim-free"
       },
       {
-        "name": "Zaključan na MTS",
-        "slug": "locked-mts"
-      },
-      {
-        "name": "Zaključan na Yettel",
-        "slug": "locked-yettel"
-      },
-      {
-        "name": "Zaključan na A1",
-        "slug": "locked-a1"
+        "name": "Zaključan na domaću mrežu",
+        "slug": "locked-domestic"
       },
       {
         "name": "Zaključan na stranu mrežu",
@@ -9380,7 +9078,7 @@
     "type": "checkbox-multi",
     "options": [
       {
-        "name": "Apple (iPhone)",
+        "name": "Apple",
         "slug": "apple"
       },
       {
@@ -9870,32 +9568,6 @@
       {
         "name": "Zakazivanje unapred",
         "slug": "by-appointment-only"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
-    "id": 202,
-    "name": "Način plaćanja / Procena cene",
-    "slug": "pricing-type",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "Po projektu / usluzi",
-        "slug": "fixed-price"
-      },
-      {
-        "name": "Po radnom satu",
-        "slug": "hourly-rate"
-      },
-      {
-        "name": "Po kvadratnom metru",
-        "slug": "per-square-meter"
-      },
-      {
-        "name": "Po pređenom kilometru",
-        "slug": "per-kilometer"
       }
     ],
     "source": null,
@@ -10406,28 +10078,6 @@
       {
         "name": "Par",
         "slug": "pair"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
-    "id": 214,
-    "name": "Pakovanje",
-    "slug": "packaging",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "Originalno pakovanje",
-        "slug": "original-package"
-      },
-      {
-        "name": "Na meru",
-        "slug": "bulk-weight"
-      },
-      {
-        "name": "Balirano",
-        "slug": "baled"
       }
     ],
     "source": null,

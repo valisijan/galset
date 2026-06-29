@@ -9,6 +9,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useSocket } from "@/hooks/useSocket";
 import { usePushNotifications } from "@/hooks/usePushNotifications";
+import { supabase } from "@/lib/supabase";
 
 interface LayoutWrapperProps {
   children: ReactNode;
@@ -74,7 +75,19 @@ export default function LayoutWrapper({
 
         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
         if (apiUrl && urlString.startsWith(apiUrl)) {
-          const activeToken = (window as any).__sessionToken;
+          let activeToken = (window as any).__sessionToken;
+          try {
+            // Get the latest session from Supabase, which automatically refreshes the token if expired
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+              activeToken = session.access_token;
+            } else {
+              activeToken = null;
+            }
+          } catch (err) {
+            console.error("Error getting session in patched fetch:", err);
+          }
+
           if (activeToken) {
             const headers = new Headers();
             

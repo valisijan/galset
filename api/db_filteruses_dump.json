@@ -33,10 +33,6 @@
   },
   {
     "categoryId": 2,
-    "filterId": 48
-  },
-  {
-    "categoryId": 2,
     "filterId": 46
   },
   {
@@ -197,10 +193,6 @@
   },
   {
     "categoryId": 5,
-    "filterId": 61
-  },
-  {
-    "categoryId": 5,
     "filterId": 62
   },
   {
@@ -218,10 +210,6 @@
   {
     "categoryId": 5,
     "filterId": 66
-  },
-  {
-    "categoryId": 5,
-    "filterId": 67
   },
   {
     "categoryId": 5,
@@ -273,10 +261,6 @@
   },
   {
     "categoryId": 6,
-    "filterId": 67
-  },
-  {
-    "categoryId": 6,
     "filterId": 68
   },
   {
@@ -325,10 +309,6 @@
   },
   {
     "categoryId": 7,
-    "filterId": 67
-  },
-  {
-    "categoryId": 7,
     "filterId": 68
   },
   {
@@ -377,10 +357,6 @@
   },
   {
     "categoryId": 8,
-    "filterId": 67
-  },
-  {
-    "categoryId": 8,
     "filterId": 68
   },
   {
@@ -429,10 +405,6 @@
   },
   {
     "categoryId": 9,
-    "filterId": 67
-  },
-  {
-    "categoryId": 9,
     "filterId": 68
   },
   {
@@ -481,10 +453,6 @@
   },
   {
     "categoryId": 10,
-    "filterId": 67
-  },
-  {
-    "categoryId": 10,
     "filterId": 68
   },
   {
@@ -533,10 +501,6 @@
   },
   {
     "categoryId": 11,
-    "filterId": 67
-  },
-  {
-    "categoryId": 11,
     "filterId": 68
   },
   {
@@ -585,10 +549,6 @@
   },
   {
     "categoryId": 12,
-    "filterId": 67
-  },
-  {
-    "categoryId": 12,
     "filterId": 68
   },
   {
@@ -637,10 +597,6 @@
   },
   {
     "categoryId": 13,
-    "filterId": 67
-  },
-  {
-    "categoryId": 13,
     "filterId": 68
   },
   {
@@ -686,10 +642,6 @@
   {
     "categoryId": 14,
     "filterId": 66
-  },
-  {
-    "categoryId": 14,
-    "filterId": 67
   },
   {
     "categoryId": 14,
@@ -741,10 +693,6 @@
   },
   {
     "categoryId": 15,
-    "filterId": 67
-  },
-  {
-    "categoryId": 15,
     "filterId": 68
   },
   {
@@ -790,10 +738,6 @@
   {
     "categoryId": 16,
     "filterId": 66
-  },
-  {
-    "categoryId": 16,
-    "filterId": 67
   },
   {
     "categoryId": 16,
@@ -842,10 +786,6 @@
   {
     "categoryId": 18,
     "filterId": 47
-  },
-  {
-    "categoryId": 18,
-    "filterId": 48
   },
   {
     "categoryId": 18,
@@ -945,10 +885,6 @@
   },
   {
     "categoryId": 19,
-    "filterId": 48
-  },
-  {
-    "categoryId": 19,
     "filterId": 46
   },
   {
@@ -1045,10 +981,6 @@
   },
   {
     "categoryId": 20,
-    "filterId": 48
-  },
-  {
-    "categoryId": 20,
     "filterId": 46
   },
   {
@@ -1142,10 +1074,6 @@
   {
     "categoryId": 21,
     "filterId": 47
-  },
-  {
-    "categoryId": 21,
-    "filterId": 48
   },
   {
     "categoryId": 21,
@@ -2625,10 +2553,6 @@
   },
   {
     "categoryId": 51,
-    "filterId": 48
-  },
-  {
-    "categoryId": 51,
     "filterId": 46
   },
   {
@@ -2713,10 +2637,6 @@
   },
   {
     "categoryId": 52,
-    "filterId": 48
-  },
-  {
-    "categoryId": 52,
     "filterId": 46
   },
   {
@@ -2797,10 +2717,6 @@
   },
   {
     "categoryId": 53,
-    "filterId": 48
-  },
-  {
-    "categoryId": 53,
     "filterId": 46
   },
   {
@@ -2878,10 +2794,6 @@
   {
     "categoryId": 54,
     "filterId": 47
-  },
-  {
-    "categoryId": 54,
-    "filterId": 48
   },
   {
     "categoryId": 54,
@@ -2973,10 +2885,6 @@
   },
   {
     "categoryId": 55,
-    "filterId": 48
-  },
-  {
-    "categoryId": 55,
     "filterId": 46
   },
   {
@@ -3057,10 +2965,6 @@
   },
   {
     "categoryId": 56,
-    "filterId": 48
-  },
-  {
-    "categoryId": 56,
     "filterId": 46
   },
   {
@@ -3138,10 +3042,6 @@
   {
     "categoryId": 57,
     "filterId": 47
-  },
-  {
-    "categoryId": 57,
-    "filterId": 48
   },
   {
     "categoryId": 57,
@@ -5405,10 +5305,6 @@
   },
   {
     "categoryId": 376,
-    "filterId": 140
-  },
-  {
-    "categoryId": 376,
     "filterId": 141
   },
   {
@@ -5466,10 +5362,6 @@
   {
     "categoryId": 391,
     "filterId": 162
-  },
-  {
-    "categoryId": 391,
-    "filterId": 167
   },
   {
     "categoryId": 393,
@@ -5840,10 +5732,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 658,
-    "filterId": 197
-  },
-  {
     "categoryId": 659,
     "filterId": 106
   },
@@ -5854,10 +5742,6 @@
   {
     "categoryId": 659,
     "filterId": 31
-  },
-  {
-    "categoryId": 659,
-    "filterId": 197
   },
   {
     "categoryId": 660,
@@ -5872,10 +5756,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 660,
-    "filterId": 197
-  },
-  {
     "categoryId": 661,
     "filterId": 106
   },
@@ -5886,10 +5766,6 @@
   {
     "categoryId": 661,
     "filterId": 31
-  },
-  {
-    "categoryId": 661,
-    "filterId": 197
   },
   {
     "categoryId": 662,
@@ -5904,10 +5780,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 662,
-    "filterId": 197
-  },
-  {
     "categoryId": 663,
     "filterId": 106
   },
@@ -5918,10 +5790,6 @@
   {
     "categoryId": 663,
     "filterId": 31
-  },
-  {
-    "categoryId": 663,
-    "filterId": 197
   },
   {
     "categoryId": 664,
@@ -5936,10 +5804,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 664,
-    "filterId": 197
-  },
-  {
     "categoryId": 665,
     "filterId": 106
   },
@@ -5950,10 +5814,6 @@
   {
     "categoryId": 665,
     "filterId": 31
-  },
-  {
-    "categoryId": 665,
-    "filterId": 197
   },
   {
     "categoryId": 666,
@@ -5968,10 +5828,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 666,
-    "filterId": 197
-  },
-  {
     "categoryId": 667,
     "filterId": 106
   },
@@ -5982,10 +5838,6 @@
   {
     "categoryId": 667,
     "filterId": 31
-  },
-  {
-    "categoryId": 667,
-    "filterId": 197
   },
   {
     "categoryId": 668,
@@ -6000,10 +5852,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 668,
-    "filterId": 197
-  },
-  {
     "categoryId": 669,
     "filterId": 106
   },
@@ -6014,10 +5862,6 @@
   {
     "categoryId": 669,
     "filterId": 31
-  },
-  {
-    "categoryId": 669,
-    "filterId": 197
   },
   {
     "categoryId": 670,
@@ -6032,10 +5876,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 670,
-    "filterId": 197
-  },
-  {
     "categoryId": 671,
     "filterId": 106
   },
@@ -6046,10 +5886,6 @@
   {
     "categoryId": 671,
     "filterId": 31
-  },
-  {
-    "categoryId": 671,
-    "filterId": 197
   },
   {
     "categoryId": 672,
@@ -6064,10 +5900,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 672,
-    "filterId": 197
-  },
-  {
     "categoryId": 673,
     "filterId": 106
   },
@@ -6078,10 +5910,6 @@
   {
     "categoryId": 673,
     "filterId": 31
-  },
-  {
-    "categoryId": 673,
-    "filterId": 197
   },
   {
     "categoryId": 674,
@@ -6096,10 +5924,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 674,
-    "filterId": 197
-  },
-  {
     "categoryId": 675,
     "filterId": 106
   },
@@ -6110,10 +5934,6 @@
   {
     "categoryId": 675,
     "filterId": 31
-  },
-  {
-    "categoryId": 675,
-    "filterId": 197
   },
   {
     "categoryId": 676,
@@ -6128,10 +5948,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 676,
-    "filterId": 197
-  },
-  {
     "categoryId": 677,
     "filterId": 106
   },
@@ -6142,10 +5958,6 @@
   {
     "categoryId": 677,
     "filterId": 31
-  },
-  {
-    "categoryId": 677,
-    "filterId": 197
   },
   {
     "categoryId": 679,
@@ -6160,10 +5972,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 679,
-    "filterId": 197
-  },
-  {
     "categoryId": 680,
     "filterId": 106
   },
@@ -6174,10 +5982,6 @@
   {
     "categoryId": 680,
     "filterId": 193
-  },
-  {
-    "categoryId": 680,
-    "filterId": 197
   },
   {
     "categoryId": 681,
@@ -6192,10 +5996,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 681,
-    "filterId": 197
-  },
-  {
     "categoryId": 682,
     "filterId": 106
   },
@@ -6206,10 +6006,6 @@
   {
     "categoryId": 682,
     "filterId": 193
-  },
-  {
-    "categoryId": 682,
-    "filterId": 197
   },
   {
     "categoryId": 683,
@@ -6224,10 +6020,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 683,
-    "filterId": 197
-  },
-  {
     "categoryId": 684,
     "filterId": 106
   },
@@ -6238,10 +6030,6 @@
   {
     "categoryId": 684,
     "filterId": 193
-  },
-  {
-    "categoryId": 684,
-    "filterId": 197
   },
   {
     "categoryId": 685,
@@ -6256,10 +6044,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 685,
-    "filterId": 197
-  },
-  {
     "categoryId": 686,
     "filterId": 106
   },
@@ -6270,10 +6054,6 @@
   {
     "categoryId": 686,
     "filterId": 193
-  },
-  {
-    "categoryId": 686,
-    "filterId": 197
   },
   {
     "categoryId": 688,
@@ -6288,10 +6068,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 688,
-    "filterId": 197
-  },
-  {
     "categoryId": 689,
     "filterId": 106
   },
@@ -6302,10 +6078,6 @@
   {
     "categoryId": 689,
     "filterId": 31
-  },
-  {
-    "categoryId": 689,
-    "filterId": 197
   },
   {
     "categoryId": 690,
@@ -6320,10 +6092,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 690,
-    "filterId": 197
-  },
-  {
     "categoryId": 691,
     "filterId": 106
   },
@@ -6334,10 +6102,6 @@
   {
     "categoryId": 691,
     "filterId": 31
-  },
-  {
-    "categoryId": 691,
-    "filterId": 197
   },
   {
     "categoryId": 692,
@@ -6352,10 +6116,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 692,
-    "filterId": 197
-  },
-  {
     "categoryId": 693,
     "filterId": 106
   },
@@ -6366,10 +6126,6 @@
   {
     "categoryId": 693,
     "filterId": 31
-  },
-  {
-    "categoryId": 693,
-    "filterId": 197
   },
   {
     "categoryId": 694,
@@ -6384,10 +6140,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 694,
-    "filterId": 197
-  },
-  {
     "categoryId": 695,
     "filterId": 106
   },
@@ -6398,10 +6150,6 @@
   {
     "categoryId": 695,
     "filterId": 31
-  },
-  {
-    "categoryId": 695,
-    "filterId": 197
   },
   {
     "categoryId": 696,
@@ -6416,10 +6164,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 696,
-    "filterId": 197
-  },
-  {
     "categoryId": 697,
     "filterId": 106
   },
@@ -6430,10 +6174,6 @@
   {
     "categoryId": 697,
     "filterId": 31
-  },
-  {
-    "categoryId": 697,
-    "filterId": 197
   },
   {
     "categoryId": 698,
@@ -6448,10 +6188,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 698,
-    "filterId": 197
-  },
-  {
     "categoryId": 699,
     "filterId": 106
   },
@@ -6462,10 +6198,6 @@
   {
     "categoryId": 699,
     "filterId": 31
-  },
-  {
-    "categoryId": 699,
-    "filterId": 197
   },
   {
     "categoryId": 700,
@@ -6480,10 +6212,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 700,
-    "filterId": 197
-  },
-  {
     "categoryId": 701,
     "filterId": 106
   },
@@ -6494,10 +6222,6 @@
   {
     "categoryId": 701,
     "filterId": 31
-  },
-  {
-    "categoryId": 701,
-    "filterId": 197
   },
   {
     "categoryId": 702,
@@ -6512,10 +6236,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 702,
-    "filterId": 197
-  },
-  {
     "categoryId": 703,
     "filterId": 106
   },
@@ -6528,10 +6248,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 703,
-    "filterId": 197
-  },
-  {
     "categoryId": 705,
     "filterId": 106
   },
@@ -6542,10 +6258,6 @@
   {
     "categoryId": 705,
     "filterId": 193
-  },
-  {
-    "categoryId": 705,
-    "filterId": 197
   },
   {
     "categoryId": 706,
@@ -6560,10 +6272,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 706,
-    "filterId": 197
-  },
-  {
     "categoryId": 707,
     "filterId": 106
   },
@@ -6574,10 +6282,6 @@
   {
     "categoryId": 707,
     "filterId": 193
-  },
-  {
-    "categoryId": 707,
-    "filterId": 197
   },
   {
     "categoryId": 708,
@@ -6592,10 +6296,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 708,
-    "filterId": 197
-  },
-  {
     "categoryId": 709,
     "filterId": 106
   },
@@ -6606,10 +6306,6 @@
   {
     "categoryId": 709,
     "filterId": 193
-  },
-  {
-    "categoryId": 709,
-    "filterId": 197
   },
   {
     "categoryId": 710,
@@ -6624,10 +6320,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 710,
-    "filterId": 197
-  },
-  {
     "categoryId": 711,
     "filterId": 106
   },
@@ -6640,10 +6332,6 @@
     "filterId": 193
   },
   {
-    "categoryId": 711,
-    "filterId": 197
-  },
-  {
     "categoryId": 713,
     "filterId": 106
   },
@@ -6658,10 +6346,6 @@
   {
     "categoryId": 713,
     "filterId": 196
-  },
-  {
-    "categoryId": 713,
-    "filterId": 197
   },
   {
     "categoryId": 714,
@@ -6680,10 +6364,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 714,
-    "filterId": 197
-  },
-  {
     "categoryId": 715,
     "filterId": 106
   },
@@ -6698,10 +6378,6 @@
   {
     "categoryId": 715,
     "filterId": 196
-  },
-  {
-    "categoryId": 715,
-    "filterId": 197
   },
   {
     "categoryId": 716,
@@ -6720,10 +6396,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 716,
-    "filterId": 197
-  },
-  {
     "categoryId": 717,
     "filterId": 106
   },
@@ -6738,10 +6410,6 @@
   {
     "categoryId": 717,
     "filterId": 196
-  },
-  {
-    "categoryId": 717,
-    "filterId": 197
   },
   {
     "categoryId": 718,
@@ -6760,10 +6428,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 718,
-    "filterId": 197
-  },
-  {
     "categoryId": 719,
     "filterId": 106
   },
@@ -6778,10 +6442,6 @@
   {
     "categoryId": 719,
     "filterId": 196
-  },
-  {
-    "categoryId": 719,
-    "filterId": 197
   },
   {
     "categoryId": 720,
@@ -6800,10 +6460,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 720,
-    "filterId": 197
-  },
-  {
     "categoryId": 721,
     "filterId": 106
   },
@@ -6818,10 +6474,6 @@
   {
     "categoryId": 721,
     "filterId": 196
-  },
-  {
-    "categoryId": 721,
-    "filterId": 197
   },
   {
     "categoryId": 722,
@@ -6840,10 +6492,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 722,
-    "filterId": 197
-  },
-  {
     "categoryId": 723,
     "filterId": 106
   },
@@ -6858,10 +6506,6 @@
   {
     "categoryId": 723,
     "filterId": 196
-  },
-  {
-    "categoryId": 723,
-    "filterId": 197
   },
   {
     "categoryId": 724,
@@ -6880,10 +6524,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 724,
-    "filterId": 197
-  },
-  {
     "categoryId": 725,
     "filterId": 106
   },
@@ -6898,10 +6538,6 @@
   {
     "categoryId": 725,
     "filterId": 196
-  },
-  {
-    "categoryId": 725,
-    "filterId": 197
   },
   {
     "categoryId": 726,
@@ -6920,10 +6556,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 726,
-    "filterId": 197
-  },
-  {
     "categoryId": 727,
     "filterId": 106
   },
@@ -6938,10 +6570,6 @@
   {
     "categoryId": 727,
     "filterId": 196
-  },
-  {
-    "categoryId": 727,
-    "filterId": 197
   },
   {
     "categoryId": 728,
@@ -6960,10 +6588,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 728,
-    "filterId": 197
-  },
-  {
     "categoryId": 729,
     "filterId": 106
   },
@@ -6980,10 +6604,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 729,
-    "filterId": 197
-  },
-  {
     "categoryId": 731,
     "filterId": 106
   },
@@ -6998,10 +6618,6 @@
   {
     "categoryId": 731,
     "filterId": 196
-  },
-  {
-    "categoryId": 731,
-    "filterId": 197
   },
   {
     "categoryId": 732,
@@ -7020,10 +6636,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 732,
-    "filterId": 197
-  },
-  {
     "categoryId": 733,
     "filterId": 106
   },
@@ -7038,10 +6650,6 @@
   {
     "categoryId": 733,
     "filterId": 196
-  },
-  {
-    "categoryId": 733,
-    "filterId": 197
   },
   {
     "categoryId": 734,
@@ -7060,10 +6668,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 734,
-    "filterId": 197
-  },
-  {
     "categoryId": 735,
     "filterId": 106
   },
@@ -7080,10 +6684,6 @@
     "filterId": 196
   },
   {
-    "categoryId": 735,
-    "filterId": 197
-  },
-  {
     "categoryId": 736,
     "filterId": 106
   },
@@ -7098,10 +6698,6 @@
   {
     "categoryId": 736,
     "filterId": 196
-  },
-  {
-    "categoryId": 736,
-    "filterId": 197
   },
   {
     "categoryId": 748,
@@ -7116,10 +6712,6 @@
     "filterId": 31
   },
   {
-    "categoryId": 748,
-    "filterId": 197
-  },
-  {
     "categoryId": 751,
     "filterId": 106
   },
@@ -7130,10 +6722,6 @@
   {
     "categoryId": 751,
     "filterId": 31
-  },
-  {
-    "categoryId": 751,
-    "filterId": 197
   },
   {
     "categoryId": 754,
@@ -7622,30 +7210,6 @@
   {
     "categoryId": 1258,
     "filterId": 213
-  },
-  {
-    "categoryId": 1260,
-    "filterId": 214
-  },
-  {
-    "categoryId": 1261,
-    "filterId": 214
-  },
-  {
-    "categoryId": 1262,
-    "filterId": 214
-  },
-  {
-    "categoryId": 1263,
-    "filterId": 214
-  },
-  {
-    "categoryId": 1264,
-    "filterId": 214
-  },
-  {
-    "categoryId": 1265,
-    "filterId": 214
   },
   {
     "categoryId": 1654,
