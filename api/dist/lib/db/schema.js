@@ -37,7 +37,7 @@ exports.users = (0, pg_core_1.pgTable)("User", {
 exports.ads = (0, pg_core_1.pgTable)("Ad", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
     title: (0, pg_core_1.text)("title").notNull(),
-    description: (0, pg_core_1.text)("description").notNull(),
+    description: (0, pg_core_1.text)("description"),
     price: (0, pg_core_1.doublePrecision)("price"),
     currency: (0, pg_core_1.text)("currency"),
     isPriceOnRequest: (0, pg_core_1.boolean)("isPriceOnRequest").notNull().default(false),

@@ -34,6 +34,7 @@ const categories_1 = __importDefault(require("./routes/categories"));
 const pricing_1 = __importDefault(require("./routes/pricing"));
 const recommendations_1 = __importDefault(require("./routes/recommendations"));
 const upload_temp_image_1 = __importDefault(require("./routes/upload-temp-image"));
+const rotate_image_1 = __importDefault(require("./routes/rotate-image"));
 const app = (0, express_1.default)();
 (async () => {
     try {
@@ -105,6 +106,7 @@ app.use('/categories', categories_1.default);
 app.use('/pricing', pricing_1.default);
 app.use('/recommendations', recommendations_1.default);
 app.use('/upload-temp-image', upload_temp_image_1.default);
+app.use('/rotate-image', rotate_image_1.default);
 app.use((err, _req, res, _next) => {
     console.error('[ERROR]', err.message);
     res.status(500).json({ error: err.message || 'Internal server error' });

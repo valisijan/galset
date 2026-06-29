@@ -317,8 +317,8 @@ async function createAd(req, res) {
                     where: (0, drizzle_orm_1.and)((0, drizzle_orm_1.eq)(schema_1.transactions.walletId, updatedWallet.id), (0, drizzle_orm_1.eq)(schema_1.transactions.description, 'Bonus za prvi oglas')),
                 });
                 if (!bonusTransaction) {
-                    await db_1.db.update(schema_1.wallets).set({ balance: updatedWallet.balance + 50 }).where((0, drizzle_orm_1.eq)(schema_1.wallets.id, updatedWallet.id));
-                    await db_1.db.insert(schema_1.transactions).values({ walletId: updatedWallet.id, amount: 50, type: 'DEPOSIT', description: 'Bonus za prvi oglas' });
+                    await db_1.db.update(schema_1.wallets).set({ balance: updatedWallet.balance + 100 }).where((0, drizzle_orm_1.eq)(schema_1.wallets.id, updatedWallet.id));
+                    await db_1.db.insert(schema_1.transactions).values({ walletId: updatedWallet.id, amount: 100, type: 'DEPOSIT', description: 'Bonus za prvi oglas' });
                 }
             }
         }
@@ -563,6 +563,7 @@ async function updateAd(req, res) {
             adAttributes.condition = condition || null;
         }
         updateData.attributes = adAttributes;
+        updateData.updatedAt = new Date();
         let lat, lng;
         const geoAddress = finalAddress || currentAd.address;
         const geoCity = city || currentAd.city;

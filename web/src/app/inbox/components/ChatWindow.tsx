@@ -882,21 +882,6 @@ export default function ChatWindow({ chatId }: { chatId: string }) {
     setChat(prev => prev.filter(m => m.id !== msgId));
 
     try {
-      if (content && content.startsWith("[AUDIO:")) {
-        const audioMatch = content.match(/^\[AUDIO:(.+?)\|(\d+)\]$/);
-        if (audioMatch) {
-          const audioUrl = audioMatch[1];
-          const urlParts = audioUrl.split('/public/audios/');
-          if (urlParts.length > 1) {
-            const filename = urlParts[1];
-            const { error } = await supabase.storage.from('audios').remove([filename]);
-            if (error) {
-              console.error("Failed to delete audio from Supabase storage:", error);
-            }
-          }
-        }
-      }
-
       const headers: Record<string, string> = {};
       if (sessionToken) {
         headers["Authorization"] = `Bearer ${sessionToken}`;

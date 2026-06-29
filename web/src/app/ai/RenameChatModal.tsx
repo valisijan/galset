@@ -121,7 +121,7 @@ export default function RenameChatModal({ isOpen, onClose, onConfirm, currentTit
                                 <button
                                     type="button"
                                     onClick={onClose}
-                                    className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-white font-medium transition-all duration-200 cursor-pointer text-base"
+                                    className="w-full py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
                                 >
                                     Otkaži
                                 </button>

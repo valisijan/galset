@@ -8,7 +8,8 @@
     "sync": "node ../scripts/sync-shared.js",
     "dev": "npm run sync && ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/server.ts",
     "build": "npm run sync && tsc && tsc-alias && node -e \"const fs = require('fs'); try { fs.cpSync('src/emails', 'dist/emails', { recursive: true }); } catch (e) {}\"",
-    "email": "email dev --dir src/emails"
+    "email": "email dev --dir src/emails",
+    "db:rls": "ts-node src/scripts/setup-rls.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

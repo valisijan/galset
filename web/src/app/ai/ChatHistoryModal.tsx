@@ -172,7 +172,7 @@ export default function ChatHistoryModal({
                                                         initial={{ opacity: 0, scale: 0.95, y: menuDirection === "up" ? 5 : -5 }}
                                                         animate={{ opacity: 1, scale: 1, y: 0 }}
                                                         exit={{ opacity: 0, scale: 0.95, y: menuDirection === "up" ? 5 : -5 }}
-                                                        className={`absolute right-0 ${menuDirection === "up" ? "bottom-7" : "top-8"} w-36 bg-[#3a3a3c] border border-bg-4 rounded-2xl p-1 shadow-xl z-50`}
+                                                        className={`absolute right-0 ${menuDirection === "up" ? "bottom-7" : "top-8"} w-36 bg-bg-3 border border-bg-4 rounded-2xl p-1 shadow-xl z-50`}
                                                     >
                                                         <button
                                                             onClick={(e) => {
@@ -180,7 +180,7 @@ export default function ChatHistoryModal({
                                                                 onRenameSession(session.id, session.title);
                                                                 setMenuOpenId(null);
                                                             }}
-                                                            className="w-full text-left px-3 py-2 rounded-xl text-text-main hover:bg-white/10 flex items-center gap-2 text-sm cursor-pointer transition-colors"
+                                                            className="w-full text-left px-3 py-2 rounded-xl text-text-main hover:bg-bg-4 flex items-center gap-2 text-sm cursor-pointer transition-colors"
                                                         >
                                                             <Pen className="w-3.5 h-3.5" /> Preimenuj
                                                         </button>

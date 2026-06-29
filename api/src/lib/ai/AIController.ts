@@ -1,8 +1,35 @@
 // @ts-nocheck
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { db } from "@/lib/db";
-import { ads } from "@/lib/db/schema";
-import { eq, ilike, and, lte, or, SQL, gte, sql } from "drizzle-orm";
+import { ads, categories } from "@/lib/db/schema";
+import { eq, ilike, and, lte, or, SQL, gte, sql, inArray } from "drizzle-orm";
+import { getCategoriesTreeCached } from "@/routes/categories";
+
+function getAllChildSlugs(slug: string, categoriesList: any[]): string[] {
+  let slugs: string[] = [];
+  const findAndAdd = (items: any[]): boolean => {
+    for (const item of items) {
+      const currentSlug = item.slug || item.subslug || item.childslug;
+      if (currentSlug === slug) {
+        const collectSlugs = (node: any) => {
+          const s = node.slug || node.subslug || node.childslug;
+          if (s) slugs.push(s);
+          const children = node.subcategories || node.children || [];
+          children.forEach(collectSlugs);
+        };
+        collectSlugs(item);
+        return true;
+      }
+      const children = item.subcategories || item.children;
+      if (children && findAndAdd(children)) return true;
+    }
+    return false;
+  };
+  findAndAdd(categoriesList);
+  if (slugs.length === 0) return [slug];
+  return slugs;
+}
+
 
 export class AIController {
     private genAI: GoogleGenerativeAI;
@@ -127,6 +154,38 @@ Poruka korisnika: "${userMessage}"`;
     public async searchAds(params: any, originalMessage: string) {
         console.log("[AIController] 🔍 Pokrećem paralelnu višeslojnu pretragu...");
 
+        // Resolve category slugs if params.kategorija is provided
+        let categorySlugs: string[] = [];
+        if (params.kategorija) {
+            // Find categories in DB that match the name or slug
+            const matchedCats = await db.select({ slug: categories.slug })
+                .from(categories)
+                .where(or(
+                    sql`unaccent(${categories.name}) ILIKE unaccent(${`%${params.kategorija}%`})`,
+                    sql`unaccent(${categories.slug}) ILIKE unaccent(${`%${params.kategorija}%`})`
+                ));
+            
+            if (matchedCats.length > 0) {
+                try {
+                    const categoriesList = await getCategoriesTreeCached();
+                    const allSlugsSet = new Set<string>();
+                    for (const cat of matchedCats) {
+                        const childSlugs = getAllChildSlugs(cat.slug, categoriesList);
+                        childSlugs.forEach(slug => allSlugsSet.add(slug));
+                    }
+                    categorySlugs = Array.from(allSlugsSet);
+                } catch (catErr) {
+                    console.error("[AIController] Error resolving category tree:", catErr);
+                    categorySlugs = matchedCats.map(c => c.slug);
+                }
+            }
+        }
+
+        const preciseParams = {
+            ...params,
+            categorySlugs,
+        };
+
         // Sloj 1 (precizan) i Sloj 2 (labav) — paralelno
         const looseParams = {
             // Zadrži samo tekstualne i cenovne filtere, bez attr filtera
@@ -135,14 +194,14 @@ Poruka korisnika: "${userMessage}"`;
             // tip_vozila/karoserija kao kljucna rec da bude u text search
             kljucne_reci: [params.kljucne_reci, params.tip_vozila, params.karoserija]
                 .filter(Boolean).join(" ") || null,
-            kategorija: params.kategorija,
+            categorySlugs,
             grad: params.grad,
             max_cena: params.max_cena,
             min_cena: params.min_cena,
         };
 
         const [precizni, labavi] = await Promise.all([
-            this._executeSearch(params),
+            this._executeSearch(preciseParams),
             this._executeSearch(looseParams),
         ]);
 
@@ -202,8 +261,13 @@ Poruka korisnika: "${userMessage}"`;
         const conditions: SQL[] = [eq(ads.status, "ACTIVE")];
 
         // --- Osnovno ---
-        if (p.kategorija) conditions.push(ilike(ads.category, `%${p.kategorija}%`));
-        if (p.grad) conditions.push(ilike(ads.city, `%${p.grad}%`));
+        if (p.categorySlugs && p.categorySlugs.length > 0) {
+            conditions.push(inArray(ads.category, p.categorySlugs));
+        } else if (p.kategorija) {
+            conditions.push(sql`unaccent(${ads.category}) ILIKE unaccent(${`%${p.kategorija}%`})` as SQL);
+        }
+
+        if (p.grad) conditions.push(sql`unaccent(${ads.city}) ILIKE unaccent(${`%${p.grad}%`})` as SQL);
         if (p.max_cena) conditions.push(lte(ads.price, p.max_cena));
         if (p.min_cena) conditions.push(gte(ads.price, p.min_cena));
 
@@ -227,11 +291,11 @@ Poruka korisnika: "${userMessage}"`;
         if (karoserija) {
             const kLike = `%${karoserija}%`;
             conditions.push(or(
-                ilike(ads.title, kLike),
-                ilike(ads.description, kLike),
-                sql`${ads.attributes}->>'body' ILIKE ${kLike}`,
-                sql`${ads.attributes}->>'type' ILIKE ${kLike}`,
-                sql`${ads.attributes}->>'karoserija' ILIKE ${kLike}`
+                sql`unaccent(${ads.title}) ILIKE unaccent(${kLike})`,
+                sql`unaccent(${ads.description}) ILIKE unaccent(${kLike})`,
+                sql`unaccent(${ads.attributes}->>'body') ILIKE unaccent(${kLike})`,
+                sql`unaccent(${ads.attributes}->>'type') ILIKE unaccent(${kLike})`,
+                sql`unaccent(${ads.attributes}->>'karoserija') ILIKE unaccent(${kLike})`
             ) as SQL);
         }
 
@@ -255,10 +319,10 @@ Poruka korisnika: "${userMessage}"`;
         if (boja) {
             const bojaLike = `%${boja}%`;
             conditions.push(or(
-                ilike(ads.title, bojaLike),
-                ilike(ads.description, bojaLike),
-                sql`${ads.attributes}->>'color' ILIKE ${bojaLike}`,
-                sql`${ads.attributes}->>'boja' ILIKE ${bojaLike}`
+                sql`unaccent(${ads.title}) ILIKE unaccent(${bojaLike})`,
+                sql`unaccent(${ads.description}) ILIKE unaccent(${bojaLike})`,
+                sql`unaccent(${ads.attributes}->>'color') ILIKE unaccent(${bojaLike})`,
+                sql`unaccent(${ads.attributes}->>'boja') ILIKE unaccent(${bojaLike})`
             ) as SQL);
         }
 
@@ -360,11 +424,12 @@ Poruka korisnika: "${userMessage}"`;
         if (searchTerms.length > 0) {
             const textConditions: SQL[] = [];
             for (const term of searchTerms) {
+                const termLike = `%${term}%`;
                 textConditions.push(or(
-                    ilike(ads.title, `%${term}%`),
-                    ilike(ads.description, `%${term}%`),
-                    ilike(ads.category, `%${term}%`),
-                    ilike(ads.city, `%${term}%`)
+                    sql`unaccent(${ads.title}) ILIKE unaccent(${termLike})`,
+                    sql`unaccent(${ads.description}) ILIKE unaccent(${termLike})`,
+                    sql`unaccent(${ads.category}) ILIKE unaccent(${termLike})`,
+                    sql`unaccent(${ads.city}) ILIKE unaccent(${termLike})`
                 ) as SQL);
             }
             if (textConditions.length > 0) {

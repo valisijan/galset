@@ -27,7 +27,7 @@ async function setupTrigger() {
     BEGIN
       -- Generate base username from metadata or email
       base_username := coalesce(new.raw_user_meta_data->>'username', split_part(new.email, '@', 1));
-      base_username := regexp_replace(lower(base_username), '[^a-z0-9_]', '_', 'g');
+      base_username := regexp_replace(lower(base_username), '[^a-z0-9_.]', '_', 'g');
       
       IF base_username = '' THEN
         base_username := 'user';
@@ -70,12 +70,12 @@ async function setupTrigger() {
 
       -- Insert into public."Wallet"
       INSERT INTO public."Wallet" ("userId", balance, "createdAt", "updatedAt")
-      VALUES (new_user_id, 100, now(), now())
+      VALUES (new_user_id, 1000, now(), now())
       RETURNING id INTO new_wallet_id;
 
       -- Insert into public."Transaction"
       INSERT INTO public."Transaction" ("walletId", amount, type, description, "createdAt")
-      VALUES (new_wallet_id, 100, 'DEPOSIT', 'Dobrodošli bonus - 100 kredita na poklon!', now());
+      VALUES (new_wallet_id, 1000, 'DEPOSIT', 'Dobrodošli bonus - 1000 kredita na poklon!', now());
 
       -- Insert into public."NotificationPreference"
       INSERT INTO public."NotificationPreference" ("userId", messages, "expiredAds", "expiredPromotions", "followedAds", "newFollowers", "newReviews", "updatedAt")
