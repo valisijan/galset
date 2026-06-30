@@ -51,15 +51,15 @@ router.put('/', requireAuth, async (req: Request, res: Response) => {
   if (data.profileImg !== undefined) {
     const { originalTempImageId, cropTempImageId } = body as { originalTempImageId?: number; cropTempImageId?: number };
 
-    await db.update(tempImages).set({ isPublished: false }).where(
-      and(eq(tempImages.userId, userId), eq(tempImages.isPublished, true), inArray(tempImages.imageType, ['profile_original', 'profile_crop']))
+    await db.update(tempImages).set({ state: 'unpublished' }).where(
+      and(eq(tempImages.userId, userId), eq(tempImages.state, 'published'), inArray(tempImages.imageType, ['profile_original', 'profile_crop']))
     );
 
     const newIds: number[] = [];
     if (originalTempImageId) newIds.push(originalTempImageId);
     if (cropTempImageId) newIds.push(cropTempImageId);
     if (newIds.length > 0) {
-      await db.update(tempImages).set({ isPublished: true }).where(and(eq(tempImages.userId, userId), inArray(tempImages.id, newIds)));
+      await db.update(tempImages).set({ state: 'published' }).where(and(eq(tempImages.userId, userId), inArray(tempImages.id, newIds)));
     }
   }
 
@@ -122,6 +122,9 @@ router.delete('/', requireAuth, async (req: Request, res: Response) => {
     // Update reviews
     await db.update(reviews).set({ reviewerId: specialUserId }).where(eq(reviews.reviewerId, userId));
     await db.update(reviews).set({ userId: specialUserId }).where(eq(reviews.userId, userId));
+
+    // Set all user's images in TempImage to 'unpublished' before deleting the user
+    await db.update(tempImages).set({ state: 'unpublished' }).where(eq(tempImages.userId, userId));
 
     // 3. Delete the user from users table (cascading deletes will handle ads, wishlists, wallet, transaction, aichats, aimessages, etc.)
     await db.delete(users).where(eq(users.id, userId));

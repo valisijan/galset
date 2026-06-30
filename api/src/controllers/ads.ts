@@ -77,10 +77,23 @@ export async function saveDraft(req: Request, res: Response) {
       images: images || [],
       attributes: finalAttributes,
       userId,
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
     };
 
     if (draft) {
+      const oldImages = draft.images || [];
+      const newImages = values.images || [];
+      const removedImages = oldImages.filter((img) => !newImages.includes(img));
+      if (removedImages.length > 0) {
+        try {
+          const matchingTempImages = await db.query.tempImages.findMany({ where: inArray(tempImages.url, removedImages), columns: { id: true } });
+          if (matchingTempImages.length > 0) {
+            await db.update(tempImages).set({ state: 'unpublished' }).where(inArray(tempImages.id, matchingTempImages.map((t) => t.id)));
+          }
+        } catch (err) { console.error('Failed to set removed draft images to unpublished:', err); }
+      }
+
       const [updated] = await db.update(drafts)
         .set(values)
         .where(eq(drafts.id, draft.id))
@@ -107,6 +120,26 @@ export async function deleteDraft(req: Request, res: Response) {
     const userId = req.user!.id;
     const { id } = req.query;
     const draftId = id ? parseInt(id as string) : null;
+
+    // Pronađi draftove da bismo dobili njihove slike i prebacili ih u unpublished
+    const draftsToUpdate = await db.select({ images: drafts.images }).from(drafts).where(
+      draftId 
+        ? and(eq(drafts.userId, userId), eq(drafts.id, draftId))
+        : eq(drafts.userId, userId)
+    );
+
+    const imageUrls: string[] = [];
+    draftsToUpdate.forEach(d => {
+      if (d.images && Array.isArray(d.images)) {
+        d.images.forEach(url => imageUrls.push(url));
+      }
+    });
+
+    if (imageUrls.length > 0) {
+      await db.update(tempImages)
+        .set({ state: 'unpublished' })
+        .where(inArray(tempImages.url, imageUrls));
+    }
 
     if (draftId) {
       await db.delete(drafts).where(and(eq(drafts.userId, userId), eq(drafts.id, draftId)));
@@ -322,7 +355,7 @@ export async function createAd(req: Request, res: Response) {
         const matchingTempImages = await db.query.tempImages.findMany({ where: inArray(tempImages.url, images), columns: { id: true } });
         const idsToUpdate = new Set(matchingTempImages.map((t) => t.id));
         if (imageTempIds && Array.isArray(imageTempIds)) imageTempIds.forEach((id: number) => idsToUpdate.add(id));
-        if (idsToUpdate.size > 0) await db.update(tempImages).set({ isPublished: true }).where(inArray(tempImages.id, Array.from(idsToUpdate)));
+        if (idsToUpdate.size > 0) await db.update(tempImages).set({ state: 'published' }).where(inArray(tempImages.id, Array.from(idsToUpdate)));
       } catch (err) { console.error('Failed to update temp images status:', err); }
     }
 
@@ -439,7 +472,7 @@ export async function deleteAd(req: Request, res: Response) {
       if (ad.images && ad.images.length > 0) {
         const matchingTempImages = await db.query.tempImages.findMany({ where: inArray(tempImages.url, ad.images), columns: { id: true } });
         if (matchingTempImages.length > 0) {
-          await db.update(tempImages).set({ isPublished: false }).where(inArray(tempImages.id, matchingTempImages.map((t) => t.id)));
+          await db.update(tempImages).set({ state: 'unpublished' }).where(inArray(tempImages.id, matchingTempImages.map((t) => t.id)));
         }
       }
     } catch (tempErr) { console.error('Failed to update temp images on delete:', tempErr); }
@@ -488,6 +521,19 @@ export async function updateAd(req: Request, res: Response) {
     const currentAd = await db.query.ads.findFirst({ where: eq(ads.id, id) });
     if (!currentAd) {
       return res.status(404).json({ error: 'Oglas nije pronađen.' });
+    }
+
+    if (images !== undefined && Array.isArray(images)) {
+      const oldImages = currentAd.images || [];
+      const removedImages = oldImages.filter((img) => !images.includes(img));
+      if (removedImages.length > 0) {
+        try {
+          const matchingTempImages = await db.query.tempImages.findMany({ where: inArray(tempImages.url, removedImages), columns: { id: true } });
+          if (matchingTempImages.length > 0) {
+            await db.update(tempImages).set({ state: 'unpublished' }).where(inArray(tempImages.id, matchingTempImages.map((t) => t.id)));
+          }
+        } catch (err) { console.error('Failed to set removed images to unpublished:', err); }
+      }
     }
 
     // Wallet & Pricing Check
@@ -685,7 +731,7 @@ export async function updateAd(req: Request, res: Response) {
           matchingTempImages.forEach((t) => idsToUpdate.add(t.id));
         }
         if (imageTempIds && Array.isArray(imageTempIds)) imageTempIds.forEach((id: number) => idsToUpdate.add(id));
-        if (idsToUpdate.size > 0) await db.update(tempImages).set({ isPublished: true }).where(inArray(tempImages.id, Array.from(idsToUpdate)));
+        if (idsToUpdate.size > 0) await db.update(tempImages).set({ state: 'published' }).where(inArray(tempImages.id, Array.from(idsToUpdate)));
       } catch (err) { console.error('Failed to update temp images status:', err); }
     }
 

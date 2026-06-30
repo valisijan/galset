@@ -71,12 +71,13 @@ router.post('/temp', requireAuth, upload.single('file'), async (req: Request, re
 
     const { data: { publicUrl } } = supabase.storage.from('images').getPublicUrl(filePath);
 
+    const type = uploadType || 'ad';
     const [tempImage] = await db.insert(tempImages).values({
       fileId: filePath,
       url: publicUrl,
       userId,
-      isPublished: false,
-      imageType: uploadType || null,
+      state: type === 'ad' ? 'draft' : 'unpublished',
+      imageType: type,
     }).returning();
 
     return res.json({ url: publicUrl, fileId: filePath, tempImageId: tempImage.id });

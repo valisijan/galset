@@ -101,6 +101,7 @@ export const drafts = pgTable("Draft", {
   userId: integer("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
   updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+  expiresAt: timestamp("expiresAt", { mode: "date" }),
 }, (table) => [
   index("Draft_userId_idx").on(table.userId),
 ]);
@@ -109,8 +110,8 @@ export const tempImages = pgTable("TempImage", {
   id: serial("id").primaryKey(),
   fileId: text("fileId").notNull(),
   url: text("url").notNull(),
-  userId: integer("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-  isPublished: boolean("isPublished").notNull().default(false),
+  userId: integer("userId").references(() => users.id, { onDelete: 'set null' }),
+  state: text("state").$type<"published" | "draft" | "unpublished">().notNull().default("unpublished"),
   imageType: text("imageType"),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
 });
@@ -131,7 +132,8 @@ export const chats = pgTable("Chat", {
   updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
 }, (t) => [
-  uniqueIndex("Chat_user1Id_user2Id_adId_key").on(t.user1Id, t.user2Id, t.adId)
+  uniqueIndex("Chat_user1Id_user2Id_adId_key").on(t.user1Id, t.user2Id, t.adId),
+  index("Chat_adId_idx").on(t.adId)
 ]);
 
 export const messages = pgTable("Message", {
@@ -155,7 +157,8 @@ export const wishlists = pgTable("Wishlist", {
   adId: integer("adId").notNull().references(() => ads.id, { onDelete: "cascade" }),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
 }, (t) => [
-  uniqueIndex("Wishlist_userId_adId_key").on(t.userId, t.adId)
+  uniqueIndex("Wishlist_userId_adId_key").on(t.userId, t.adId),
+  index("Wishlist_adId_idx").on(t.adId)
 ]);
 
 export const reviews = pgTable("Review", {
@@ -245,7 +248,8 @@ export const adViews = pgTable("AdView", {
   updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
   createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
 }, (t) => [
-  uniqueIndex("AdView_userId_adId_key").on(t.userId, t.adId)
+  uniqueIndex("AdView_userId_adId_key").on(t.userId, t.adId),
+  index("AdView_adId_idx").on(t.adId)
 ]);
 
 

@@ -71,7 +71,7 @@ export default function AdScrollSection({
   const panelBItems = items.slice(4, 8);
 
   const ShowMoreCard = () => (
-    <div className="rounded-3xl border border-bg-3 bg-bg-2 hover:border-[#555] hover:bg-bg-3 transition-all h-full min-h-[300px] flex items-stretch">
+    <div className="rounded-3xl border border-bg-3 bg-bg-2 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all h-full min-h-[300px] flex items-stretch">
       <Link
         href={apiHref}
         className="flex flex-col items-center justify-center p-6 text-center w-full group active:scale-[0.98] transition-all cursor-pointer"

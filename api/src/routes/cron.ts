@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { db } from '@/lib/db';
 import { tempImages, users, adPromotions, ads, notifications, drafts } from '@/lib/db/schema';
-import { and, eq, lt, isNotNull, isNull, ne } from 'drizzle-orm';
+import { and, eq, lt, isNotNull, isNull, ne, inArray } from 'drizzle-orm';
 import { supabase } from '@/lib/supabase';
 import { createNotification } from '@/lib/notification-helpers';
 
@@ -19,21 +19,63 @@ router.get('/cleanup', async (req: Request, res: Response) => {
 
     const now = new Date();
 
-    // Fetch all active draft image URLs so they are not deleted
-    const activeDrafts = await db.select({ images: drafts.images }).from(drafts);
-    const draftImageUrls = new Set<string>();
-    activeDrafts.forEach(d => {
-      if (d.images && Array.isArray(d.images)) {
-        d.images.forEach(url => draftImageUrls.add(url));
+    // 1. Cleanup expired drafts (older than 7 days based on expiresAt)
+    let deletedDraftsCount = 0;
+    try {
+      const expiredDrafts = await db.select().from(drafts).where(lt(drafts.expiresAt, now));
+      if (expiredDrafts.length > 0) {
+        const expiredImageUrls: string[] = [];
+        expiredDrafts.forEach(d => {
+          if (d.images && Array.isArray(d.images)) {
+            d.images.forEach(url => expiredImageUrls.push(url));
+          }
+        });
+        if (expiredImageUrls.length > 0) {
+          await db.update(tempImages).set({ state: 'unpublished' }).where(inArray(tempImages.url, expiredImageUrls));
+        }
+        await db.delete(drafts).where(lt(drafts.expiresAt, now));
+        deletedDraftsCount = expiredDrafts.length;
       }
-    });
+      console.log(`[CRON] Cleaned up ${deletedDraftsCount} stale drafts`);
+    } catch (draftErr) {
+      console.error('[CRON] Failed to cleanup stale drafts:', draftErr);
+    }
 
-    // 1. Cleanup stale temp images
-    const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    const staleImages = await db.select().from(tempImages).where(and(eq(tempImages.isPublished, false), lt(tempImages.createdAt, cutoff)));
+    // 1b. Safety Net: Cleanup stale draft images older than 7 days (that were removed from drafts)
+    try {
+      const draftCutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      const staleDraftImagesResult = await db.update(tempImages)
+        .set({ state: 'unpublished' })
+        .where(and(eq(tempImages.state, 'draft'), lt(tempImages.createdAt, draftCutoff)));
+      console.log(`[CRON] Marked ${staleDraftImagesResult.rowCount || 0} stale draft images as unpublished`);
+    } catch (staleDraftErr) {
+      console.error('[CRON] Failed to cleanup stale draft images:', staleDraftErr);
+    }
 
-    // Filter staleImages to exclude any image URL currently stored in active drafts
-    const imagesToDelete = staleImages.filter(img => !draftImageUrls.has(img.url));
+    // 2. Cleanup expired ads (where deletedAt is in the past)
+    let deletedAdsCount = 0;
+    try {
+      const expiredAds = await db.select().from(ads).where(lt(ads.deletedAt, now));
+      if (expiredAds.length > 0) {
+        const expiredAdImageUrls: string[] = [];
+        expiredAds.forEach(ad => {
+          if (ad.images && Array.isArray(ad.images)) {
+            ad.images.forEach(url => expiredAdImageUrls.push(url));
+          }
+        });
+        if (expiredAdImageUrls.length > 0) {
+          await db.update(tempImages).set({ state: 'unpublished' }).where(inArray(tempImages.url, expiredAdImageUrls));
+        }
+        await db.delete(ads).where(lt(ads.deletedAt, now));
+        deletedAdsCount = expiredAds.length;
+      }
+      console.log(`[CRON] Cleaned up ${deletedAdsCount} expired ads`);
+    } catch (adErr) {
+      console.error('[CRON] Failed to cleanup expired ads:', adErr);
+    }
+
+    // 3. Cleanup stale temp images (all unpublished images)
+    const imagesToDelete = await db.select().from(tempImages).where(eq(tempImages.state, 'unpublished'));
 
     let deletedImageCount = 0;
     const imageErrors: string[] = [];
@@ -193,27 +235,8 @@ router.get('/cleanup', async (req: Request, res: Response) => {
       console.error('[CRON] Failed to delete read notifications:', notifErr);
     }
 
-    // 6. Cleanup drafts older than 7 days
-    let deletedDraftsCount = 0;
-    try {
-      const draftCutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-      const deleteResult = await db.delete(drafts).where(lt(drafts.createdAt, draftCutoff));
-      deletedDraftsCount = deleteResult.rowCount || 0;
-      console.log(`[CRON] Cleaned up ${deletedDraftsCount} stale drafts`);
-    } catch (draftErr) {
-      console.error('[CRON] Failed to cleanup stale drafts:', draftErr);
-    }
+    // 6. Cleanup drafts and 8. Cleanup expired ads were moved to the beginning of the cron job to correctly mark images as unpublished before cleanup.
 
-
-    // 8. Cleanup expired ads (where deletedAt is in the past)
-    let deletedAdsCount = 0;
-    try {
-      const deleteResult = await db.delete(ads).where(lt(ads.deletedAt, now));
-      deletedAdsCount = deleteResult.rowCount || 0;
-      console.log(`[CRON] Cleaned up ${deletedAdsCount} expired ads`);
-    } catch (adErr) {
-      console.error('[CRON] Failed to cleanup expired ads:', adErr);
-    }
 
     return res.json({
       images: { deleted: deletedImageCount, total: imagesToDelete.length, errors: imageErrors.length > 0 ? imageErrors : undefined },

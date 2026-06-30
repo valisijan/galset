@@ -14,6 +14,7 @@ router.post('/', requireAuth, upload.single('file'), async (req: Request, res: R
     const userId = req.user!.id;
     const file = req.file;
     const { fileId, url, imageType } = req.body;
+    const type = imageType || req.body.type || 'ad';
 
     // Case 1: Already uploaded directly on frontend
     if (fileId && url) {
@@ -21,8 +22,8 @@ router.post('/', requireAuth, upload.single('file'), async (req: Request, res: R
         fileId,
         url,
         userId,
-        isPublished: false,
-        imageType: imageType || null,
+        state: type === 'ad' ? 'draft' : 'unpublished',
+        imageType: type,
       }).returning();
       return res.json({ url, fileId, tempImageId: tempImage.id });
     }
@@ -32,7 +33,6 @@ router.post('/', requireAuth, upload.single('file'), async (req: Request, res: R
       return res.status(400).json({ error: 'No file or file details provided' });
     }
 
-    const type = imageType || req.body.type || 'ad';
     let targetFolder = 'uploads';
     if (type.startsWith('profile') || type === 'user') targetFolder = 'users';
     else if (type === 'ad') targetFolder = 'ads';
@@ -56,7 +56,7 @@ router.post('/', requireAuth, upload.single('file'), async (req: Request, res: R
       fileId: filePath,
       url: publicUrl,
       userId,
-      isPublished: false,
+      state: type === 'ad' ? 'draft' : 'unpublished',
       imageType: type,
     }).returning();
 

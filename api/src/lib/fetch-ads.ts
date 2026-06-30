@@ -211,6 +211,9 @@ export async function fetchAdsServer(searchParams: any) {
     ];
   }
 
+  // Statistika se računa samo ako je prijavljeni korisnik ujedno i vlasnik oglasa (npr. na /my-ads stranici)
+  const includeStats = userId && currentUserId && Number(userId) === Number(currentUserId);
+
   const [fetchedAds, totalResult] = await Promise.all([
     db.query.ads.findMany({
       where,
@@ -219,9 +222,15 @@ export async function fetchAdsServer(searchParams: any) {
       limit,
       columns: { id: true, title: true, status: true, price: true, currency: true, isPriceOnRequest: true, city: true, createdAt: true, images: true, userId: true, isReserved: true, attributes: true, category: true },
       extras: {
-        viewscount: sql<number>`(SELECT count(*) FROM "AdView" WHERE "AdView"."adId" = "ads"."id")::int`.as('viewscount'),
-        wishlistcount: sql<number>`(SELECT count(*) FROM "Wishlist" WHERE "Wishlist"."adId" = "ads"."id")::int`.as('wishlistcount'),
-        messagescount: sql<number>`(SELECT count(*) FROM "Chat" WHERE "Chat"."adId" = "ads"."id")::int`.as('messagescount'),
+        viewscount: includeStats
+          ? sql<number>`(SELECT count(*) FROM "AdView" WHERE "AdView"."adId" = "ads"."id")::int`.as('viewscount')
+          : sql<number>`0`.as('viewscount'),
+        wishlistcount: includeStats
+          ? sql<number>`(SELECT count(*) FROM "Wishlist" WHERE "Wishlist"."adId" = "ads"."id")::int`.as('wishlistcount')
+          : sql<number>`0`.as('wishlistcount'),
+        messagescount: includeStats
+          ? sql<number>`(SELECT count(*) FROM "Chat" WHERE "Chat"."adId" = "ads"."id")::int`.as('messagescount')
+          : sql<number>`0`.as('messagescount'),
       },
       with: {
         user: { columns: { id: true, fullName: true, username: true, profileImg: true } },
