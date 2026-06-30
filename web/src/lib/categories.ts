@@ -49,10 +49,6 @@ export function clearCategoriesCache() {
 }
 
 export async function getCategoriesTreeCached() {
-  const now = Date.now();
-  if (!cachedCategoriesTree || now > cacheExpiry) {
-    cachedCategoriesTree = await getCategoriesTree();
-    cacheExpiry = now + CACHE_TTL;
-  }
-  return cachedCategoriesTree;
+  // Always query the database to ensure immediate updates
+  return getCategoriesTree();
 }

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, Search, Sparkles } from "lucide-react";
 import SearchBar from "@/components/SearchBar";
 
 interface Category {
@@ -187,7 +186,7 @@ export default function CategoryDrilldownPage() {
                                         <Link
                                             key={subSlug || sub.name}
                                             href={href}
-                                            className="group flex items-center min-h-[64px] md:min-h-[80px] px-6 md:px-8 rounded-3xl bg-bg-2 border border-bg-3 transition-all cursor-pointer"
+                                            className="group flex items-center min-h-[64px] md:min-h-[80px] px-6 md:px-8 rounded-3xl bg-bg-2 border border-bg-3 hover:border-gray-400 dark:hover:border-[#555] hover:bg-bg-3 transition-all cursor-pointer"
                                         >
                                             <div className="flex-1 min-w-0">
                                                 <span className="text-text-main text-lg font-medium transition group-hover:text-[#6366f1] block truncate">

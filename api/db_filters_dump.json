@@ -5620,52 +5620,136 @@
         "slug": "serbian"
       },
       {
+        "name": "Albanski",
+        "slug": "albanian"
+      },
+      {
+        "name": "Arapski",
+        "slug": "arabic"
+      },
+      {
+        "name": "Bosanski",
+        "slug": "bosnian"
+      },
+      {
+        "name": "Bugarski",
+        "slug": "bulgarian"
+      },
+      {
+        "name": "Crnogorski",
+        "slug": "montenegrin"
+      },
+      {
+        "name": "Češki",
+        "slug": "czech"
+      },
+      {
+        "name": "Danski",
+        "slug": "danish"
+      },
+      {
         "name": "Engleski",
         "slug": "english"
       },
       {
-        "name": "Nemački",
-        "slug": "german"
-      },
-      {
-        "name": "Ruski",
-        "slug": "russian"
+        "name": "Finski",
+        "slug": "finnish"
       },
       {
         "name": "Francuski",
         "slug": "french"
       },
       {
-        "name": "Italijanski",
-        "slug": "italian"
-      },
-      {
-        "name": "Španski",
-        "slug": "spanish"
-      },
-      {
-        "name": "Turski",
-        "slug": "turkish"
-      },
-      {
-        "name": "Mađarski",
-        "slug": "hungarian"
-      },
-      {
-        "name": "Rumunski",
-        "slug": "romanian"
+        "name": "Grčki",
+        "slug": "greek"
       },
       {
         "name": "Holandski",
         "slug": "dutch"
       },
       {
+        "name": "Hrvatski",
+        "slug": "croatian"
+      },
+      {
+        "name": "Italijanski",
+        "slug": "italian"
+      },
+      {
+        "name": "Japanski",
+        "slug": "japanese"
+      },
+      {
         "name": "Kineski",
         "slug": "chinese"
+      },
+      {
+        "name": "Korejski",
+        "slug": "korean"
+      },
+      {
+        "name": "Latinski",
+        "slug": "latin"
+      },
+      {
+        "name": "Mađarski",
+        "slug": "hungarian"
+      },
+      {
+        "name": "Makedonski",
+        "slug": "macedonian"
+      },
+      {
+        "name": "Nemački",
+        "slug": "german"
+      },
+      {
+        "name": "Norveški",
+        "slug": "norwegian"
+      },
+      {
+        "name": "Poljski",
+        "slug": "polish"
+      },
+      {
+        "name": "Portugalski",
+        "slug": "portuguese"
+      },
+      {
+        "name": "Rumunski",
+        "slug": "romanian"
+      },
+      {
+        "name": "Ruski",
+        "slug": "russian"
+      },
+      {
+        "name": "Slovački",
+        "slug": "slovak"
+      },
+      {
+        "name": "Slovenački",
+        "slug": "slovenian"
+      },
+      {
+        "name": "Španski",
+        "slug": "spanish"
+      },
+      {
+        "name": "Švedski",
+        "slug": "swedish"
+      },
+      {
+        "name": "Turski",
+        "slug": "turkish"
+      },
+      {
+        "name": "Ukrajinski",
+        "slug": "ukrainian"
       }
     ],
     "source": null,
-    "isFormRadio": true
+    "isFormRadio": false
   },
   {
     "id": 138,

@@ -1395,7 +1395,7 @@ export default function MarketplaceForm() {
                     peer-focus:-translate-y-2 peer-focus:text-sm
                     ${title.length > 0 || errors.title
                       ? "-translate-y-2 text-sm"
-                      : "translate-y-4 text-gray-300"
+                      : "translate-y-4 text-gray-500 dark:text-gray-400"
                     }
                     ${errors.title ? "text-red-500 peer-focus:text-red-500" : "peer-focus:text-[#6366f1]"}`}
                 >
@@ -1436,7 +1436,7 @@ export default function MarketplaceForm() {
                           peer-focus:-translate-y-2 peer-focus:text-sm
                           ${price.length > 0 || errors.price || toggle
                             ? "-translate-y-2 text-sm"
-                            : "translate-y-4 text-gray-300"
+                            : "translate-y-4 text-gray-500 dark:text-gray-400"
                           }
                           ${errors.price ? "text-red-500 peer-focus:text-red-500" : "peer-focus:text-[#6366f1]"}`}
                       >
@@ -1527,9 +1527,9 @@ export default function MarketplaceForm() {
                                   className={`absolute left-4 pointer-events-none transition-all duration-200 px-1 bg-bg-1
                                     ${state || errors.state
                                       ? "-translate-y-2 top-0 text-sm"
-                                      : "top-1/2 -translate-y-1/2 text-gray-300 text-base"
+                                      : "top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base"
                                     }
-                                    ${errors.state ? "text-red-500" : (state ? "text-[#6366f1]" : "text-gray-300")}`}
+                                    ${errors.state ? "text-red-500" : (state ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400")}`}
                                 >
                                   Stanje
                                 </label>
@@ -1556,9 +1556,9 @@ export default function MarketplaceForm() {
                                   className={`absolute left-4 pointer-events-none transition-all duration-200 px-1 bg-bg-1
                                     ${attributes.seller
                                       ? "-translate-y-2 top-0 text-sm"
-                                      : "top-1/2 -translate-y-1/2 text-gray-300 text-base"
+                                      : "top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base"
                                     }
-                                    ${attributes.seller ? "text-[#6366f1]" : "text-gray-300"}`}
+                                    ${attributes.seller ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400"}`}
                                 >
                                   Oglašivač
                                 </label>
@@ -1638,7 +1638,7 @@ export default function MarketplaceForm() {
                                     peer-focus:-translate-y-2 peer-focus:text-sm
                                     ${displayInput.length > 0 || errors[key] || isFocused
                                           ? "-translate-y-2 text-sm"
-                                          : "translate-y-4 text-gray-300"
+                                          : "translate-y-4 text-gray-500 dark:text-gray-400"
                                         }
                                     ${errors[key] ? "text-red-500 peer-focus:text-red-500" : "peer-focus:text-[#6366f1]"}`}
                                     >
@@ -1764,9 +1764,9 @@ export default function MarketplaceForm() {
                                   className={`absolute left-4 pointer-events-none transition-all duration-200 px-1 bg-bg-1
                                 ${hasValue || isFocused || errors[key]
                                       ? "-translate-y-2 top-0 text-sm"
-                                      : "top-[30px] -translate-y-1/2 text-gray-300 text-base"
+                                      : "top-[30px] -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base"
                                     }
-                                ${errors[key] ? "text-red-500" : (hasValue || isFocused ? "text-[#6366f1]" : "text-gray-300")}`}
+                                ${errors[key] ? "text-red-500" : (hasValue || isFocused ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400")}`}
                                 >
                                   {filter.name || filter.label}
                                 </label>
@@ -1803,9 +1803,9 @@ export default function MarketplaceForm() {
                                 className={`absolute left-4 pointer-events-none transition-all duration-200 px-1 bg-bg-1
                               ${displayLabel || errors[key]
                                     ? "-translate-y-2 top-0 text-sm"
-                                    : "top-[30px] -translate-y-1/2 text-gray-300 text-base"
+                                    : "top-[30px] -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base"
                                   }
-                              ${errors[key] ? "text-red-500" : (displayLabel ? "text-[#6366f1]" : "text-gray-300")}`}
+                              ${errors[key] ? "text-red-500" : (displayLabel ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400")}`}
                               >
                                 {filter.name || filter.label}
                               </label>
@@ -1955,9 +1955,9 @@ export default function MarketplaceForm() {
                       className={`absolute left-4 pointer-events-none transition-all duration-200 px-1 bg-bg-1
                         ${selectedCountry || errors.country
                           ? "-translate-y-2 top-0 text-sm"
-                          : "top-1/2 -translate-y-1/2 text-gray-300 text-base"
+                          : "top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-base"
                         }
-                        ${errors.country ? "text-red-500" : (selectedCountry ? "text-[#6366f1]" : "text-gray-300")}`}
+                        ${errors.country ? "text-red-500" : (selectedCountry ? "text-[#6366f1]" : "text-gray-500 dark:text-gray-400")}`}
                     >
                       Država
                     </label>
@@ -1988,7 +1988,7 @@ export default function MarketplaceForm() {
                         peer-focus:-translate-y-2 peer-focus:text-sm
                         ${cityQuery.length > 0 || errors.city
                           ? "-translate-y-2 text-sm"
-                          : "translate-y-4 text-gray-300 text-base"
+                          : "translate-y-4 text-gray-500 dark:text-gray-400 text-base"
                         }
                         ${errors.city ? "text-red-500 peer-focus:text-red-500" : "peer-focus:text-[#6366f1]"}`}
                     >
@@ -2050,7 +2050,7 @@ export default function MarketplaceForm() {
                         peer-focus:-translate-y-2 peer-focus:text-sm
                         ${street.length > 0
                           ? "-translate-y-2 text-sm"
-                          : "translate-y-4 text-gray-300"
+                          : "translate-y-4 text-gray-500 dark:text-gray-400"
                         }
                         peer-focus:text-[#6366f1]`}
                     >
@@ -2087,7 +2087,7 @@ export default function MarketplaceForm() {
                         peer-focus:-translate-y-2 peer-focus:text-sm
                         ${phone.length > 0
                           ? "-translate-y-2 text-sm"
-                          : "translate-y-4 text-gray-300"
+                          : "translate-y-4 text-gray-500 dark:text-gray-400"
                         }
                         peer-focus:text-[#6366f1]`}
                     >

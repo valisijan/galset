@@ -8352,7 +8352,7 @@
   },
   {
     "id": 1194,
-    "name": "Stripovi / časopisi",
+    "name": "Stripovi / Časopisi",
     "slug": "comics-magazines",
     "icon": null,
     "parentId": 1188
@@ -8361,6 +8361,13 @@
     "id": 1195,
     "name": "Antikvarne / Retke knjige",
     "slug": "antique-books",
+    "icon": null,
+    "parentId": 1188
+  },
+  {
+    "id": 1836,
+    "name": "Rečnici / Leksikoni",
+    "slug": "dictionaries",
     "icon": null,
     "parentId": 1188
   },

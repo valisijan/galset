@@ -133,10 +133,10 @@ export default function FilterOptionsModal({
                         <div className="p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
+                                onClick={onClose}
+                                className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all cursor-pointer"
                             >
-                                Otkaži
+                                Primeni
                             </button>
                         </div>
                     </div>
@@ -188,10 +188,10 @@ export default function FilterOptionsModal({
                         <div className="p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
+                                onClick={onClose}
+                                className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all cursor-pointer"
                             >
-                                Otkaži
+                                Primeni
                             </button>
                         </div>
                     </div>
@@ -229,10 +229,10 @@ export default function FilterOptionsModal({
                         <div className="p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
+                                onClick={onClose}
+                                className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all cursor-pointer"
                             >
-                                Otkaži
+                                Primeni
                             </button>
                         </div>
                     </div>
@@ -286,20 +286,13 @@ export default function FilterOptionsModal({
                                     })}
                             </div>
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2 flex flex-col gap-3">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
                                 onClick={onClose}
                                 className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all cursor-pointer"
                             >
                                 Primeni
-                            </button>
-                            <button
-                                type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
-                            >
-                                Otkaži
                             </button>
                         </div>
                     </div>
@@ -341,20 +334,13 @@ export default function FilterOptionsModal({
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-auto p-6 border-t border-bg-2 bg-bg-2 flex flex-col gap-3">
+                        <div className="mt-auto p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
                                 onClick={onClose}
                                 className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all cursor-pointer"
                             >
                                 Primeni
-                            </button>
-                            <button
-                                type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
-                            >
-                                Otkaži
                             </button>
                         </div>
                     </div>
@@ -408,20 +394,13 @@ export default function FilterOptionsModal({
                                 </div>
                             )}
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2 flex flex-col gap-3">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2">
                             <button
                                 type="button"
                                 onClick={onClose}
                                 className="w-full bg-[#5b42f3] text-white py-3 rounded-full font-bold text-base hover:bg-[#4b35d6] transition-all active:scale-95 cursor-pointer"
                             >
                                 Primeni
-                            </button>
-                            <button
-                                type="button"
-                                onClick={handleCancel}
-                                className="w-full bg-bg-3 hover:bg-bg-4 text-text-main py-3 rounded-full font-medium transition-all text-base cursor-pointer"
-                            >
-                                Otkaži
                             </button>
                         </div>
                     </div>

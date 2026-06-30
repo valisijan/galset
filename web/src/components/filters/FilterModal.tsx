@@ -157,9 +157,9 @@ export default function FilterModal({
                             )}
                             <button
                                 onClick={onClose}
-                                className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-white font-medium transition-all duration-200 cursor-pointer text-base"
+                                className="w-full py-3 rounded-full bg-[#5b42f3] hover:bg-[#4b35d6] text-white font-bold transition-all duration-200 cursor-pointer text-base"
                             >
-                                Otkaži
+                                Primeni
                             </button>
                         </div>
                     </motion.div>
