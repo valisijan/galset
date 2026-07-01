@@ -5340,10 +5340,6 @@
     "filterId": 153
   },
   {
-    "categoryId": 379,
-    "filterId": 154
-  },
-  {
     "categoryId": 386,
     "filterId": 162
   },
@@ -7358,5 +7354,9 @@
   {
     "categoryId": 1836,
     "filterId": 137
+  },
+  {
+    "categoryId": 888,
+    "filterId": 193
   }
 ]

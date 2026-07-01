@@ -120,10 +120,27 @@ export default function MarketplaceForm() {
 
   const hasEnteredChangesRef = useRef(false);
   useEffect(() => {
-    if (title.trim() || price.trim() || (description.trim() && description !== "<br>") || images.length > 0) {
-      hasEnteredChangesRef.current = true;
+    const hasQualifying = !!(
+      title.trim() ||
+      price.trim() ||
+      (description.trim() && description !== "<br>" && description !== "<p><br></p>") ||
+      images.length > 0 ||
+      Object.values(attributes).some(val => {
+        if (val === undefined || val === null || val === "") return false;
+        if (typeof val === "string") return val.trim() !== "";
+        if (typeof val === "number") return true;
+        if (typeof val === "boolean") return val === true;
+        if (typeof val === "object") return Object.keys(val).length > 0;
+        return true;
+      })
+    );
+    hasEnteredChangesRef.current = hasQualifying;
+    if (hasQualifying) {
+      localStorage.setItem("adFlow_hasQualifyingFields", "true");
+    } else {
+      localStorage.removeItem("adFlow_hasQualifyingFields");
     }
-  }, [title, price, description, images]);
+  }, [title, price, description, images, attributes]);
 
   // Toast fires only ONCE per flow session when leaving the flow
   useEffect(() => {
@@ -131,7 +148,10 @@ export default function MarketplaceForm() {
       if (action === "add" && categorySlugRef.current) {
         sessionStorage.setItem("adFlow_restoreSlug", categorySlugRef.current);
       }
-      if (!isRedirectingRef.current && action === "add" && hasEnteredChangesRef.current) {
+      const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
+      sessionStorage.removeItem("adFlow_navigatingInternal");
+      const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
+      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying) {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");

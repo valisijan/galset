@@ -6284,6 +6284,10 @@
         "slug": "transcend"
       },
       {
+        "name": "TwinMos",
+        "slug": "twinmos"
+      },
+      {
         "name": "Ostalo",
         "slug": "other"
       }
@@ -6608,44 +6612,6 @@
       {
         "name": "22+ TB",
         "slug": "22-plus-tb"
-      }
-    ],
-    "source": null,
-    "isFormRadio": true
-  },
-  {
-    "id": 154,
-    "name": "Tip",
-    "slug": "ssd-type",
-    "type": "checkbox-multi",
-    "options": [
-      {
-        "name": "2.5\" SATA",
-        "slug": "sata-2-5-inch"
-      },
-      {
-        "name": "Eksterni SSD",
-        "slug": "external-ssd"
-      },
-      {
-        "name": "M.2 NVMe",
-        "slug": "m2-nvme-gen3"
-      },
-      {
-        "name": "M.2 SATA",
-        "slug": "m2-sata"
-      },
-      {
-        "name": "mSATA",
-        "slug": "msata"
-      },
-      {
-        "name": "PCIe Ekspanziona kartica",
-        "slug": "pcie-card-ssd"
-      },
-      {
-        "name": "Ostalo",
-        "slug": "other"
       }
     ],
     "source": null,

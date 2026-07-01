@@ -156,7 +156,7 @@ export default function FollowingClient({ initialUsers }: { initialUsers: User[]
                                 {search ? "Nismo pronašli korisnike koji odgovaraju pretrazi." : "Još uvek ne pratite nikoga."}
                             </p>
                             {!search && (
-                                <Link href="/search/users" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors">
+                                <Link href="/search/users" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors">
                                     Istraži korisnike
                                 </Link>
                             )}

@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useParams, useSearchParams } from 'next/navigation'
+import { useAuth } from '@/context/AuthContext'
 
 interface AdStepProgressProps {
     currentStep: 1 | 2 | 3
@@ -14,6 +15,7 @@ export default function AdStepProgress({ currentStep }: AdStepProgressProps) {
     const action = params?.action as string || "add";
     const adId = searchParams?.get('adId');
     const query = action === 'edit' && adId ? `?adId=${adId}` : '';
+    const { user } = useAuth();
 
     const [isStep2Valid, setIsStep2Valid] = React.useState(false);
     const [isCategorySelected, setIsCategorySelected] = React.useState(false);
@@ -60,82 +62,84 @@ export default function AdStepProgress({ currentStep }: AdStepProgressProps) {
         { id: 3, label: "Vidljivost", href: `/ad/${action}/promotion${query}`, isUnlocked: isStep2Valid && isCategorySelected },
     ]
 
+    const isLoggedIn = !!user;
+
     return (
-        <div className="w-full max-w-[800px] mx-auto mb-12">
-            <div className="relative flex justify-between">
-                {/* Progress Lines Container */}
-                <div className="absolute top-[11.5px] left-[20px] right-[20px] h-[5px]">
-                    {/* Background Line */}
-                    <div className="absolute inset-0 bg-bg-3" />
+        <div className={`sticky ${isLoggedIn ? "top-[50px] md:top-0" : "top-[50px]"} z-40 w-full bg-gradient-to-b from-bg-1 via-bg-1/90 to-transparent pt-4 pb-8 transition-all duration-300 pointer-events-none`}>
+            <div className="w-full max-w-[800px] mx-auto pointer-events-auto">
+                <div className="relative flex justify-between items-center w-full px-5 md:px-10">
+                    {/* Progress Lines Container */}
+                    <div className="absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-12 md:right-12 h-[5px] z-0">
+                        {/* Background Line */}
+                        <div className="absolute inset-0 bg-bg-3" />
 
-                    {/* Active Line (Line 1-2) */}
-                    <div
-                        className="absolute top-0 left-0 h-full bg-[#5b42f3] hover:bg-[#4b35d6] transition-all duration-300"
-                        style={{
-                            width: "50%",
-                            opacity: currentStep >= 2 ? 1 : 0
-                        }}
-                    />
-                    {/* Active Line (Line 2-3) */}
-                    <div
-                        className="absolute top-0 left-[50%] h-full bg-[#5b42f3] hover:bg-[#4b35d6] transition-all duration-300"
-                        style={{
-                            width: "50%",
-                            opacity: currentStep >= 3 ? 1 : 0
-                        }}
-                    />
-                </div>
+                        {/* Active Line (Line 1-2) */}
+                        <div
+                            className="absolute top-0 left-0 h-full bg-[#5b42f3] hover:bg-[#4b35d6] transition-all duration-300"
+                            style={{
+                                width: "50%",
+                                opacity: currentStep >= 2 ? 1 : 0
+                            }}
+                        />
+                        {/* Active Line (Line 2-3) */}
+                        <div
+                            className="absolute top-0 left-[50%] h-full bg-[#5b42f3] hover:bg-[#4b35d6] transition-all duration-300"
+                            style={{
+                                width: "50%",
+                                opacity: currentStep >= 3 ? 1 : 0
+                            }}
+                        />
+                    </div>
 
-                {steps.map((step) => {
-                    const isPast = step.id < currentStep;
-                    const isCurrent = step.id === currentStep;
-                    const isFuture = step.id > currentStep;
-                    const canNavigate = step.isUnlocked;
+                    {steps.map((step) => {
+                        const isPast = step.id < currentStep;
+                        const isCurrent = step.id === currentStep;
+                        const isFuture = step.id > currentStep;
+                        const canNavigate = step.isUnlocked;
 
-                    const content = (
-                        <div className="relative z-10 flex flex-col items-center group">
-                            <div
-                                className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 border-[5px] ${isCurrent
-                                    ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1]"
-                                    : isPast
-                                        ? "bg-bg-1 border-[#6366f1]"
-                                        : "bg-bg-1 border-bg-3"
-                                    } ${canNavigate ? "cursor-pointer group-hover:scale-110" : "cursor-default"}`}
-                            >
+                        const content = (
+                            <div className="relative z-10 flex flex-col items-center group">
+                                <div
+                                    className={`px-5 py-2 rounded-full text-xs md:text-sm font-bold border-2 transition-all duration-300 flex items-center justify-center ${isCurrent
+                                        ? "bg-[#5b42f3] hover:bg-[#4b35d6] border-[#6366f1] text-white"
+                                        : isPast
+                                            ? "bg-bg-2 hover:bg-bg-3 border-[#6366f1] text-text-main"
+                                            : "bg-bg-2 border-bg-3 text-gray-500"
+                                        } ${canNavigate ? "cursor-pointer group-hover:scale-105" : "cursor-default"}`}
+                                >
+                                    {step.label}
+                                </div>
                             </div>
-                            <span className={`mt-2 text-xs md:text-sm font-bold transition-colors duration-300 ${isCurrent || isPast ? "text-text-main" : "text-gray-500"
-                                } ${canNavigate ? "group-hover:text-text-main" : ""}`}>
-                                {step.label}
-                            </span>
-                        </div>
-                    );
-
-                    if (canNavigate && !isCurrent) {
-                        return (
-                            <Link
-                                key={step.id}
-                                href={step.href}
-                                onClick={() => {
-                                    if (step.id === 1) {
-                                        const slug = localStorage.getItem("adFlow_selectedSlug");
-                                        if (slug) {
-                                            sessionStorage.setItem("adFlow_restoreSlug", slug);
-                                        }
-                                    }
-                                }}
-                                className="cursor-pointer no-underline"
-                            >
-                                {content}
-                            </Link>
                         );
-                    }
 
-                    return (
-                        <div key={step.id} className="cursor-default">
-                            {content}
-                        </div>
-                    );
-                })}
+                        if (canNavigate && !isCurrent) {
+                            return (
+                                <Link
+                                    key={step.id}
+                                    href={step.href}
+                                    onClick={() => {
+                                        sessionStorage.setItem("adFlow_navigatingInternal", "true");
+                                        if (step.id === 1) {
+                                            const slug = localStorage.getItem("adFlow_selectedSlug");
+                                            if (slug) {
+                                                sessionStorage.setItem("adFlow_restoreSlug", slug);
+                                            }
+                                        }
+                                    }}
+                                    className="cursor-pointer no-underline"
+                                >
+                                    {content}
+                                </Link>
+                            );
+                        }
+
+                        return (
+                            <div key={step.id} className="cursor-default">
+                                {content}
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     )

@@ -214,7 +214,7 @@ export default function ReviewsClient({ targetUserId, initialReviews, currentUse
                             }
                             setIsReviewModalOpen(true);
                         }}
-                        className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
+                        className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors cursor-pointer"
                     >
                         Ocenite korisnika
                     </button>

@@ -60,8 +60,10 @@ export default function UnfollowModal({ isOpen, onClose, onConfirm, username }: 
                         {/* Content */}
                         <div className="flex flex-col items-center text-center mt-2">
                             <div className="mb-8 px-6 w-full text-center">
-                                <p className="text-gray-300 text-[15px]">
-                                    Da li ste sigurni da želite da prekinete praćenje korisnika <span className="font-semibold text-gray-200">{username}</span>?
+                                <p className="text-[15px] text-text-main">
+                                    <span className="opacity-70">Da li ste sigurni da želite da prekinete praćenje korisnika </span>
+                                    <span className="font-semibold text-black dark:text-white">{username}</span>
+                                    <span className="opacity-70">?</span>
                                 </p>
                             </div>
 
@@ -75,7 +77,7 @@ export default function UnfollowModal({ isOpen, onClose, onConfirm, username }: 
                                 </button>
                                 <button
                                     onClick={onClose}
-                                    className="w-full py-3 rounded-full bg-bg-3 hover:bg-bg-3/80 text-white font-medium transition-all duration-200 cursor-pointer text-base"
+                                    className="w-full py-3 rounded-full bg-bg-4 dark:bg-bg-3 hover:bg-bg-4/80 dark:hover:bg-bg-3/80 text-text-main font-medium transition-all duration-200 cursor-pointer text-base"
                                 >
                                     Otkaži
                                 </button>

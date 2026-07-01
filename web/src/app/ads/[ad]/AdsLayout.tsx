@@ -734,7 +734,7 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                             className="w-full bg-[#5b42f3] text-white font-bold py-3 rounded-full hover:bg-[#4b35d6] transition-colors flex items-center justify-center gap-2 cursor-pointer"
                         >
                             <SquarePen size={20} className="w-5 h-5" />
-                            Uredi oglas
+                            Izmeni oglas
                         </button>
                         <button
                             onClick={() => router.push(`/ad/edit/promotion?adId=${ad?.id}`)}
@@ -1283,7 +1283,7 @@ export default function AdsLayout({ ad, adSlug, loading = false, filters = [], c
                             className={`md:hidden fixed left-0 right-0 px-4 py-3 z-[150] bg-transparent ${user ? 'bottom-[60px]' : 'bottom-0'}`}
                         >
                             {isOwner ? (
-                                <button onClick={() => router.push(`/ad/edit/form?adId=${ad?.id}`)} className="w-full bg-[#5b42f3] hover:bg-[#4b35d6] text-white font-bold py-3 rounded-full flex items-center justify-center gap-2 shadow-lg"><SquarePen size={20} />Uredi oglas</button>
+                                <button onClick={() => router.push(`/ad/edit/form?adId=${ad?.id}`)} className="w-full bg-[#5b42f3] hover:bg-[#4b35d6] text-white font-bold py-3 rounded-full flex items-center justify-center gap-2 shadow-lg"><SquarePen size={20} />Izmeni oglas</button>
                             ) : (
                                 <div className="flex gap-3">
                                     {ad?.phone && ad.showPhone !== false && !isContactBlocked && <StickyCallButton phone={ad.phone} />}

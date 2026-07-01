@@ -24,7 +24,10 @@ export default function PromotionsPage() {
   // Toast fires when leaving the promotion page without publishing
   useEffect(() => {
     return () => {
-      if (!isRedirectingRef.current && action === "add") {
+      const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
+      sessionStorage.removeItem("adFlow_navigatingInternal");
+      const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
+      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying) {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");
@@ -794,7 +797,7 @@ export default function PromotionsPage() {
           {/* Section 3: Ukupno */}
           <div className="flex items-center justify-between py-6">
             <h2 className="text-2xl font-bold text-text-main">Ukupno:</h2>
-            <p className="text-3xl font-black text-[#6366f1]">{calculateTotal()} kredita</p>
+            <p className="text-3xl font-black text-[#6366f1]">{calculateTotal() === 0 ? "Besplatno" : `${calculateTotal()} kredita`}</p>
           </div>
 
           <div className="flex flex-col-reverse md:flex-row justify-between gap-3 pt-4">

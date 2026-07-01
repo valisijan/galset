@@ -189,7 +189,7 @@ export default function WishlistClient({ initialAds, initialTotal, initialViewMo
                             {search ? "Nismo pronašli oglase koji odgovaraju pretrazi." : "Trenutno nemate sačuvanih oglasa."}
                         </p>
                         {!search && (
-                            <Link href="/search" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors">
+                            <Link href="/search" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors">
                                 Istraži oglase
                             </Link>
                         )}

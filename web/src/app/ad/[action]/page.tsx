@@ -78,9 +78,11 @@ export default function AddListing() {
 
   const isRedirectingRef = useRef(false)
   const selectedSlugRef = useRef<string | null>(null)
-  const isFreshStartRef = useRef(!sessionStorage.getItem("adFlow_restoreSlug") && typeof window !== "undefined"
-    ? sessionStorage.getItem("adFlow_newSession") === "true"
-    : false)
+  const isFreshStartRef = useRef(
+    typeof window !== "undefined" && !sessionStorage.getItem("adFlow_restoreSlug")
+      ? sessionStorage.getItem("adFlow_newSession") === "true"
+      : false
+  )
 
   // Keep ref in sync so cleanup can read the latest value
   useEffect(() => {
@@ -96,7 +98,10 @@ export default function AddListing() {
   // Toast fires only ONCE per flow session when leaving the flow
   useEffect(() => {
     return () => {
-      if (!isRedirectingRef.current && action === "add" && selectedSlugRef.current) {
+      const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
+      sessionStorage.removeItem("adFlow_navigatingInternal");
+      const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
+      if (!isRedirectingRef.current && !isInternal && hasQualifying && action === "add") {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");
@@ -111,6 +116,11 @@ export default function AddListing() {
   }
 
   useEffect(() => {
+    if (selectedSlug) {
+      localStorage.setItem("adFlow_selectedSlug", selectedSlug);
+    } else {
+      localStorage.removeItem("adFlow_selectedSlug");
+    }
     window.dispatchEvent(new Event("adFlowUpdate"));
   }, [selectedSlug])
 
@@ -137,7 +147,7 @@ export default function AddListing() {
       setTimeout(() => {
         const el = document.getElementById(`cat-${expandedCat}`);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 100);
     }
@@ -176,12 +186,12 @@ export default function AddListing() {
 
         setTimeout(() => {
           const el = document.getElementById(`cat-${foundPath.rootCat}`);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       }
       setTimeout(() => {
         setIsRestoring(false);
-      }, 100);
+      }, 500);
     }
   }, [rootCategories, selectedSlug]);
 
@@ -273,12 +283,10 @@ export default function AddListing() {
 
   return (
     <main className="min-h-screen bg-bg-1 flex flex-col items-center pt-4 md:pt-6">
-      <div className="w-full max-w-[800px] px-5 md:px-10">
+      <div className="w-full max-w-[800px] px-5 md:px-10 flex flex-col">
         <AdStepProgress currentStep={1} />
-      </div>
 
-      <div className="p-5 md:p-10 w-full max-w-[800px]">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 pt-5 md:pt-10">
           {authLoading || rootCategories.length === 0 ? (
             <div className="flex flex-col gap-4 animate-pulse">
               {[...Array(5)].map((_, i) => (

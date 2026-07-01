@@ -76,8 +76,9 @@ export default function LogoutModal({ isOpen, onClose, onConfirm, email }: Logou
 
                         <div className="flex flex-col items-center text-center mt-2">
                             <div className="mb-8 px-6 w-full text-center">
-                                <p className="text-text-main opacity-70 text-[15px]">
-                                    Da li ste sigurni da želite da se odjavite sa naloga <span className="font-semibold text-text-main">{email}</span>
+                                <p className="text-[15px] text-text-main">
+                                    <span className="opacity-70">Da li ste sigurni da želite da se odjavite sa naloga </span>
+                                    <span className="font-semibold text-black dark:text-white">{email}</span>
                                 </p>
                             </div>
 

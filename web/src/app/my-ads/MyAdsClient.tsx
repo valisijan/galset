@@ -485,7 +485,7 @@ export default function MyAdsClient({ initialAds, initialTotal, action }: MyAdsC
                                 {search ? "Nismo pronašli oglase koji odgovaraju pretrazi." : "Trenutno nemate oglasa u ovoj kategoriji."}
                             </p>
                             {!search && activeTab === "active" && (
-                                <Link href="/ad/add" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors">
+                                <Link href="/ad/add" className="mt-6 inline-block bg-bg-2 hover:bg-bg-3 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors">
                                     Postavi svoj prvi oglas
                                 </Link>
                             )}

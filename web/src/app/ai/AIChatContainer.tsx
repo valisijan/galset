@@ -207,7 +207,7 @@ export default function AIChatContainer({ initialChatId }: AIChatContainerProps)
     return (
         <div
             className="w-full bg-bg-1 text-text-main flex font-sans overflow-hidden relative h-full"
-            style={isInputFocused && isMobile ? { height: viewportHeight, maxHeight: viewportHeight } : {}}
+            style={isMobile ? { height: viewportHeight } : {}}
         >
             {/* Header bar with 3 buttons */}
             <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-bg-1 via-bg-1/90 to-transparent pt-4 pb-12 z-50 flex items-center justify-center pointer-events-none">
@@ -239,7 +239,7 @@ export default function AIChatContainer({ initialChatId }: AIChatContainerProps)
                             ? 'bg-[#5b42f3] border-[#5b42f3] hover:bg-[#4b35d6] text-white'
                             : 'bg-bg-2 border-bg-3 hover:bg-bg-3 text-text-main'
                             }`}
-                        title="Privremeni razgovor"
+                        title="Privatni razgovor"
                     >
                         <HatGlasses className={`w-4 h-4 ${isPrivate ? 'text-white' : 'text-text-main'}`} />
                         <span>Privatno</span>
@@ -986,7 +986,7 @@ function ChatWindow({
     return (
         <div
             className="flex-1 w-full relative overflow-hidden flex flex-col h-full"
-            style={isInputFocused && isMobile ? { height: viewportHeight, maxHeight: viewportHeight } : {}}
+            style={isMobile ? { height: viewportHeight } : {}}
         >
             {/* Header / Actions */}
 
@@ -1205,10 +1205,10 @@ function ChatWindow({
                                             {isPrivate ? (
                                                 <div className="flex flex-col gap-2">
                                                     <h2 className="text-text-main text-3xl md:text-5xl font-black tracking-tight">
-                                                        Privremeni razgovor
+                                                        Privatni razgovor
                                                     </h2>
                                                     <p className="text-sm text-gray-400">
-                                                        Privremeni razgovori se ne čuvaju u istoriji razgovora.
+                                                        Privatni razgovori se ne čuvaju u istoriji razgovora. I ne koriste se za poboljšanje Galset AI.
                                                     </p>
                                                 </div>
                                             ) : (
