@@ -233,7 +233,7 @@ export default function UserPageClient({
 
     return (
         <div className="min-h-screen bg-bg-1 text-text-main">
-            <div className="w-full px-4 max-w-[1200px] mx-auto py-5 md:py-7">
+            <div className="w-full px-4 max-w-4xl mx-auto py-5 md:py-7">
 
                 {/* HEADER */}
                 <div className="bg-bg-1 rounded-3xl p-0 md:p-6 mb-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">

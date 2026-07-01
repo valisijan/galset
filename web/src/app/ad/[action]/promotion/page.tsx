@@ -16,18 +16,23 @@ export default function PromotionsPage() {
   const searchParams = useSearchParams();
   const action = params?.action as string || "add";
   const adId = searchParams?.get('adId');
-  const query = action === 'edit' && adId ? `?adId=${adId}` : '';
+  const draftId = searchParams?.get('draftId');
+  const query = action === 'edit' && adId 
+    ? `?adId=${adId}` 
+    : (action === 'add' && draftId ? `?draftId=${draftId}` : '');
   const { user, sessionToken, loading: authLoading } = useAuth();
 
   const isRedirectingRef = useRef(false);
 
   // Toast fires when leaving the promotion page without publishing
+  const mountTimeRef = useRef(Date.now());
   useEffect(() => {
+    mountTimeRef.current = Date.now();
     return () => {
       const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
       sessionStorage.removeItem("adFlow_navigatingInternal");
       const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
-      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying) {
+      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying && (Date.now() - mountTimeRef.current > 1500)) {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");
@@ -41,6 +46,12 @@ export default function PromotionsPage() {
       router.push("/auth");
     }
   }, [user, authLoading, router]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("adFlow_visitedPromotion", "true");
+    }
+  }, []);
 
   const [pricingData, setPricingData] = useState<any[]>([]);
   const [loadingPrices, setLoadingPrices] = useState(true);
@@ -90,11 +101,14 @@ export default function PromotionsPage() {
   useEffect(() => {
     if (action !== "add" || !sessionToken || !user) return;
 
+    const urlDraftId = searchParams?.get('draftId') || (typeof window !== "undefined" ? localStorage.getItem("adFlow_draftId") : null);
+    if (!urlDraftId) {
+      setLoadingDraft(false);
+      return;
+    }
+
     setLoadingDraft(true);
-    const storedDraftId = typeof window !== "undefined" ? localStorage.getItem("adFlow_draftId") : null;
-    const fetchUrl = storedDraftId
-      ? `${process.env.NEXT_PUBLIC_API_URL}/ads/draft?id=${storedDraftId}`
-      : `${process.env.NEXT_PUBLIC_API_URL}/ads/draft`;
+    const fetchUrl = `${process.env.NEXT_PUBLIC_API_URL}/ads/draft?id=${urlDraftId}`;
 
     fetch(fetchUrl, {
       headers: {
@@ -302,6 +316,51 @@ export default function PromotionsPage() {
         for (let i = 0; i < detImages.length; i++) {
           if (detImages[i] !== origImages[i]) return true;
         }
+
+        // 3. Check dynamic attributes/filters
+        const detAttrs = details.attributes || {};
+        const origAttrs = originalAd.attributes || {};
+
+        const cleanAttrs = (obj: any) => {
+          const result: any = {};
+          for (const key in obj) {
+            if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+            if (key === "condition" || key === "isUrgent") continue;
+            const val = obj[key];
+            if (val === undefined || val === null || val === "") continue;
+            if (Array.isArray(val)) {
+              if (val.length === 0) continue;
+              result[key] = [...val].sort();
+              continue;
+            }
+            if (typeof val === 'object') {
+              if (val.amount === undefined || val.amount === null || val.amount === "") continue;
+              result[key] = val;
+              continue;
+            }
+            result[key] = val;
+          }
+          return result;
+        };
+
+        const cleanDet = cleanAttrs(detAttrs);
+        const cleanOrig = cleanAttrs(origAttrs);
+
+        const keysDet = Object.keys(cleanDet);
+        const keysOrig = Object.keys(cleanOrig);
+
+        if (keysDet.length !== keysOrig.length) return true;
+
+        for (const key of keysDet) {
+          const valDet = cleanDet[key];
+          const valOrig = cleanOrig[key];
+
+          if (typeof valDet === 'object' && typeof valOrig === 'object') {
+            if (JSON.stringify(valDet) !== JSON.stringify(valOrig)) return true;
+          } else if (String(valDet) !== String(valOrig)) {
+            return true;
+          }
+        }
       } catch (e) {
         console.error("Error parsing adFlow_details for change detection:", e);
         return true;
@@ -408,6 +467,13 @@ export default function PromotionsPage() {
         localStorage.removeItem(key);
       }
     });
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("adFlow_visitedPromotion");
+      sessionStorage.removeItem("adFlow_activeSession");
+      sessionStorage.removeItem("adFlow_restoreSlug");
+      sessionStorage.removeItem("adFlow_toasted");
+      sessionStorage.removeItem("adFlow_newSession");
+    }
   };
 
   const handlePublish = async () => {
@@ -650,7 +716,7 @@ export default function PromotionsPage() {
 
           {/* Section 1: Vidljivost oglasa */}
           <div className="text-left space-y-4">
-            <h2 className="text-xl font-bold text-white">Vidljivost oglasa</h2>
+            <h2 className="text-xl font-bold text-text-main">Vidljivost oglasa</h2>
             <div className="bg-bg-2 border border-bg-3 rounded-3xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
               <div className="space-y-4 w-full md:w-auto">
                 <div>
@@ -684,7 +750,7 @@ export default function PromotionsPage() {
 
           {/* Section 2: Promocije oglasa */}
           <div className="text-left space-y-4">
-            <h2 className="text-xl font-bold text-white">Promocije oglasa</h2>
+            <h2 className="text-xl font-bold text-text-main">Promocije oglasa</h2>
             <div className="space-y-4">
               {([
                 { type: 'FEATURED', name: 'Istaknuti oglas', note: 'Oglas dobija pozadinu plave boje' },
@@ -747,7 +813,7 @@ export default function PromotionsPage() {
 
           {/* Section: Dodaci oglasa */}
           <div className="text-left space-y-4">
-            <h2 className="text-xl font-bold text-white">Dodaci oglasa</h2>
+            <h2 className="text-xl font-bold text-text-main">Dodaci oglasa</h2>
             <div
               onClick={() => setHitnoSelected(!hitnoSelected)}
               className={`p-6 bg-bg-2 border rounded-3xl cursor-pointer transition flex flex-col md:flex-row justify-between items-start md:items-center gap-6 ${hitnoSelected ? "border-[#6366f1]" : "border-bg-3"}`}
@@ -780,7 +846,7 @@ export default function PromotionsPage() {
             if (summaryItems.length === 0) return null;
             return (
               <div className="space-y-4 pt-4 px-2">
-                <h3 className="text-lg font-bold text-white mb-2">Pregled porudžbine</h3>
+                <h3 className="text-lg font-bold text-text-main mb-2">Pregled porudžbine</h3>
                 <div className="space-y-2">
                   {summaryItems.map((item, index) => (
                     <div key={index} className="flex justify-between items-center text-sm md:text-base">

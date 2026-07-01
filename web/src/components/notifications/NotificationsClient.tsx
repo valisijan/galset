@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { Bell, Tag, Heart } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Bell } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InfiniteScroll from "../InfiniteScroll";
 import Avatar from "../Avatar";

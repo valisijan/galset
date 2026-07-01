@@ -37,9 +37,14 @@ export default function BottomNav() {
                 if (item.name === "Novi oglas") {
                   sessionStorage.removeItem("adFlow_restoreSlug");
                   sessionStorage.removeItem("adFlow_toasted");
+                  sessionStorage.removeItem("adFlow_visitedPromotion");
+                  sessionStorage.removeItem("adFlow_activeSession");
                   sessionStorage.setItem("adFlow_newSession", "true");
                   localStorage.removeItem("adFlow_details");
                   localStorage.removeItem("adFlow_selectedSlug");
+                  localStorage.removeItem("adFlow_selectedCategoryPath");
+                  localStorage.removeItem("adFlow_draftId");
+                  localStorage.removeItem("adFlow_hasQualifyingFields");
                   window.dispatchEvent(new Event("adFlowUpdate"));
                 }
               }}

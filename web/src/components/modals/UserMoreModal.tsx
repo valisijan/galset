@@ -1,13 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import AboutUserModal from "./AboutUserModal";
 import ReportUserModal from "./ReportUserModal";
 import Loader from "@/components/Loader";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-const UserAvatar = "https://pbkhmmkpecbhghuwrzxd.supabase.co/storage/v1/object/public/images/assets/user-avatar.png";
 
 interface UserMoreModalProps {
     isOpen: boolean;
@@ -65,9 +62,6 @@ export default function UserMoreModal({ isOpen, onClose, user, isBlocked, onShar
         }
     }, [isOpen]);
 
-    const joinedDate = user?.createdAt ? new Date(user.createdAt) : new Date();
-    const monthNames = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
-    const formattedJoinedDate = `${monthNames[joinedDate.getMonth()]} ${joinedDate.getFullYear()}`;
 
     return (
         <AnimatePresence>

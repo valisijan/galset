@@ -3,10 +3,6 @@ import { categories } from "@/db/schema";
 import { asc } from "drizzle-orm";
 // cache-reset: 2026-06-06T11:24
 
-let cachedCategoriesTree: any[] | null = null;
-let cacheExpiry = 0;
-const CACHE_TTL = 3600 * 1000; // 1 hour
-
 async function getCategoriesTree() {
   const allRows = await db.select().from(categories).orderBy(asc(categories.id));
   
@@ -43,10 +39,6 @@ async function getCategoriesTree() {
   return buildTree(null);
 }
 
-export function clearCategoriesCache() {
-  cachedCategoriesTree = null;
-  cacheExpiry = 0;
-}
 
 export async function getCategoriesTreeCached() {
   // Always query the database to ensure immediate updates

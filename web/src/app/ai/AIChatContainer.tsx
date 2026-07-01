@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { generateAiChatId } from '@/lib/ai-utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import Loader from '@/components/Loader';
 import TypingIndicator from '@/components/TypingIndicator';
 import Image from 'next/image';
 import Link from 'next/link';

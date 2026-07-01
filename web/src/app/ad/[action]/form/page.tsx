@@ -64,6 +64,12 @@ export default function MarketplaceForm() {
     }
   }, [user, authLoading, adOwnerId, router]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("adFlow_activeSession", "true");
+    }
+  }, []);
+
 
   const [categorySlug, setCategorySlug] = useState("");
   const [isSelectorModalOpen, setIsSelectorModalOpen] = useState(false);
@@ -143,7 +149,9 @@ export default function MarketplaceForm() {
   }, [title, price, description, images, attributes]);
 
   // Toast fires only ONCE per flow session when leaving the flow
+  const mountTimeRef = useRef(Date.now());
   useEffect(() => {
+    mountTimeRef.current = Date.now();
     return () => {
       if (action === "add" && categorySlugRef.current) {
         sessionStorage.setItem("adFlow_restoreSlug", categorySlugRef.current);
@@ -151,7 +159,7 @@ export default function MarketplaceForm() {
       const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
       sessionStorage.removeItem("adFlow_navigatingInternal");
       const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
-      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying) {
+      if (!isRedirectingRef.current && !isInternal && action === "add" && hasQualifying && (Date.now() - mountTimeRef.current > 1500)) {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");
@@ -304,6 +312,9 @@ export default function MarketplaceForm() {
         try {
           const details = JSON.parse(storedDetails);
           const storedOwnerId = localStorage.getItem("adFlow_editAdOwnerId");
+          const currentSelectedSlug = localStorage.getItem("adFlow_selectedSlug");
+          const isCategoryChanged = currentSelectedSlug && details.category && currentSelectedSlug !== details.category;
+
           if (storedOwnerId) setAdOwnerId(storedOwnerId);
           setTitle(details.title || "");
           if (details.price) setPrice(formatPriceDisplay(details.price.toString()));
@@ -312,7 +323,14 @@ export default function MarketplaceForm() {
           const storedToggle = details.toggle === "kontakt" ? "cena-na-upit" : (details.toggle || null);
           setToggle(storedToggle);
           setDescription(details.description || "");
-          if (details.attributes) setAttributes(details.attributes);
+          
+          if (details.attributes) {
+            if (isCategoryChanged) {
+              setAttributes({});
+            } else {
+              setAttributes(details.attributes);
+            }
+          }
           if (details.phone) setPhone(details.phone);
           if (details.showPhone !== undefined) setShowPhone(details.showPhone);
           if (details.showAddress !== undefined) setShowStreet(details.showAddress);
@@ -359,9 +377,11 @@ export default function MarketplaceForm() {
         sessionStorage.removeItem("adFlow_newSession");
         setIsInitialized(true);
       } else {
-        const fetchUrl = storedDraftId 
-          ? `${process.env.NEXT_PUBLIC_API_URL}/ads/draft?id=${storedDraftId}`
-          : `${process.env.NEXT_PUBLIC_API_URL}/ads/draft`;
+        if (!storedDraftId) {
+          setIsInitialized(true);
+          return;
+        }
+        const fetchUrl = `${process.env.NEXT_PUBLIC_API_URL}/ads/draft?id=${storedDraftId}`;
 
         fetch(fetchUrl, {
           headers: {
@@ -376,7 +396,17 @@ export default function MarketplaceForm() {
                 setDraftId(String(draft.id));
                 localStorage.setItem("adFlow_draftId", String(draft.id));
               }
-              if (draft.category) setCategorySlug(draft.category);
+              const currentSelectedSlug = localStorage.getItem("adFlow_selectedSlug");
+              const isCategoryChanged = currentSelectedSlug && draft.category && currentSelectedSlug !== draft.category;
+
+              if (isCategoryChanged) {
+                if (currentSelectedSlug) setCategorySlug(currentSelectedSlug);
+                setAttributes({});
+              } else {
+                if (draft.category) setCategorySlug(draft.category);
+                if (draft.attributes) setAttributes(draft.attributes);
+              }
+              
               if (draft.title) setTitle(draft.title);
               if (draft.price !== null && draft.price !== undefined) setPrice(formatPriceDisplay(draft.price.toString()));
               if (draft.currency) setCurrency(draft.currency);
@@ -384,7 +414,6 @@ export default function MarketplaceForm() {
               if (draft.isPriceOnRequest ?? draft.isContact) setToggle("cena-na-upit");
               else if (draft.price === 0) setToggle("poklanjam");
               setDescription(draft.description || "");
-              if (draft.attributes) setAttributes(draft.attributes);
               if (draft.phone) setPhone(draft.phone);
               if (draft.city) {
                 setSelectedCity(draft.city);
@@ -495,8 +524,8 @@ export default function MarketplaceForm() {
             const filterDef = filtersData.find((f: any) => f.id === id);
             // Exclude: q(1), sort(2), category(3), price(4), country(9), city(10), slug=other
             if (filterDef && filterDef.slug && filterDef.slug !== 'other' &&
-                filterDef.id !== 1 && filterDef.id !== 2 && filterDef.id !== 3 &&
-                filterDef.id !== 4 && filterDef.id !== 9 && filterDef.id !== 10) {
+              filterDef.id !== 1 && filterDef.id !== 2 && filterDef.id !== 3 &&
+              filterDef.id !== 4 && filterDef.id !== 9 && filterDef.id !== 10) {
               const filterClone = { ...filterDef };
               if (filterClone.isFormRadio) filterClone.type = "radio";
               categoryFilters[filterDef.slug] = filterClone;
@@ -557,6 +586,7 @@ export default function MarketplaceForm() {
     const cleanDescription = (description && description.trim() && description !== "<br>" && description !== "<p><br></p>") ? description : null;
 
     const details = {
+      category: categorySlug,
       title: title || "",
       description: cleanDescription,
       price: getRawPriceForDB(price) || "",
@@ -574,10 +604,19 @@ export default function MarketplaceForm() {
       imageTempIds: images.map(img => img.tempImageId).filter(Boolean),
       attributes
     };
-    localStorage.setItem("adFlow_details", JSON.stringify(details));
+    if (action === "edit") {
+      localStorage.setItem("adFlow_details", JSON.stringify(details));
+    }
     window.dispatchEvent(new Event("adFlowUpdate"));
 
-    const hasChanges = !!(title.trim() || price.trim() || (description.trim() && description !== "<br>") || images.length > 0);
+    const hasChanges = !!(
+      title.trim() ||
+      price.trim() ||
+      state ||
+      (description.trim() && description !== "<br>") ||
+      images.length > 0 ||
+      Object.values(attributes).some(val => val !== undefined && val !== null && val !== "" && (Array.isArray(val) ? val.length > 0 : true))
+    );
 
     if (user && sessionToken && action === "add" && hasChanges) {
       if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
@@ -614,6 +653,13 @@ export default function MarketplaceForm() {
             if (data.success && data.draft && data.draft.id) {
               setDraftId(String(data.draft.id));
               localStorage.setItem("adFlow_draftId", String(data.draft.id));
+              if (action === "add") {
+                const currentDraftId = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get('draftId') : null;
+                if (currentDraftId !== String(data.draft.id)) {
+                  const newUrl = `/ad/add/form?draftId=${data.draft.id}`;
+                  window.history.replaceState(null, "", newUrl);
+                }
+              }
             }
           })
           .catch(err => console.error("Failed to save draft to DB:", err));
@@ -942,7 +988,7 @@ export default function MarketplaceForm() {
   const rotateImage = async (i: number) => {
     const itemToRotate = images[i];
     if (!itemToRotate) return;
-    
+
     setImages((s) => s.map((it, idx) => idx === i ? { ...it, uploading: true } : it));
 
     try {
@@ -951,18 +997,18 @@ export default function MarketplaceForm() {
         throw new Error("No image URL found");
       }
       const blob = await rotateImageOnCanvas(imageUrl);
-      
+
       const rotatedFile = new File([blob], `image-${itemToRotate.id}.jpg`, { type: "image/jpeg" });
       const localUrl = URL.createObjectURL(rotatedFile);
-      
+
       setImages(prev => prev.map(img =>
         img.id === itemToRotate.id
-          ? { 
-              ...img, 
-              file: rotatedFile, 
-              url: localUrl, 
-              rotation: 0 
-            }
+          ? {
+            ...img,
+            file: rotatedFile,
+            url: localUrl,
+            rotation: 0
+          }
           : img
       ));
 

@@ -15,13 +15,13 @@ import { eq } from "drizzle-orm";
 import ThemeScript from "@/components/ThemeScript";
 
 export const metadata = {
-  title: "Galset - Oglasnik nove generacije",
+  title: "Galset",
   description: "Galset je oglasnik nove generacije, prodajte ili pronadjite sve sto vam treba uz Galset AI",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Galset - Oglasnik nove generacije",
+    title: "Galset",
     description: "Galset je oglasnik nove generacije, prodajte ili pronadjite sve sto vam treba uz Galset AI",
     images: [
       {

@@ -39,7 +39,10 @@ export default function AddListing() {
   const searchParams = useSearchParams()
   const action = params?.action as string || "add";
   const adId = searchParams?.get('adId')
-  const query = action === 'edit' && adId ? `?adId=${adId}` : ''
+  const draftId = searchParams?.get('draftId')
+  const query = action === 'edit' && adId 
+    ? `?adId=${adId}` 
+    : (action === 'add' && draftId ? `?draftId=${draftId}` : '')
   const { user, loading: authLoading, sessionToken } = useAuth()
 
   useEffect(() => {
@@ -62,13 +65,22 @@ export default function AddListing() {
       const restored = sessionStorage.getItem("adFlow_restoreSlug");
       sessionStorage.removeItem("adFlow_restoreSlug");
       if (restored) return restored;
-      // Fresh start: mark new session synchronously before any render
-      sessionStorage.setItem("adFlow_newSession", "true");
-      sessionStorage.removeItem("adFlow_toasted");
-      localStorage.removeItem("adFlow_details");
-      localStorage.removeItem("adFlow_selectedSlug");
-      localStorage.removeItem("adFlow_selectedCategoryPath");
-      localStorage.removeItem("adFlow_draftId");
+
+      const isActiveSession = sessionStorage.getItem("adFlow_activeSession") === "true";
+      if (isActiveSession) {
+        const slug = localStorage.getItem("adFlow_selectedSlug");
+        if (slug) return slug;
+      } else {
+        // Fresh start: mark new session synchronously before any render
+        sessionStorage.setItem("adFlow_newSession", "true");
+        sessionStorage.removeItem("adFlow_toasted");
+        sessionStorage.removeItem("adFlow_visitedPromotion");
+        localStorage.removeItem("adFlow_details");
+        localStorage.removeItem("adFlow_selectedSlug");
+        localStorage.removeItem("adFlow_selectedCategoryPath");
+        localStorage.removeItem("adFlow_draftId");
+        localStorage.removeItem("adFlow_hasQualifyingFields");
+      }
     }
     return null;
   })
@@ -95,13 +107,34 @@ export default function AddListing() {
     isFreshStartRef.current = false;
   }, [action]);
 
-  // Toast fires only ONCE per flow session when leaving the flow
+  // If draftId is in URL, fetch its category to restore category selection UI
   useEffect(() => {
+    if (action !== "add" || !draftId || !sessionToken) return;
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/ads/draft?id=${draftId}`, {
+      headers: {
+        "Authorization": `Bearer ${sessionToken}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.draft && data.draft.category) {
+          setSelectedSlug(data.draft.category);
+          localStorage.setItem("adFlow_draftId", String(data.draft.id));
+        }
+      })
+      .catch(err => console.error("Error loading draft category:", err));
+  }, [action, draftId, sessionToken]);
+
+  // Toast fires only ONCE per flow session when leaving the flow
+  const mountTimeRef = useRef(Date.now());
+  useEffect(() => {
+    mountTimeRef.current = Date.now();
     return () => {
       const isInternal = sessionStorage.getItem("adFlow_navigatingInternal") === "true";
       sessionStorage.removeItem("adFlow_navigatingInternal");
       const hasQualifying = localStorage.getItem("adFlow_hasQualifyingFields") === "true";
-      if (!isRedirectingRef.current && !isInternal && hasQualifying && action === "add") {
+      if (!isRedirectingRef.current && !isInternal && hasQualifying && action === "add" && (Date.now() - mountTimeRef.current > 1500)) {
         if (!sessionStorage.getItem("adFlow_toasted")) {
           sessionStorage.setItem("adFlow_toasted", "true");
           toast.success("Oglas je sačuvan kao radna verzija");
@@ -112,6 +145,18 @@ export default function AddListing() {
 
 
   const handleCancelClick = () => {
+    if (typeof window !== "undefined") {
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith("adFlow_") || key === "wasInsideAddAd") {
+          localStorage.removeItem(key);
+        }
+      });
+      sessionStorage.removeItem("adFlow_visitedPromotion");
+      sessionStorage.removeItem("adFlow_activeSession");
+      sessionStorage.removeItem("adFlow_restoreSlug");
+      sessionStorage.removeItem("adFlow_toasted");
+      sessionStorage.removeItem("adFlow_newSession");
+    }
     router.push("/");
   }
 

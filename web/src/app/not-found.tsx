@@ -1,4 +1,9 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Stranica nije pronađena - Galset',
+};
 
 export default function NotFound() {
   return (
@@ -11,7 +16,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="text-[#6366f1] font-bold text-lg hover:underline transition-colors"
+        className="text-sm text-text-main bg-bg-2 hover:bg-bg-3 hover:no-underline px-4 py-2 rounded-full transition-all duration-300 font-semibold"
       >
         Vratite se na Galset
       </Link>

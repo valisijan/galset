@@ -1,9 +1,8 @@
 "use client"
 
-import { useParams } from "next/navigation"
+import { useParams, notFound } from "next/navigation"
 import AdsLayout from "@/app/ads/[ad]/AdsLayout"
 import { useEffect, useState } from "react";
-import Loader from "@/components/Loader";
 
 export default function AdDetailContainer() {
     const params = useParams();
@@ -65,11 +64,7 @@ export default function AdDetailContainer() {
     }, [ad]);
 
     if (error) {
-        return (
-            <div className="min-h-screen bg-black flex items-center justify-center text-text-main">
-                <p className="text-red-500">Oglas nije pronađen ili je došlo do greške.</p>
-            </div>
-        );
+        return notFound();
     }
 
     return <AdsLayout ad={adData} adSlug={ad as string} loading={loading} filters={filters} categories={categories} />;

@@ -90,14 +90,14 @@ export default function LayoutWrapper({
 
           if (activeToken) {
             const headers = new Headers();
-            
+
             // 1. Copy headers from input (Request object) if it exists
             if (input instanceof Request) {
               input.headers.forEach((value, key) => {
                 headers.set(key, value);
               });
             }
-            
+
             // 2. Copy headers from init if it exists
             if (init?.headers) {
               const initHeaders = new Headers(init.headers);
@@ -105,10 +105,10 @@ export default function LayoutWrapper({
                 headers.set(key, value);
               });
             }
-            
+
             // 3. Set Authorization header
             headers.set("Authorization", `Bearer ${activeToken}`);
-            
+
             const newInit = { ...init, headers };
             return originalFetch(input, newInit);
           }
@@ -185,9 +185,12 @@ export default function LayoutWrapper({
       localStorage.removeItem("adFlow_details");
       localStorage.removeItem("adFlow_contact");
       localStorage.removeItem("adFlow_selectedSlug");
+      localStorage.removeItem("adFlow_hasQualifyingFields");
       sessionStorage.removeItem("adFlow_restoreSlug");
       sessionStorage.removeItem("adFlow_toasted");
       sessionStorage.removeItem("adFlow_newSession");
+      sessionStorage.removeItem("adFlow_visitedPromotion");
+      sessionStorage.removeItem("adFlow_activeSession");
     }
 
     if (isInsideAddAd) {

@@ -130,7 +130,7 @@ export default function FilterOptionsModal({
                                     )
                                 })}
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -185,7 +185,7 @@ export default function FilterOptionsModal({
                                     );
                                 })}
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -226,7 +226,7 @@ export default function FilterOptionsModal({
                                     })}
                             </div>
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -286,7 +286,7 @@ export default function FilterOptionsModal({
                                     })}
                             </div>
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -334,7 +334,7 @@ export default function FilterOptionsModal({
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-auto p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="mt-auto p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -394,7 +394,7 @@ export default function FilterOptionsModal({
                                 </div>
                             )}
                         </div>
-                        <div className="p-6 border-t border-bg-2 bg-bg-2">
+                        <div className="p-6 border-t border-bg-2 bg-bg-2 rounded-b-[32px]">
                             <button
                                 type="button"
                                 onClick={onClose}
@@ -425,7 +425,7 @@ export default function FilterOptionsModal({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: 8 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="relative bg-bg-2 w-full max-w-[400px] h-[70vh] sm:h-[600px] max-h-[85vh] rounded-[32px] shadow-2xl overflow-hidden flex flex-col"
+                className="relative bg-bg-2 w-full max-w-[400px] h-[70vh] sm:h-[600px] max-h-[85vh] rounded-[32px] shadow-2xl overflow-hidden flex flex-col isolate transform-gpu"
             >
                 {/* Header */}
                 <div className="p-6 flex items-center justify-center">

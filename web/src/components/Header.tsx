@@ -26,8 +26,6 @@ export default function Header({ sidebarOpen, toggleSidebar }: HeaderProps) {
   const [showProfile, setShowProfile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-  const lastScrollY = useRef(0);
 
   const profileRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
@@ -45,30 +43,9 @@ export default function Header({ sidebarOpen, toggleSidebar }: HeaderProps) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (window.innerWidth < 768 || !stableIsLoggedIn) {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
-          setShowHeader(false);
-        } else {
-          setShowHeader(true);
-        }
-      } else {
-        setShowHeader(true);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [stableIsLoggedIn]);
-
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[1000] bg-bg-1 border-b border-bg-2 w-full transition-transform duration-300 ${stableIsLoggedIn ? 'md:hidden' : ''} ${!showHeader ? '-translate-y-full' : 'translate-y-0'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-[1000] bg-bg-1 border-b border-bg-2 w-full ${stableIsLoggedIn ? 'md:hidden' : ''}`}>
         <div className="h-[50px] w-full max-w-[1300px] mx-auto px-4 md:px-6 flex items-center justify-between relative">
 
           {/* LEFT: Search & AI buttons */}

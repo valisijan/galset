@@ -126,9 +126,14 @@ export default function DesktopMenu({ isOpen, toggleSidebar }: DesktopMenuProps)
                                 if (name === "Novi oglas") {
                                     sessionStorage.removeItem("adFlow_restoreSlug");
                                     sessionStorage.removeItem("adFlow_toasted");
+                                    sessionStorage.removeItem("adFlow_visitedPromotion");
+                                    sessionStorage.removeItem("adFlow_activeSession");
                                     sessionStorage.setItem("adFlow_newSession", "true");
                                     localStorage.removeItem("adFlow_details");
                                     localStorage.removeItem("adFlow_selectedSlug");
+                                    localStorage.removeItem("adFlow_selectedCategoryPath");
+                                    localStorage.removeItem("adFlow_draftId");
+                                    localStorage.removeItem("adFlow_hasQualifyingFields");
                                     window.dispatchEvent(new Event("adFlowUpdate"));
                                 }
                             }}
@@ -191,10 +196,10 @@ export default function DesktopMenu({ isOpen, toggleSidebar }: DesktopMenuProps)
                             }`}
                     >
                         <span className="font-bold text-text-main text-sm truncate leading-tight mt-0.5">
-                            {user?.username || user?.fullName || (loading ? "..." : "Korisnik")}
+                            {user?.fullName || user?.username || (loading ? "..." : "Korisnik")}
                         </span>
                         <span className="text-gray-400 text-xs truncate">
-                            {user?.email || (loading ? "..." : "")}
+                            {user?.username ? `@${user.username}` : (loading ? "..." : "")}
                         </span>
                     </div>
                 </button>
